@@ -7,12 +7,14 @@
 <meta name="description" content="متجر عِزوة (EZWA) للأزياء الرجالية الفاخرة المدمجة بتقنية NFC — مبيعات الجملة بالشدّة">
 <meta property="og:title" content="عِزوة EZWA | مبيعات الجملة بالشدّة">
 <meta property="og:description" content="أزياء ستريت وير سعودية فاخرة مدمجة بتقنية NFC — مبيعات الجملة بالشدّة">
+<meta property="og:image" content="ezwa-logo.png">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#020611">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EZWA Store">
-<link id="pwa-manifest" rel="manifest">
+<link rel="apple-touch-icon" href="ezwa-logo.png">
+<link rel="icon" type="image/png" href="ezwa-logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Readex+Pro:wght@600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 @property --border-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
@@ -36,13 +38,13 @@ body{
     align-items:center;
     overflow-x:hidden;
     position:relative;
-    padding:14px 0 96px 0;
+    padding:12px 0 88px 0;
 }
 .font-tech{font-family:'Orbitron',sans-serif!important;}
 .cyber-backdrop{
     position:fixed;inset:0;z-index:-3;
     background:
-        radial-gradient(circle at 50% 12%,rgba(223,177,91,0.12) 0%,transparent 52%),
+        radial-gradient(circle at 50% 10%,rgba(223,177,91,0.13) 0%,transparent 52%),
         radial-gradient(circle at 18% 82%,rgba(0,243,255,0.09) 0%,transparent 48%),
         linear-gradient(180deg,#020611 0%,#050d1e 50%,#020611 100%);
     pointer-events:none;
@@ -67,7 +69,7 @@ body{
     width:var(--store-width);
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:10px;
     position:relative;
     z-index:10;
 }
@@ -75,110 +77,117 @@ body{
 /* الشريط العلوي */
 .top-telemetry-bar{
     display:flex;align-items:center;justify-content:space-between;
-    padding:8px 14px;
+    padding:7px 14px;
     background:rgba(6,13,26,0.75);
     backdrop-filter:blur(12px);
     border:1px solid rgba(223,177,91,0.28);
     border-radius:20px;
     direction:ltr;
 }
-.portal-tag{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.4px;color:var(--gold-light);display:flex;align-items:center;gap:6px;}
+.portal-tag{font-family:'Orbitron',sans-serif;font-size:8.8px;font-weight:800;letter-spacing:1.3px;color:var(--gold-light);display:flex;align-items:center;gap:6px;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 7px #10b981;animation:pingDot 1.8s infinite;}
 @keyframes pingDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.3);}}
 .top-actions{display:flex;align-items:center;gap:6px;}
 .pill-mini-btn{background:rgba(8,16,32,0.9);border:1px solid rgba(0,243,255,0.4);color:var(--cyan-glow);padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all 0.2s;}
 .pill-mini-btn:hover{border-color:var(--gold-primary);color:#fff;}
 
-/* رأس العلامة الهولوغرامي لعِزوة */
+/* رأس العلامة الهولوغرامي لعِزوة بشعار الحصان */
 .brand-holo-hero{
     display:flex;
     flex-direction:column;
     align-items:center;
     text-align:center;
-    padding:8px 10px 4px 10px;
+    padding:2px 8px 0 8px;
     position:relative;
 }
 .ezwa-emblem-floater{
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-bottom:6px;
+    margin-bottom:4px;
     position:relative;
 }
 .ezwa-crest-orb{
-    width:82px;height:82px;
+    width:78px;height:78px;
     border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.25) 0%,rgba(6,13,26,0.92) 82%);
+    background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.22) 0%,rgba(4,9,18,0.95) 82%);
     border:1.8px solid var(--gold-matte);
-    box-shadow:0 0 28px rgba(223,177,91,0.45),inset 0 0 16px rgba(0,243,255,0.25);
+    box-shadow:0 0 28px rgba(223,177,91,0.45),inset 0 0 16px rgba(0,243,255,0.22);
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
     position:relative;
+    overflow:hidden;
+    padding:8px;
     animation:zeroGravityFloatA 3.8s ease-in-out infinite;
-    margin-bottom:10px;
+    margin-bottom:8px;
+}
+.ezwa-crest-orb img{
+    width:100%;height:100%;
+    object-fit:contain;
+    mix-blend-mode:lighten;
+    filter:contrast(1.15) brightness(1.08);
+    pointer-events:none;
 }
 .ezwa-crest-orb::after{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 2px,rgba(223,177,91,0.12) 3px);pointer-events:none;}
-.ezwa-crest-beam{width:64px;height:28px;margin-top:-12px;background:linear-gradient(to top,rgba(223,177,91,0.42) 0%,rgba(0,243,255,0.12) 60%,transparent 100%);clip-path:polygon(10% 0%,90% 0%,68% 100%,32% 100%);pointer-events:none;}
-.ezwa-crest-pad{width:46px;height:9px;border-radius:50%;background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.3px solid var(--cyan-glow);box-shadow:0 0 16px rgba(223,177,91,0.85),0 0 24px rgba(0,243,255,0.35);position:relative;}
+.ezwa-crest-beam{width:60px;height:22px;margin-top:-10px;background:linear-gradient(to top,rgba(223,177,91,0.42) 0%,rgba(0,243,255,0.12) 60%,transparent 100%);clip-path:polygon(10% 0%,90% 0%,68% 100%,32% 100%);pointer-events:none;}
+.ezwa-crest-pad{width:44px;height:8px;border-radius:50%;background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.3px solid var(--cyan-glow);box-shadow:0 0 16px rgba(223,177,91,0.85),0 0 24px rgba(0,243,255,0.35);position:relative;}
 .ezwa-crest-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(223,177,91,0.5);animation:emitterPulseRing 2.1s infinite;}
 
 .ezwa-main-title{
     font-family:'Readex Pro',sans-serif!important;
-    font-size:25px;font-weight:700;
+    font-size:22px;font-weight:700;
     background:linear-gradient(180deg,#ffffff 20%,#f5d69c 68%,#c9a24b 100%);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;
     filter:drop-shadow(0 2px 10px rgba(223,177,91,0.28));
-    margin-top:6px;
+    margin-top:3px;
 }
-.ezwa-sub-tagline{font-size:11px;color:#cbd5e1;font-weight:600;margin-top:3px;line-height:1.5;}
+.ezwa-sub-tagline{font-size:10.5px;color:#cbd5e1;font-weight:600;margin-top:2px;line-height:1.4;}
 .wholesale-badge{
     display:inline-flex;align-items:center;gap:6px;
-    margin-top:7px;
-    padding:4px 14px;
+    margin-top:5px;
+    padding:3px 13px;
     border-radius:20px;
     background:rgba(223,177,91,0.14);
     border:1px solid rgba(223,177,91,0.55);
     color:var(--gold-light);
-    font-size:10.5px;font-weight:800;
+    font-size:10px;font-weight:800;
 }
 
 /* =========================================================
-   صف الأقسام الهولوغرامية الطافية (بدون إطار خارجي)
+   صف الأقسام الهولوغرامية الطافية بأيقونات ليزرية ذهبية وسيانية
 ========================================================= */
 .holo-categories-row{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     align-items:end;
     justify-items:center;
-    padding:4px 2px;
+    padding:2px 2px;
     width:100%;
 }
 .cat-holo-unit{
-    width:100%;height:76px;
+    width:100%;height:70px;
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
     position:relative;cursor:pointer;user-select:none;
     transition:transform 0.2s ease;
 }
 .cat-holo-unit:active{transform:scale(0.92);}
-.cat-cone{position:absolute;bottom:19px;width:44px;height:40px;clip-path:polygon(12% 0%,88% 0%,68% 100%,32% 100%);pointer-events:none;opacity:0.55;transition:opacity 0.25s;}
+.cat-cone{position:absolute;bottom:18px;width:42px;height:36px;clip-path:polygon(12% 0%,88% 0%,68% 100%,32% 100%);pointer-events:none;opacity:0.5;transition:opacity 0.25s;}
 .cat-holo-unit.active .cat-cone{opacity:1;}
 .cat-holo-unit.gold-t .cat-cone{background:linear-gradient(to top,rgba(223,177,91,0.45) 0%,transparent 100%);}
 .cat-holo-unit.cyan-t .cat-cone{background:linear-gradient(to top,rgba(0,243,255,0.42) 0%,transparent 100%);}
 
-.cat-pad{width:30px;height:7px;border-radius:50%;position:relative;transition:all 0.25s;}
+.cat-pad{width:28px;height:6px;border-radius:50%;position:relative;transition:all 0.25s;}
 .cat-holo-unit.gold-t .cat-pad{background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.2px solid rgba(0,243,255,0.5);}
 .cat-holo-unit.cyan-t .cat-pad{background:radial-gradient(ellipse at center,#00f3ff 0%,#061326 75%);border:1.2px solid rgba(223,177,91,0.5);}
 .cat-holo-unit.active .cat-pad{box-shadow:0 0 14px rgba(223,177,91,0.9),0 0 22px rgba(0,243,255,0.55);transform:scale(1.12);}
 
 .cat-orb{
-    width:40px;height:40px;border-radius:50%;
+    width:38px;height:38px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:8px;position:relative;
-    background:rgba(7,15,30,0.86);
+    margin-bottom:7px;position:relative;
+    background:rgba(7,15,30,0.88);
     border:1.3px solid rgba(255,255,255,0.22);
-    font-size:16px;
     transition:all 0.25s ease;
     animation:zeroGravityFloatA 3.6s ease-in-out infinite;
 }
@@ -188,7 +197,7 @@ body{
 .cat-holo-unit.active.gold-t .cat-orb{border-color:var(--gold-light);box-shadow:0 0 18px rgba(223,177,91,0.7),inset 0 0 10px rgba(223,177,91,0.35);}
 .cat-holo-unit.active.cyan-t .cat-orb{border-color:var(--cyan-glow);box-shadow:0 0 18px rgba(0,243,255,0.7),inset 0 0 10px rgba(0,243,255,0.35);}
 
-.cat-tag{margin-top:4px;font-size:9.5px;font-weight:700;color:#94a3b8;white-space:nowrap;transition:color 0.2s;}
+.cat-tag{margin-top:4px;font-size:9.2px;font-weight:700;color:#94a3b8;white-space:nowrap;transition:color 0.2s;}
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
 /* =========================================================
@@ -197,8 +206,8 @@ body{
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:18px 10px;
-    padding:8px 4px;
+    gap:16px 10px;
+    padding:4px 4px;
     width:100%;
 }
 .product-holo-stage{
@@ -208,7 +217,7 @@ body{
     text-align:center;
     position:relative;
     cursor:pointer;
-    padding-top:6px;
+    padding-top:4px;
     user-select:none;
     transition:transform 0.22s ease;
 }
@@ -229,7 +238,7 @@ body{
 
 /* مجسم القطعة الطافي بانعدام وزن */
 .product-floater-visual{
-    width:128px;height:128px;
+    width:118px;height:118px;
     display:flex;align-items:center;justify-content:center;
     position:relative;
     z-index:3;
@@ -238,19 +247,19 @@ body{
 }
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
 .product-floater-visual img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
-.product-floater-visual svg{width:112px;height:112px;pointer-events:none;}
+.product-floater-visual svg{width:104px;height:104px;pointer-events:none;}
 
 /* شعاع الإسقاط وقاعدة الهولوغرام أسفل كل منتج */
 .product-holo-beam{
-    width:106px;height:36px;
-    margin-top:-14px;
+    width:100px;height:32px;
+    margin-top:-12px;
     background:linear-gradient(to top,rgba(0,243,255,0.34) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
     clip-path:polygon(8% 0%,92% 0%,72% 100%,28% 100%);
     pointer-events:none;
     animation:holoBeamFlicker 2.8s infinite alternate;
 }
 .product-holo-pad{
-    width:72px;height:11px;
+    width:68px;height:10px;
     border-radius:50%;
     background:radial-gradient(ellipse at center,#00f3ff 0%,#061326 75%);
     border:1.3px solid var(--gold-primary);
@@ -260,9 +269,9 @@ body{
 .product-holo-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(0,243,255,0.45);animation:emitterPulseRing 2.2s infinite;}
 
 /* بيانات المنتج الطافية أسفل القاعدة */
-.product-holo-meta{margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:2px;}
-.product-holo-name{font-size:12px;font-weight:800;color:#ffffff;line-height:1.3;}
-.product-holo-bundle{font-size:9.5px;color:#93c5fd;font-weight:600;}
+.product-holo-meta{margin-top:7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.product-holo-name{font-size:11.5px;font-weight:800;color:#ffffff;line-height:1.3;}
+.product-holo-bundle{font-size:9px;color:#93c5fd;font-weight:600;}
 .product-holo-price{
     margin-top:2px;
     font-size:11.5px;font-weight:900;
@@ -277,7 +286,7 @@ body{
 
 /* الفوتر السري للإدارة */
 .store-footer{
-    margin-top:12px;
+    margin-top:14px;
     padding-top:12px;
     border-top:1px solid rgba(223,177,91,0.2);
     display:flex;align-items:center;justify-content:space-between;
@@ -292,46 +301,64 @@ body{
 }
 
 /* =========================================================
-   أيقونة السلة الهولوغرامية العائمة أسفل الشاشة
+   كرة السلة الهولوغرامية الطافية في الزاوية (لا تحجب الأسعار)
 ========================================================= */
-.floating-cart-dock{
-    position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
-    width:min(430px,92vw);
-    background:rgba(6,14,28,0.88);
-    backdrop-filter:blur(14px);
-    border:1.5px solid var(--gold-matte);
-    box-shadow:0 12px 34px rgba(0,0,0,0.9),0 0 22px rgba(223,177,91,0.3);
-    border-radius:26px;
-    padding:8px 14px;
-    display:flex;align-items:center;justify-content:space-between;
+.floating-cart-orb{
+    position:fixed;
+    bottom:18px;
+    left:18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     z-index:900;
     cursor:pointer;
-    transition:transform 0.2s;
+    user-select:none;
+    transition:transform 0.2s ease;
 }
-.floating-cart-dock:active{transform:translateX(-50%) scale(0.97);}
-.cart-dock-right{display:flex;align-items:center;gap:10px;}
-.cart-orb-icon{
-    width:38px;height:38px;border-radius:50%;
-    background:radial-gradient(circle,rgba(223,177,91,0.3) 0%,rgba(6,16,34,0.95) 85%);
-    border:1.4px solid var(--cyan-glow);
-    display:flex;align-items:center;justify-content:center;
-    font-size:16px;position:relative;
+html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
+.floating-cart-orb:active{transform:scale(0.92);}
+
+.cart-orb-sphere{
+    width:54px;height:54px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.34) 0%,rgba(6,14,28,0.94) 82%);
+    border:1.8px solid var(--gold-light);
+    box-shadow:0 8px 26px rgba(0,0,0,0.9),0 0 22px rgba(223,177,91,0.55),inset 0 0 12px rgba(0,243,255,0.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    animation:zeroGravityFloatA 3.4s ease-in-out infinite;
 }
 .cart-badge-count{
-    position:absolute;top:-4px;right:-4px;
+    position:absolute;top:-3px;right:-3px;
     background:var(--cyan-glow);color:#020611;
     font-family:'Orbitron',sans-serif!important;
     font-size:10px;font-weight:900;
-    min-width:18px;height:18px;border-radius:50%;
+    min-width:20px;height:20px;border-radius:50%;
+    border:1.5px solid #020611;
+    box-shadow:0 0 10px rgba(0,243,255,0.8);
     display:flex;align-items:center;justify-content:center;
 }
-.cart-dock-info{display:flex;flex-direction:column;}
-.cart-dock-title{font-size:12px;font-weight:800;color:#fff;}
-.cart-dock-sub{font-size:10px;color:var(--gold-light);font-weight:700;}
-.cart-dock-cta{
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));
-    color:#020611;font-weight:900;font-size:11.5px;
-    padding:8px 14px;border-radius:18px;
+.cart-orb-pad{
+    width:38px;height:7px;
+    margin-top:4px;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);
+    border:1.2px solid var(--cyan-glow);
+    box-shadow:0 0 14px rgba(223,177,91,0.85);
+}
+.cart-orb-price-pill{
+    margin-top:4px;
+    background:rgba(4,10,22,0.9);
+    border:1px solid rgba(223,177,91,0.55);
+    color:var(--gold-light);
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:9px;
+    font-weight:800;
+    white-space:nowrap;
+    box-shadow:0 4px 12px rgba(0,0,0,0.8);
 }
 
 /* =========================================================
@@ -408,19 +435,11 @@ body{
         </div>
     </div>
 
-    <!-- شعار عِزوة الهولوغرامي مع النخلة والسيفين -->
+    <!-- رأس العلامة الهولوغرامي بشعار الحصان الذهبي لعِزوة -->
     <header class="brand-holo-hero">
         <div class="ezwa-emblem-floater">
             <div class="ezwa-crest-orb">
-                <!-- النخلة والسيفين بالذهبي الفاخر المطفي -->
-                <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
-                    <!-- النخلة -->
-                    <path d="M32 10C32 10 25 14 20 19M32 10C32 10 39 14 44 19M32 10C32 10 22 11 16 14M32 10C32 10 42 11 48 14M32 10V33" stroke="#dfb15b" stroke-width="2.4" stroke-linecap="round"/>
-                    <path d="M29 33H35" stroke="#c9a24b" stroke-width="2.6" stroke-linecap="round"/>
-                    <!-- السيفان المتقاطعان -->
-                    <path d="M18 48L46 31M46 48L18 31" stroke="#f5d69c" stroke-width="2.4" stroke-linecap="round"/>
-                    <path d="M16 45L21 50M48 45L43 50" stroke="#c9a24b" stroke-width="2.4" stroke-linecap="round"/>
-                </svg>
+                <img src="ezwa-logo.png" alt="شعار عِزوة" onerror="this.outerHTML='<svg width=\'44\' height=\'44\' viewBox=\'0 0 64 64\' fill=\'none\'><path d=\'M32 10C32 10 25 14 20 19M32 10C32 10 39 14 44 19M32 10V33\' stroke=\'#dfb15b\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><path d=\'M18 48L46 31M46 48L18 31\' stroke=\'#f5d69c\' stroke-width=\'2.4\' stroke-linecap=\'round\'/></svg>';">
             </div>
             <div class="ezwa-crest-beam"></div>
             <div class="ezwa-crest-pad"></div>
@@ -430,29 +449,55 @@ body{
         <div class="wholesale-badge" id="uiWholesaleBadge">◈ مبيعات الجملة المعتمدة (بالشدّة فقط) ◈</div>
     </header>
 
-    <!-- صف الأقسام الهولوغرامية الطافية (بدون إطار خارجي) -->
+    <!-- صف الأقسام الهولوغرامية الطافية بأيقونات ليزرية ذهبية وسيانية -->
     <nav class="holo-categories-row" id="categoriesRow">
+        <!-- 1. الكل -->
         <div class="cat-holo-unit gold-t active" data-cat="all" onclick="selectCategory('all',this)">
             <div class="cat-cone"></div>
-            <div class="cat-orb">◈</div>
+            <div class="cat-orb">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="1.9">
+                    <polygon points="12 2 22 12 12 22 2 12 12 2"/>
+                    <circle cx="12" cy="12" r="2.5" fill="#00f3ff" stroke="none"/>
+                </svg>
+            </div>
             <div class="cat-pad"></div>
             <span class="cat-tag" id="catAll">الكل</span>
         </div>
+
+        <!-- 2. تيشيرت بوكسي -->
         <div class="cat-holo-unit cyan-t" data-cat="tshirts" onclick="selectCategory('tshirts',this)">
             <div class="cat-cone"></div>
-            <div class="cat-orb">👕</div>
+            <div class="cat-orb">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>
+                </svg>
+            </div>
             <div class="cat-pad"></div>
             <span class="cat-tag" id="catTshirts">تيشيرت بوكسي</span>
         </div>
+
+        <!-- 3. هوديز -->
         <div class="cat-holo-unit gold-t" data-cat="hoodies" onclick="selectCategory('hoodies',this)">
             <div class="cat-cone"></div>
-            <div class="cat-orb">🧥</div>
+            <div class="cat-orb">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 3h6l2 3 4 3-2 4-2-1v9H7v-9l-2 1-2-4 4-3 2-3z"/>
+                    <path d="M9 3c0 2.5 6 2.5 6 0"/>
+                </svg>
+            </div>
             <div class="cat-pad"></div>
             <span class="cat-tag" id="catHoodies">هوديز</span>
         </div>
+
+        <!-- 4. بناطيل أوفرسايز -->
         <div class="cat-holo-unit cyan-t" data-cat="pants" onclick="selectCategory('pants',this)">
             <div class="cat-cone"></div>
-            <div class="cat-orb">👖</div>
+            <div class="cat-orb">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 3h12l1.5 18h-4.5l-3-10-3 10H4.5L6 3z"/>
+                    <line x1="6" y1="6.5" x2="18" y2="6.5" stroke="#dfb15b"/>
+                </svg>
+            </div>
             <div class="cat-pad"></div>
             <span class="cat-tag" id="catPants">بناطيل أوفرسايز</span>
         </div>
@@ -468,19 +513,18 @@ body{
     </footer>
 </div>
 
-<!-- شريط السلة العائم -->
-<div class="floating-cart-dock" onclick="openCartModal()">
-    <div class="cart-dock-right">
-        <div class="cart-orb-icon">
-            <span>🛍️</span>
-            <span class="cart-badge-count" id="cartCountBadge">0</span>
-        </div>
-        <div class="cart-dock-info">
-            <span class="cart-dock-title" id="cartDockTitle">سلة طلبات الجملة</span>
-            <span class="cart-dock-sub" id="cartDockTotal">0 ر.س — 0 شدّة</span>
-        </div>
+<!-- كرة السلة الهولوغرامية الطافية في الزاوية (لا تحجب الأسعار) -->
+<div class="floating-cart-orb" onclick="openCartModal()" title="سلة طلبات الجملة">
+    <div class="cart-orb-sphere">
+        <span class="cart-badge-count" id="cartCountBadge">0</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6" stroke="#00f3ff"/>
+            <path d="M16 10a4 4 0 0 1-8 0" stroke="#00f3ff"/>
+        </svg>
     </div>
-    <div class="cart-dock-cta" id="cartDockBtnText">عرض الطلب ↖</div>
+    <div class="cart-orb-pad"></div>
+    <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
 </div>
 
 <!-- نافذة مواصفات الشدّة الهولوغرامية -->
@@ -677,7 +721,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v1');
+    const savedProds = localStorage.getItem('ezwa_store_products_v2');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -826,9 +870,7 @@ function updateCartUI() {
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
 
     document.getElementById('cartCountBadge').innerText = totalBundles;
-    document.getElementById('cartDockTotal').innerText = currentLang === 'ar'
-        ? `${totalAmount} ${curr} — ${totalBundles} شدّة`
-        : `${totalAmount} ${curr} — ${totalBundles} Bundles`;
+    document.getElementById('cartOrbPrice').innerText = `${totalAmount} ${curr}`;
     document.getElementById('cmGrandTotal').innerText = `${totalAmount} ${curr}`;
 }
 
@@ -960,7 +1002,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v1', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v2', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -994,8 +1036,6 @@ function toggleLang() {
     document.getElementById('catTshirts').innerText = currentLang === 'ar' ? 'تيشيرت بوكسي' : 'BOXY TEES';
     document.getElementById('catHoodies').innerText = currentLang === 'ar' ? 'هوديز' : 'HOODIES';
     document.getElementById('catPants').innerText = currentLang === 'ar' ? 'بناطيل أوفرسايز' : 'PANTS';
-    document.getElementById('cartDockTitle').innerText = currentLang === 'ar' ? 'سلة طلبات الجملة' : 'Wholesale Cart';
-    document.getElementById('cartDockBtnText').innerText = currentLang === 'ar' ? 'عرض الطلب ↖' : 'View Order ↗';
     document.getElementById('pmQtyLabel').innerText = currentLang === 'ar' ? 'عدد الشدّات:' : 'Bundles Qty:';
     document.getElementById('pmAddBtnText').innerText = currentLang === 'ar' ? 'إضافة الشدّة للسلة' : 'Add Bundle to Cart';
     document.getElementById('cmTitle').innerText = currentLang === 'ar' ? 'ملخص طلب الجملة (بالشدّة)' : 'Wholesale Bundle Summary';
