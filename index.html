@@ -843,6 +843,51 @@ const DEFAULT_PRODUCTS = [
         ]
     },
     {
+        id: "ezwa-hoodie-diff",
+        cat: "hoodies",
+        nameAr: "هودي Different — أوفرسايز",
+        nameEn: "EZWA Different Oversized Hoodie",
+        price: 690,
+        piecesPerBundle: 6,
+        sizes: "1S - 2M - 2L - 1XL",
+        descAr: "هودي ستريت وير فاخر بقصة كتف ساقطة وطباعة بارزة وتطريز على الكم، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
+        descEn: "Luxury drop-shoulder oversized hoodie with layered chest print & sleeve embroidery, integrated with cloud NFC.",
+        variants: [
+            {
+                colorAr: "أخضر فستقي",
+                colorEn: "Sage Mint",
+                swatch: "#8ca8a9",
+                bodyHex: "#8ca8a9",
+                sleeveHex: "#8ca8a9",
+                image: "hoodie-diff-mint.png"
+            },
+            {
+                colorAr: "فحمي داكن",
+                colorEn: "Washed Charcoal",
+                swatch: "#5a5361",
+                bodyHex: "#5a5361",
+                sleeveHex: "#5a5361",
+                image: "hoodie-diff-charcoal.png"
+            },
+            {
+                colorAr: "أزرق سماوي",
+                colorEn: "Sky Denim Blue",
+                swatch: "#6b93c4",
+                bodyHex: "#6b93c4",
+                sleeveHex: "#6b93c4",
+                image: "hoodie-diff-blue.png"
+            },
+            {
+                colorAr: "أسود ملكي",
+                colorEn: "Jet Black",
+                swatch: "#17171a",
+                bodyHex: "#17171a",
+                sleeveHex: "#17171a",
+                image: "hoodie-diff-black.png"
+            }
+        ]
+    },
+    {
         id: "ezwa-1",
         cat: "tshirts",
         nameAr: "تيشيرت اكتشف الرياض — المصمك",
@@ -889,7 +934,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v4');
+    const savedProds = localStorage.getItem('ezwa_store_products_v5');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1320,7 +1365,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v4', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v5', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
