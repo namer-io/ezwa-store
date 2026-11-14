@@ -25,7 +25,7 @@
     --gold-light:#f5d69c;
     --gold-matte:#c9a24b;
     --text-main:#ffffff;
-    --store-width:min(460px,95vw);
+    --store-width:min(470px,96vw);
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
 html[dir="ltr"] *{font-family:'Orbitron',sans-serif!important;}
@@ -201,13 +201,13 @@ body{
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
 /* =========================================================
-   مسرح المنتجات الهولوغرامية الطافية + كرات الألوان المتوهجة
+   مسرح المنتجات الهولوغرامية الطافية بحجم أكبر + زر معاينة التفاصيل
 ========================================================= */
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:18px 10px;
-    padding:4px 4px;
+    gap:22px 8px;
+    padding:6px 2px;
     width:100%;
 }
 .product-holo-stage{
@@ -216,15 +216,13 @@ body{
     align-items:center;
     text-align:center;
     position:relative;
-    cursor:pointer;
     padding-top:4px;
     user-select:none;
-    transition:transform 0.22s ease;
 }
 
-/* شارة NFC المدمجة */
+/* شارة NFC وزر التكبير */
 .nfc-micro-chip{
-    position:absolute;top:2px;right:12px;
+    position:absolute;top:2px;right:8px;
     background:rgba(4,12,26,0.85);
     border:1px solid rgba(0,243,255,0.55);
     color:var(--cyan-glow);
@@ -233,39 +231,54 @@ body{
     padding:2px 6px;border-radius:10px;
     letter-spacing:0.6px;
     z-index:4;
+    pointer-events:none;
+}
+.zoom-micro-btn{
+    position:absolute;top:2px;left:8px;
+    background:rgba(4,12,26,0.85);
+    border:1px solid rgba(223,177,91,0.6);
+    color:var(--gold-light);
+    width:22px;height:22px;border-radius:50%;
+    font-size:11px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:5;
+    box-shadow:0 0 10px rgba(223,177,91,0.3);
 }
 
-/* مجسم القطعة الطافي بانعدام وزن */
+/* مجسم القطعة الطافي المكبّر (164px) */
 .product-floater-visual{
-    width:124px;height:124px;
+    width:164px;height:164px;
     display:flex;align-items:center;justify-content:center;
     position:relative;
     z-index:3;
+    cursor:zoom-in;
     animation:productZeroG 4.2s ease-in-out infinite;
-    filter:drop-shadow(0 14px 18px rgba(0,0,0,0.85)) drop-shadow(0 0 14px rgba(0,243,255,0.22));
+    filter:drop-shadow(0 16px 20px rgba(0,0,0,0.88)) drop-shadow(0 0 16px rgba(0,243,255,0.24));
     transition:opacity 0.22s ease,transform 0.22s ease;
 }
+.product-floater-visual:active{transform:scale(0.95);}
 .product-floater-visual.holo-flash{opacity:0.25;transform:scale(0.92);}
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
 .product-floater-visual img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
-.product-floater-visual svg{width:106px;height:106px;pointer-events:none;}
+.product-floater-visual svg{width:136px;height:136px;pointer-events:none;}
 
 /* شعاع الإسقاط وقاعدة الهولوغرام أسفل كل منتج */
 .product-holo-beam{
-    width:100px;height:30px;
-    margin-top:-12px;
-    background:linear-gradient(to top,rgba(0,243,255,0.34) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
+    width:122px;height:34px;
+    margin-top:-14px;
+    background:linear-gradient(to top,rgba(0,243,255,0.35) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
     clip-path:polygon(8% 0%,92% 0%,72% 100%,28% 100%);
     pointer-events:none;
     animation:holoBeamFlicker 2.8s infinite alternate;
 }
 .product-holo-pad{
-    width:68px;height:10px;
+    width:82px;height:11px;
     border-radius:50%;
     background:radial-gradient(ellipse at center,#00f3ff 0%,#061326 75%);
     border:1.3px solid var(--gold-primary);
-    box-shadow:0 0 16px rgba(0,243,255,0.75),0 0 24px rgba(223,177,91,0.4);
+    box-shadow:0 0 18px rgba(0,243,255,0.78),0 0 26px rgba(223,177,91,0.42);
     position:relative;
+    pointer-events:none;
 }
 .product-holo-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(0,243,255,0.45);animation:emitterPulseRing 2.2s infinite;}
 
@@ -279,7 +292,7 @@ body{
     z-index:5;
 }
 .holo-color-orb{
-    width:17px;height:17px;
+    width:18px;height:18px;
     border-radius:50%;
     border:1.5px solid rgba(255,255,255,0.35);
     cursor:pointer;
@@ -292,13 +305,21 @@ body{
     box-shadow:0 0 10px rgba(0,243,255,0.9),0 0 16px rgba(223,177,91,0.6);
 }
 
-/* بيانات المنتج الطافية أسفل القاعدة */
-.product-holo-meta{margin-top:6px;display:flex;flex-direction:column;align-items:center;gap:2px;}
-.product-holo-name{font-size:11.5px;font-weight:800;color:#ffffff;line-height:1.3;}
-.product-holo-bundle{font-size:9px;color:#93c5fd;font-weight:600;}
+/* بيانات المنتج الطافية أسفل القاعدة (تفتح نافذة طلب الشدّة) */
+.product-holo-meta{
+    margin-top:6px;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    cursor:pointer;
+    padding:4px 8px;
+    border-radius:14px;
+    transition:background 0.2s;
+}
+.product-holo-meta:hover{background:rgba(0,243,255,0.08);}
+.product-holo-name{font-size:12px;font-weight:800;color:#ffffff;line-height:1.3;}
+.product-holo-bundle{font-size:9.2px;color:#93c5fd;font-weight:600;}
 .product-holo-price{
     margin-top:2px;
-    font-size:11.5px;font-weight:900;
+    font-size:12px;font-weight:900;
     color:var(--gold-light);
     text-shadow:0 0 10px rgba(223,177,91,0.45);
 }
@@ -325,12 +346,12 @@ body{
 }
 
 /* =========================================================
-   كرة السلة الهولوغرامية الطافية في الزاوية (لا تحجب الأسعار)
+   كرة السلة الهولوغرامية المدمجة في أقصى الزاوية
 ========================================================= */
 .floating-cart-orb{
     position:fixed;
-    bottom:18px;
-    left:18px;
+    bottom:12px;
+    left:10px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -339,51 +360,98 @@ body{
     user-select:none;
     transition:transform 0.2s ease;
 }
-html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
+html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
 .floating-cart-orb:active{transform:scale(0.92);}
 
 .cart-orb-sphere{
-    width:54px;height:54px;
+    width:46px;height:46px;
     border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.34) 0%,rgba(6,14,28,0.94) 82%);
-    border:1.8px solid var(--gold-light);
-    box-shadow:0 8px 26px rgba(0,0,0,0.9),0 0 22px rgba(223,177,91,0.55),inset 0 0 12px rgba(0,243,255,0.35);
+    background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.34) 0%,rgba(6,14,28,0.95) 82%);
+    border:1.6px solid var(--gold-light);
+    box-shadow:0 8px 24px rgba(0,0,0,0.9),0 0 18px rgba(223,177,91,0.5),inset 0 0 10px rgba(0,243,255,0.35);
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
-    animation:zeroGravityFloatA 3.4s ease-in-out infinite;
 }
 .cart-badge-count{
     position:absolute;top:-3px;right:-3px;
     background:var(--cyan-glow);color:#020611;
     font-family:'Orbitron',sans-serif!important;
-    font-size:10px;font-weight:900;
-    min-width:20px;height:20px;border-radius:50%;
+    font-size:9.5px;font-weight:900;
+    min-width:18px;height:18px;border-radius:50%;
     border:1.5px solid #020611;
     box-shadow:0 0 10px rgba(0,243,255,0.8);
     display:flex;align-items:center;justify-content:center;
 }
-.cart-orb-pad{
-    width:38px;height:7px;
-    margin-top:4px;
-    border-radius:50%;
-    background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);
-    border:1.2px solid var(--cyan-glow);
-    box-shadow:0 0 14px rgba(223,177,91,0.85);
-}
 .cart-orb-price-pill{
-    margin-top:4px;
-    background:rgba(4,10,22,0.9);
+    margin-top:3px;
+    background:rgba(4,10,22,0.92);
     border:1px solid rgba(223,177,91,0.55);
     color:var(--gold-light);
-    padding:2px 8px;
-    border-radius:10px;
-    font-size:9px;
+    padding:1px 7px;
+    border-radius:9px;
+    font-size:8.5px;
     font-weight:800;
     white-space:nowrap;
-    box-shadow:0 4px 12px rgba(0,0,0,0.8);
+    box-shadow:0 4px 10px rgba(0,0,0,0.85);
 }
+
+/* =========================================================
+   شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom)
+========================================================= */
+.zoom-lightbox-overlay{
+    position:fixed;inset:0;
+    background:rgba(1,4,12,0.94);
+    backdrop-filter:blur(14px);
+    z-index:1500;
+    display:none;flex-direction:column;align-items:center;justify-content:center;
+    padding:16px;
+}
+.zoom-lightbox-overlay.active{display:flex;animation:holoReveal 0.28s ease-out;}
+.zoom-top-bar{
+    position:fixed;top:16px;left:16px;right:16px;
+    display:flex;align-items:center;justify-content:space-between;
+    z-index:1520;
+}
+.zoom-title-pill{
+    background:rgba(8,18,36,0.88);
+    border:1px solid rgba(223,177,91,0.55);
+    color:var(--gold-light);
+    padding:6px 14px;border-radius:16px;
+    font-size:12px;font-weight:800;
+}
+.zoom-close-btn{
+    background:rgba(8,18,36,0.9);
+    border:1.5px solid var(--cyan-glow);
+    color:var(--cyan-glow);
+    width:36px;height:36px;border-radius:50%;
+    font-size:20px;font-weight:900;cursor:pointer;
+}
+.zoom-stage-area{
+    width:min(92vw,440px);
+    height:62vh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    position:relative;
+    cursor:zoom-in;
+}
+.zoom-stage-area.zoomed-in{cursor:zoom-out;}
+.zoom-media-wrap{
+    width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,0.9)) drop-shadow(0 0 24px rgba(0,243,255,0.28));
+}
+.zoom-stage-area.zoomed-in .zoom-media-wrap{transform:scale(1.65);}
+.zoom-media-wrap img{max-width:100%;max-height:100%;object-fit:contain;}
+.zoom-media-wrap svg{width:280px;height:280px;}
+
+.zoom-bottom-controls{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    margin-top:10px;z-index:1520;
+}
+.zoom-hint-text{font-size:10.5px;color:#93c5fd;}
 
 /* =========================================================
    نوافذ الإسقاط الهولوغرامية (تفاصيل الشدّة + السلة + الإدارة)
@@ -414,7 +482,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
 .modal-top h3{font-size:15px;font-weight:800;color:var(--gold-light);}
 .close-x{background:rgba(255,255,255,0.08);border:none;color:#fff;width:28px;height:28px;border-radius:9px;font-size:18px;cursor:pointer;}
 
-.detail-visual{width:138px;height:138px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;animation:productZeroG 3.8s ease-in-out infinite;}
+.detail-visual{width:155px;height:155px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
 .detail-visual img,.detail-visual svg{width:100%;height:100%;object-fit:contain;}
 
 /* اختيار اللون داخل نافذة التفاصيل */
@@ -552,18 +620,38 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
     </footer>
 </div>
 
-<!-- كرة السلة الهولوغرامية الطافية في الزاوية (لا تحجب الأسعار) -->
+<!-- كرة السلة الهولوغرامية المدمجة في الزاوية -->
 <div class="floating-cart-orb" onclick="openCartModal()" title="سلة طلبات الجملة">
     <div class="cart-orb-sphere">
         <span class="cart-badge-count" id="cartCountBadge">0</span>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6" stroke="#00f3ff"/>
             <path d="M16 10a4 4 0 0 1-8 0" stroke="#00f3ff"/>
         </svg>
     </div>
-    <div class="cart-orb-pad"></div>
     <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
+</div>
+
+<!-- شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom) -->
+<div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
+    <div class="zoom-top-bar" onclick="event.stopPropagation()">
+        <div class="zoom-title-pill" id="zoomTitlePill">معاينة التفاصيل</div>
+        <button type="button" class="zoom-close-btn" onclick="closeZoomLightbox()">×</button>
+    </div>
+
+    <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()">
+        <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
+    </div>
+
+    <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
+        <div class="modal-variants-bar" id="zoomVariantsBar"></div>
+        <span class="zoom-hint-text" id="zoomHintText">🔍 المس الصورة لتكبير التفاصيل أو تصغيرها</span>
+        <button type="button" class="primary-holo-btn" style="padding:10px 24px;" onclick="openOrderFromZoom()">
+            <span>🛍️</span>
+            <span id="zoomOrderBtnText">اطلب شدّة من هذا اللون</span>
+        </button>
+    </div>
 </div>
 
 <!-- نافذة مواصفات الشدّة والألوان الهولوغرامية -->
@@ -573,7 +661,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
             <h3 id="pmTitle">اسم المنتج</h3>
             <button class="close-x" onclick="closeModal('productModal')">×</button>
         </div>
-        <div class="detail-visual" id="pmVisual"></div>
+        <div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)" title="اضغط لتكبير الصورة"></div>
         <div class="modal-variants-bar" id="pmVariantsBar"></div>
         <div class="detail-specs" id="pmSpecs"></div>
         <div class="qty-row">
@@ -801,7 +889,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v3');
+    const savedProds = localStorage.getItem('ezwa_store_products_v4');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -814,6 +902,8 @@ let cart = [];
 let activeModalProduct = null;
 let activeModalVarIdx = 0;
 let activeModalQty = 1;
+let activeZoomProdId = null;
+let activeZoomVarIdx = 0;
 
 /* =========================================================================
    توليد مجسمات هولوغرامية بألوان القطعة عند عدم وجود صورة PNG مرفوعة
@@ -823,10 +913,8 @@ function getHologramSvg(cat, variant) {
     const sleeve = (variant && variant.sleeveHex) ? variant.sleeveHex : body;
     if (cat === 'hoodies') {
         return `<svg viewBox="0 0 140 140" fill="none">
-            <!-- الأكمام بلونها المستقل -->
             <path d="M46 28L22 44L32 66L44 58V44L46 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
             <path d="M94 28L118 44L108 66L96 58V44L94 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
-            <!-- جسم الهودي -->
             <path d="M46 28C46 20 56 15 70 15C84 15 94 20 94 28L96 44V116H44V44L46 28Z" fill="${body}" stroke="#dfb15b" stroke-width="2.2"/>
             <path d="M54 28C54 36 86 36 86 28" stroke="#00f3ff" stroke-width="1.8"/>
             <circle cx="70" cy="64" r="9" stroke="#dfb15b" stroke-width="1.6"/>
@@ -861,7 +949,7 @@ function renderVariantVisual(prod, varIdx) {
 }
 
 /* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام + كرات الألوان المتوهجة
+   عرض المنتجات في مسرح الهولوغرام (الضغط على الصورة يكبّرها، والضغط على الاسم يفتح الطلب)
 ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -890,15 +978,16 @@ function renderProducts() {
             : '';
 
         return `
-        <div class="product-holo-stage" onclick="openProductModal('${p.id}')">
+        <div class="product-holo-stage">
             <span class="nfc-micro-chip">NFC ◈</span>
-            <div class="product-floater-visual" id="vis-${p.id}">
+            <button type="button" class="zoom-micro-btn" onclick="openZoomLightbox('${p.id}', ${vIdx})" title="تكبير الصورة">🔍</button>
+            <div class="product-floater-visual" id="vis-${p.id}" onclick="openZoomLightbox('${p.id}', ${vIdx})">
                 ${renderVariantVisual(p, vIdx)}
             </div>
             <div class="product-holo-beam"></div>
             <div class="product-holo-pad"></div>
             ${swatchesHtml}
-            <div class="product-holo-meta">
+            <div class="product-holo-meta" onclick="openProductModal('${p.id}')">
                 <div class="product-holo-name">${name}</div>
                 <div class="product-holo-bundle">${bundleTxt}</div>
                 <div class="product-holo-price">${p.price} ${curr}</div>
@@ -925,6 +1014,68 @@ function selectCategory(cat, el) {
     document.querySelectorAll('.cat-holo-unit').forEach(u => u.classList.remove('active'));
     if (el) el.classList.add('active');
     renderProducts();
+}
+
+/* =========================================================================
+   شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom)
+========================================================================= */
+function openZoomLightbox(prodId, varIdx) {
+    const prod = PRODUCTS.find(p => p.id === prodId);
+    if (!prod) return;
+    activeZoomProdId = prodId;
+    activeZoomVarIdx = varIdx || 0;
+    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
+    updateZoomLightboxContent();
+    document.getElementById('zoomLightbox').classList.add('active');
+}
+
+function updateZoomLightboxContent() {
+    const prod = PRODUCTS.find(p => p.id === activeZoomProdId);
+    if (!prod) return;
+    const variants = prod.variants || [];
+    const activeVar = variants[activeZoomVarIdx] || variants[0] || { colorAr: '', colorEn: '' };
+    const name = currentLang === 'ar' ? prod.nameAr : (prod.nameEn || prod.nameAr);
+    const colorName = currentLang === 'ar' ? activeVar.colorAr : (activeVar.colorEn || activeVar.colorAr);
+
+    document.getElementById('zoomTitlePill').innerText = colorName ? `${name} — ${colorName}` : name;
+    document.getElementById('zoomMediaWrap').innerHTML = renderVariantVisual(prod, activeZoomVarIdx);
+
+    const varBar = document.getElementById('zoomVariantsBar');
+    if (variants.length > 1) {
+        varBar.innerHTML = variants.map((v, idx) => `
+            <button type="button" class="modal-var-chip ${idx === activeZoomVarIdx ? 'active' : ''}" onclick="switchZoomColor(${idx})">
+                <span class="modal-var-dot" style="background:${v.swatch || v.bodyHex};"></span>
+                <span>${currentLang === 'ar' ? v.colorAr : (v.colorEn || v.colorAr)}</span>
+            </button>
+        `).join('');
+    } else {
+        varBar.innerHTML = '';
+    }
+}
+
+function switchZoomColor(idx) {
+    activeZoomVarIdx = idx;
+    selectedCardVariantIdx[activeZoomProdId] = idx;
+    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
+    updateZoomLightboxContent();
+    renderProducts();
+}
+
+function toggleZoomScale() {
+    document.getElementById('zoomStageArea').classList.toggle('zoomed-in');
+}
+
+function closeZoomLightbox() {
+    document.getElementById('zoomLightbox').classList.remove('active');
+    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
+}
+
+function openOrderFromZoom() {
+    const pid = activeZoomProdId;
+    const vidx = activeZoomVarIdx;
+    closeZoomLightbox();
+    selectedCardVariantIdx[pid] = vidx;
+    openProductModal(pid);
 }
 
 /* =========================================================================
@@ -1169,7 +1320,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v3', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v4', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -1203,6 +1354,8 @@ function toggleLang() {
     document.getElementById('catTshirts').innerText = currentLang === 'ar' ? 'تيشيرت بوكسي' : 'BOXY TEES';
     document.getElementById('catHoodies').innerText = currentLang === 'ar' ? 'هوديز' : 'HOODIES';
     document.getElementById('catPants').innerText = currentLang === 'ar' ? 'بناطيل أوفرسايز' : 'PANTS';
+    document.getElementById('zoomHintText').innerText = currentLang === 'ar' ? '🔍 المس الصورة لتكبير التفاصيل أو تصغيرها' : '🔍 Tap image to zoom in or out';
+    document.getElementById('zoomOrderBtnText').innerText = currentLang === 'ar' ? 'اطلب شدّة من هذا اللون' : 'Order Bundle in This Color';
     document.getElementById('pmQtyLabel').innerText = currentLang === 'ar' ? 'عدد الشدّات:' : 'Bundles Qty:';
     document.getElementById('pmAddBtnText').innerText = currentLang === 'ar' ? 'إضافة الشدّة للسلة' : 'Add Bundle to Cart';
     document.getElementById('cmTitle').innerText = currentLang === 'ar' ? 'ملخص طلب الجملة (بالشدّة)' : 'Wholesale Bundle Summary';
