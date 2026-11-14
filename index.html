@@ -201,12 +201,12 @@ body{
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
 /* =========================================================
-   مسرح المنتجات الهولوغرامية الطافية (بدون مربعات أو إطارات)
+   مسرح المنتجات الهولوغرامية الطافية + كرات الألوان المتوهجة
 ========================================================= */
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:16px 10px;
+    gap:18px 10px;
     padding:4px 4px;
     width:100%;
 }
@@ -221,7 +221,6 @@ body{
     user-select:none;
     transition:transform 0.22s ease;
 }
-.product-holo-stage:active{transform:scale(0.95);}
 
 /* شارة NFC المدمجة */
 .nfc-micro-chip{
@@ -238,20 +237,22 @@ body{
 
 /* مجسم القطعة الطافي بانعدام وزن */
 .product-floater-visual{
-    width:118px;height:118px;
+    width:124px;height:124px;
     display:flex;align-items:center;justify-content:center;
     position:relative;
     z-index:3;
     animation:productZeroG 4.2s ease-in-out infinite;
     filter:drop-shadow(0 14px 18px rgba(0,0,0,0.85)) drop-shadow(0 0 14px rgba(0,243,255,0.22));
+    transition:opacity 0.22s ease,transform 0.22s ease;
 }
+.product-floater-visual.holo-flash{opacity:0.25;transform:scale(0.92);}
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
 .product-floater-visual img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
-.product-floater-visual svg{width:104px;height:104px;pointer-events:none;}
+.product-floater-visual svg{width:106px;height:106px;pointer-events:none;}
 
 /* شعاع الإسقاط وقاعدة الهولوغرام أسفل كل منتج */
 .product-holo-beam{
-    width:100px;height:32px;
+    width:100px;height:30px;
     margin-top:-12px;
     background:linear-gradient(to top,rgba(0,243,255,0.34) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
     clip-path:polygon(8% 0%,92% 0%,72% 100%,28% 100%);
@@ -268,8 +269,31 @@ body{
 }
 .product-holo-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(0,243,255,0.45);animation:emitterPulseRing 2.2s infinite;}
 
+/* كرات الألوان المتوهجة (Holo-Color Orbs) */
+.holo-swatch-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin-top:8px;
+    z-index:5;
+}
+.holo-color-orb{
+    width:17px;height:17px;
+    border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.35);
+    cursor:pointer;
+    transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+    position:relative;
+}
+.holo-color-orb.active{
+    transform:scale(1.25);
+    border-color:var(--cyan-glow);
+    box-shadow:0 0 10px rgba(0,243,255,0.9),0 0 16px rgba(223,177,91,0.6);
+}
+
 /* بيانات المنتج الطافية أسفل القاعدة */
-.product-holo-meta{margin-top:7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.product-holo-meta{margin-top:6px;display:flex;flex-direction:column;align-items:center;gap:2px;}
 .product-holo-name{font-size:11.5px;font-weight:800;color:#ffffff;line-height:1.3;}
 .product-holo-bundle{font-size:9px;color:#93c5fd;font-weight:600;}
 .product-holo-price{
@@ -381,7 +405,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
     border:1.5px solid rgba(223,177,91,0.72);
     box-shadow:0 0 38px rgba(0,243,255,0.25),inset 0 0 20px rgba(223,177,91,0.14);
     border-radius:26px;padding:18px;position:relative;
-    max-height:82vh;overflow-y:auto;
+    max-height:84vh;overflow-y:auto;
 }
 .holo-stage-beam{width:74%;height:52px;margin-top:-4px;background:linear-gradient(to top,rgba(223,177,91,0.36) 0%,rgba(0,243,255,0.12) 55%,transparent 100%);clip-path:polygon(6% 0%,94% 0%,68% 100%,32% 100%);pointer-events:none;}
 .holo-stage-pad{width:124px;height:13px;border-radius:50%;background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.5px solid var(--cyan-glow);box-shadow:0 0 22px rgba(223,177,91,0.85);}
@@ -390,8 +414,27 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
 .modal-top h3{font-size:15px;font-weight:800;color:var(--gold-light);}
 .close-x{background:rgba(255,255,255,0.08);border:none;color:#fff;width:28px;height:28px;border-radius:9px;font-size:18px;cursor:pointer;}
 
-.detail-visual{width:130px;height:130px;margin:0 auto 10px auto;display:flex;align-items:center;justify-content:center;animation:productZeroG 3.8s ease-in-out infinite;}
+.detail-visual{width:138px;height:138px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;animation:productZeroG 3.8s ease-in-out infinite;}
 .detail-visual img,.detail-visual svg{width:100%;height:100%;object-fit:contain;}
+
+/* اختيار اللون داخل نافذة التفاصيل */
+.modal-variants-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:10px;}
+.modal-var-chip{
+    display:flex;align-items:center;gap:6px;
+    padding:5px 10px;border-radius:14px;
+    background:rgba(8,16,32,0.85);
+    border:1px solid rgba(255,255,255,0.22);
+    color:#cbd5e1;font-size:10.5px;font-weight:700;
+    cursor:pointer;transition:all 0.2s;
+}
+.modal-var-chip.active{
+    border-color:var(--cyan-glow);
+    background:rgba(0,243,255,0.16);
+    color:#fff;
+    box-shadow:0 0 12px rgba(0,243,255,0.3);
+}
+.modal-var-dot{width:12px;height:12px;border-radius:50%;border:1px solid #fff;}
+
 .detail-specs{background:rgba(12,24,46,0.75);border:1px solid rgba(0,243,255,0.28);border-radius:16px;padding:10px 12px;font-size:11.5px;color:#e2e8f0;line-height:1.65;margin-bottom:12px;}
 .qty-row{display:flex;align-items:center;justify-content:space-between;background:rgba(6,14,28,0.9);border:1px solid rgba(223,177,91,0.45);border-radius:14px;padding:8px 12px;margin-bottom:12px;}
 .qty-controls{display:flex;align-items:center;gap:12px;}
@@ -451,7 +494,6 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
 
     <!-- صف الأقسام الهولوغرامية الطافية بأيقونات ليزرية ذهبية وسيانية -->
     <nav class="holo-categories-row" id="categoriesRow">
-        <!-- 1. الكل -->
         <div class="cat-holo-unit gold-t active" data-cat="all" onclick="selectCategory('all',this)">
             <div class="cat-cone"></div>
             <div class="cat-orb">
@@ -464,7 +506,6 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
             <span class="cat-tag" id="catAll">الكل</span>
         </div>
 
-        <!-- 2. تيشيرت بوكسي -->
         <div class="cat-holo-unit cyan-t" data-cat="tshirts" onclick="selectCategory('tshirts',this)">
             <div class="cat-cone"></div>
             <div class="cat-orb">
@@ -476,7 +517,6 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
             <span class="cat-tag" id="catTshirts">تيشيرت بوكسي</span>
         </div>
 
-        <!-- 3. هوديز -->
         <div class="cat-holo-unit gold-t" data-cat="hoodies" onclick="selectCategory('hoodies',this)">
             <div class="cat-cone"></div>
             <div class="cat-orb">
@@ -489,7 +529,6 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
             <span class="cat-tag" id="catHoodies">هوديز</span>
         </div>
 
-        <!-- 4. بناطيل أوفرسايز -->
         <div class="cat-holo-unit cyan-t" data-cat="pants" onclick="selectCategory('pants',this)">
             <div class="cat-cone"></div>
             <div class="cat-orb">
@@ -527,7 +566,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
     <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
 </div>
 
-<!-- نافذة مواصفات الشدّة الهولوغرامية -->
+<!-- نافذة مواصفات الشدّة والألوان الهولوغرامية -->
 <div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -535,6 +574,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
             <button class="close-x" onclick="closeModal('productModal')">×</button>
         </div>
         <div class="detail-visual" id="pmVisual"></div>
+        <div class="modal-variants-bar" id="pmVariantsBar"></div>
         <div class="detail-specs" id="pmSpecs"></div>
         <div class="qty-row">
             <span style="font-size:12px;font-weight:700;color:#fff;" id="pmQtyLabel">عدد الشدّات:</span>
@@ -634,8 +674,12 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
                 </div>
             </div>
             <div class="admin-field">
+                <label>اسم اللون:</label>
+                <input type="text" id="npColorName" value="أسود × ذهبي">
+            </div>
+            <div class="admin-field">
                 <label>اسم ملف الصورة المفرّغة (PNG) أو رابطها (اختياري):</label>
-                <input type="text" id="npImg" placeholder="مثال: masmak.png (اتركه فارغاً للمجسم الافتراضي)" style="direction:ltr;">
+                <input type="text" id="npImg" placeholder="مثال: hoodie-black.png" style="direction:ltr;">
             </div>
             <div class="admin-field">
                 <label>وصف الخامة وميزة الـ NFC:</label>
@@ -655,7 +699,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:18px;}
 
 <script>
 /* =========================================================================
-   قائمة_منتجات_عزوة (يمكنك تعديلها هنا مباشرة أو من لوحة الإدارة بالجوال)
+   قائمة_منتجات_عزوة (تدعم تعدد الألوان للمنتج الواحد عبر كرات الهولوغرام)
 ========================================================================= */
 const STORE_CONFIG = {
     whatsappNumber: "966510205330",
@@ -666,6 +710,51 @@ const STORE_CONFIG = {
 
 const DEFAULT_PRODUCTS = [
     {
+        id: "ezwa-hoodie-dual",
+        cat: "hoodies",
+        nameAr: "هودي عِزوة ثنائي اللون — أوفرسايز",
+        nameEn: "EZWA Two-Tone Oversized Hoodie",
+        price: 690,
+        piecesPerBundle: 6,
+        sizes: "1S - 2M - 2L - 1XL",
+        descAr: "هودي ستريت وير ثقيل 420 GSM بتصميم أكمام متباينة وخطوط جانبية بارزة، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
+        descEn: "420 GSM heavyweight two-tone oversized hoodie with contrast sleeves and embedded encrypted NFC tag.",
+        variants: [
+            {
+                colorAr: "أسود × بيج",
+                colorEn: "Black × Beige",
+                swatch: "linear-gradient(135deg, #18181b 50%, #dfd3c3 50%)",
+                bodyHex: "#18181b",
+                sleeveHex: "#dfd3c3",
+                image: "hoodie-black.png"
+            },
+            {
+                colorAr: "أزرق × أبيض",
+                colorEn: "Blue × White",
+                swatch: "linear-gradient(135deg, #3b63a8 50%, #f8fafc 50%)",
+                bodyHex: "#3b63a8",
+                sleeveHex: "#f8fafc",
+                image: "hoodie-blue.png"
+            },
+            {
+                colorAr: "أبيض × أزرق",
+                colorEn: "White × Blue",
+                swatch: "linear-gradient(135deg, #f8fafc 50%, #3b63a8 50%)",
+                bodyHex: "#f8fafc",
+                sleeveHex: "#3b63a8",
+                image: "hoodie-white.png"
+            },
+            {
+                colorAr: "بيج × أسود",
+                colorEn: "Beige × Black",
+                swatch: "linear-gradient(135deg, #dfd3c3 50%, #18181b 50%)",
+                bodyHex: "#dfd3c3",
+                sleeveHex: "#18181b",
+                image: "hoodie-beige.png"
+            }
+        ]
+    },
+    {
         id: "ezwa-1",
         cat: "tshirts",
         nameAr: "تيشيرت اكتشف الرياض — المصمك",
@@ -675,34 +764,24 @@ const DEFAULT_PRODUCTS = [
         sizes: "1S - 2M - 2L - 1XL",
         descAr: "قصة بوكسي فيت فاخرة باللون العنابي، قطن 280 GSM، مطرز بشريط سدو يضم شريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
         descEn: "Luxury burgundy boxy-fit tee, 280 GSM heavy cotton, Sadu hem with embedded encrypted NFC chip for cloud ownership.",
-        image: "",
-        colorHex: "#581c2c"
+        variants: [
+            { colorAr: "عنابي ملكي", colorEn: "Royal Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "" },
+            { colorAr: "أسود مطفي", colorEn: "Matte Black", swatch: "#111827", bodyHex: "#111827", sleeveHex: "#111827", image: "" }
+        ]
     },
     {
         id: "ezwa-2",
         cat: "tshirts",
-        nameAr: "تيشيرت عِزوة الملكي — أسود مطفي",
-        nameEn: "EZWA Royal Matte Black Boxy Tee",
+        nameAr: "تيشيرت عِزوة الملكي — ذهبي مطفي",
+        nameEn: "EZWA Royal Matte Gold Boxy Tee",
         price: 420,
         piecesPerBundle: 6,
         sizes: "1S - 2M - 2L - 1XL",
         descAr: "تصميم عِزوة باللون الذهبي الفاخر المطفي مع النخلة والسيفين، قماش قطني ثقيل وشريحة NFC مدمجة في الحافة السفلية.",
         descEn: "Matte luxury gold EZWA emblem with palm & crossed swords, heavyweight cotton & embedded hem NFC chip.",
-        image: "",
-        colorHex: "#111827"
-    },
-    {
-        id: "ezwa-3",
-        cat: "hoodies",
-        nameAr: "هودي نجد الهولوغرامي — أوفرسايز",
-        nameEn: "Najd Oversized Smart Hoodie",
-        price: 690,
-        piecesPerBundle: 6,
-        sizes: "1S - 2M - 2L - 1XL",
-        descAr: "هودي شتوي فاخر 420 GSM بتفاصيل ذهبية مطفية وشريحة NFC تفاعلية تفتح بطاقة المالك الرقمية بلمسة واحدة.",
-        descEn: "420 GSM heavyweight winter hoodie with matte gold accents and interactive NFC tag.",
-        image: "",
-        colorHex: "#1e293b"
+        variants: [
+            { colorAr: "أسود × ذهبي", colorEn: "Black × Gold", swatch: "#111827", bodyHex: "#111827", sleeveHex: "#111827", image: "" }
+        ]
     },
     {
         id: "ezwa-4",
@@ -714,33 +793,41 @@ const DEFAULT_PRODUCTS = [
         sizes: "30 - 32 - 34 - 36",
         descAr: "بنطال ستريت وير بقصة مريحة وخامة متينة مقاومة للتجعد مع شارة NFC منسوجة على الجيب الجانبي.",
         descEn: "Relaxed-fit street cargo pants with wrinkle-resistant fabric and woven side-pocket NFC badge.",
-        image: "",
-        colorHex: "#0f172a"
+        variants: [
+            { colorAr: "أسود فحمي", colorEn: "Charcoal Black", swatch: "#0f172a", bodyHex: "#0f172a", sleeveHex: "#0f172a", image: "" }
+        ]
     }
 ];
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v2');
+    const savedProds = localStorage.getItem('ezwa_store_products_v3');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 }
 
+let selectedCardVariantIdx = {};
 let currentLang = 'ar';
 let currentCat = 'all';
 let cart = [];
 let activeModalProduct = null;
+let activeModalVarIdx = 0;
 let activeModalQty = 1;
 
 /* =========================================================================
-   توليد مجسمات هولوغرامية افتراضية عند عدم وجود صورة PNG مرفوعة
+   توليد مجسمات هولوغرامية بألوان القطعة عند عدم وجود صورة PNG مرفوعة
 ========================================================================= */
-function getHologramSvg(cat, hex) {
-    const fill = hex || '#111827';
+function getHologramSvg(cat, variant) {
+    const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
+    const sleeve = (variant && variant.sleeveHex) ? variant.sleeveHex : body;
     if (cat === 'hoodies') {
         return `<svg viewBox="0 0 140 140" fill="none">
-            <path d="M46 28C46 20 56 15 70 15C84 15 94 20 94 28L118 44L108 66L96 58V116H44V58L32 66L22 44L46 28Z" fill="${fill}" stroke="#dfb15b" stroke-width="2.2"/>
+            <!-- الأكمام بلونها المستقل -->
+            <path d="M46 28L22 44L32 66L44 58V44L46 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
+            <path d="M94 28L118 44L108 66L96 58V44L94 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
+            <!-- جسم الهودي -->
+            <path d="M46 28C46 20 56 15 70 15C84 15 94 20 94 28L96 44V116H44V44L46 28Z" fill="${body}" stroke="#dfb15b" stroke-width="2.2"/>
             <path d="M54 28C54 36 86 36 86 28" stroke="#00f3ff" stroke-width="1.8"/>
             <circle cx="70" cy="64" r="9" stroke="#dfb15b" stroke-width="1.6"/>
             <text x="70" y="67" fill="#f5d69c" font-size="8" font-weight="bold" text-anchor="middle">عزوة</text>
@@ -748,14 +835,14 @@ function getHologramSvg(cat, hex) {
         </svg>`;
     } else if (cat === 'pants') {
         return `<svg viewBox="0 0 140 140" fill="none">
-            <path d="M44 22H96L104 118H78L70 62L62 118H36L44 22Z" fill="${fill}" stroke="#00f3ff" stroke-width="2.2"/>
+            <path d="M44 22H96L104 118H78L70 62L62 118H36L44 22Z" fill="${body}" stroke="#00f3ff" stroke-width="2.2"/>
             <path d="M44 30H96" stroke="#dfb15b" stroke-width="2"/>
             <rect x="82" y="54" width="12" height="16" rx="2" stroke="#dfb15b" stroke-width="1.5"/>
             <circle cx="88" cy="62" r="2" fill="#00f3ff"/>
         </svg>`;
     }
     return `<svg viewBox="0 0 140 140" fill="none">
-        <path d="M45 26L58 20C62 26 78 26 82 20L95 26L118 44L106 64L92 55V116H48V55L34 64L22 44L45 26Z" fill="${fill}" stroke="#dfb15b" stroke-width="2.2"/>
+        <path d="M45 26L58 20C62 26 78 26 82 20L95 26L118 44L106 64L92 55V116H48V55L34 64L22 44L45 26Z" fill="${body}" stroke="#dfb15b" stroke-width="2.2"/>
         <path d="M58 20C62 27 78 27 82 20" stroke="#00f3ff" stroke-width="1.8"/>
         <circle cx="70" cy="60" r="10" stroke="#dfb15b" stroke-width="1.5"/>
         <text x="70" y="63" fill="#f5d69c" font-size="8" font-weight="bold" text-anchor="middle">عزوة</text>
@@ -763,15 +850,18 @@ function getHologramSvg(cat, hex) {
     </svg>`;
 }
 
-function renderProductVisual(prod) {
-    if (prod.image && prod.image.trim() !== '') {
-        return `<img src="${prod.image}" alt="${prod.nameAr}" onerror="this.outerHTML=\`${getHologramSvg(prod.cat, prod.colorHex).replace(/"/g,"'")}\`">`;
+function renderVariantVisual(prod, varIdx) {
+    const variants = prod.variants || [];
+    const v = variants[varIdx] || variants[0] || { bodyHex: '#111827', sleeveHex: '#111827', image: '' };
+    const fallbackSvg = getHologramSvg(prod.cat, v).replace(/"/g, "'");
+    if (v.image && v.image.trim() !== '') {
+        return `<img src="${v.image}" alt="${prod.nameAr}" onerror="this.outerHTML=\`${fallbackSvg}\`">`;
     }
-    return getHologramSvg(prod.cat, prod.colorHex);
+    return getHologramSvg(prod.cat, v);
 }
 
 /* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام
+   عرض المنتجات في مسرح الهولوغرام + كرات الألوان المتوهجة
 ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -779,18 +869,35 @@ function renderProducts() {
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
 
     grid.innerHTML = filtered.map(p => {
+        const vIdx = selectedCardVariantIdx[p.id] || 0;
+        const variants = p.variants || [];
+        const activeVar = variants[vIdx] || variants[0];
         const name = currentLang === 'ar' ? p.nameAr : (p.nameEn || p.nameAr);
+        const colorLabel = activeVar ? (currentLang === 'ar' ? activeVar.colorAr : (activeVar.colorEn || activeVar.colorAr)) : '';
         const bundleTxt = currentLang === 'ar'
-            ? `شدّة (${p.piecesPerBundle} قطع)`
-            : `Bundle (${p.piecesPerBundle} pcs)`;
+            ? `شدّة (${p.piecesPerBundle} قطع)${colorLabel ? ' • ' + colorLabel : ''}`
+            : `Bundle (${p.piecesPerBundle} pcs)${colorLabel ? ' • ' + colorLabel : ''}`;
+
+        const swatchesHtml = variants.length > 1
+            ? `<div class="holo-swatch-row" onclick="event.stopPropagation()">
+                ${variants.map((v, idx) => `
+                    <span class="holo-color-orb ${idx === vIdx ? 'active' : ''}"
+                          style="background:${v.swatch || v.bodyHex};"
+                          title="${v.colorAr}"
+                          onclick="switchCardColor('${p.id}', ${idx})"></span>
+                `).join('')}
+               </div>`
+            : '';
+
         return `
         <div class="product-holo-stage" onclick="openProductModal('${p.id}')">
             <span class="nfc-micro-chip">NFC ◈</span>
-            <div class="product-floater-visual">
-                ${renderProductVisual(p)}
+            <div class="product-floater-visual" id="vis-${p.id}">
+                ${renderVariantVisual(p, vIdx)}
             </div>
             <div class="product-holo-beam"></div>
             <div class="product-holo-pad"></div>
+            ${swatchesHtml}
             <div class="product-holo-meta">
                 <div class="product-holo-name">${name}</div>
                 <div class="product-holo-bundle">${bundleTxt}</div>
@@ -798,6 +905,19 @@ function renderProducts() {
             </div>
         </div>`;
     }).join('');
+}
+
+function switchCardColor(prodId, varIdx) {
+    selectedCardVariantIdx[prodId] = varIdx;
+    const visEl = document.getElementById('vis-' + prodId);
+    if (visEl) {
+        visEl.classList.add('holo-flash');
+        setTimeout(() => {
+            renderProducts();
+        }, 140);
+    } else {
+        renderProducts();
+    }
 }
 
 function selectCategory(cat, el) {
@@ -808,31 +928,60 @@ function selectCategory(cat, el) {
 }
 
 /* =========================================================================
-   نافذة تفاصيل الشدّة والإضافة للسلة
+   نافذة تفاصيل الشدّة والألوان والإضافة للسلة
 ========================================================================= */
 function openProductModal(id) {
     const prod = PRODUCTS.find(p => p.id === id);
     if (!prod) return;
     activeModalProduct = prod;
+    activeModalVarIdx = selectedCardVariantIdx[id] || 0;
     activeModalQty = 1;
+    updateProductModalContent();
+    document.getElementById('productModal').classList.add('active');
+}
 
+function selectModalVariant(idx) {
+    activeModalVarIdx = idx;
+    selectedCardVariantIdx[activeModalProduct.id] = idx;
+    renderProducts();
+    updateProductModalContent();
+}
+
+function updateProductModalContent() {
+    const prod = activeModalProduct;
+    const variants = prod.variants || [];
+    const activeVar = variants[activeModalVarIdx] || variants[0] || { colorAr: '', colorEn: '' };
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
-    document.getElementById('pmTitle').innerText = currentLang === 'ar' ? prod.nameAr : (prod.nameEn || prod.nameAr);
-    document.getElementById('pmVisual').innerHTML = renderProductVisual(prod);
-    document.getElementById('pmQtyVal').innerText = '1';
 
+    document.getElementById('pmTitle').innerText = currentLang === 'ar' ? prod.nameAr : (prod.nameEn || prod.nameAr);
+    document.getElementById('pmVisual').innerHTML = renderVariantVisual(prod, activeModalVarIdx);
+    document.getElementById('pmQtyVal').innerText = activeModalQty;
+
+    const varBar = document.getElementById('pmVariantsBar');
+    if (variants.length > 1) {
+        varBar.innerHTML = variants.map((v, idx) => `
+            <button type="button" class="modal-var-chip ${idx === activeModalVarIdx ? 'active' : ''}" onclick="selectModalVariant(${idx})">
+                <span class="modal-var-dot" style="background:${v.swatch || v.bodyHex};"></span>
+                <span>${currentLang === 'ar' ? v.colorAr : (v.colorEn || v.colorAr)}</span>
+            </button>
+        `).join('');
+    } else {
+        varBar.innerHTML = '';
+    }
+
+    const colorName = currentLang === 'ar' ? activeVar.colorAr : (activeVar.colorEn || activeVar.colorAr);
     const desc = currentLang === 'ar' ? prod.descAr : (prod.descEn || prod.descAr);
     document.getElementById('pmSpecs').innerHTML = currentLang === 'ar'
         ? `<div>${desc}</div>
-           <div style="margin-top:8px;color:var(--gold-light);font-weight:700;">◈ نظام البيع: شدّة كاملة (${prod.piecesPerBundle} قطع)</div>
+           ${colorName ? `<div style="margin-top:8px;color:#00f3ff;font-weight:800;">◈ اللون المختار: ${colorName}</div>` : ''}
+           <div style="margin-top:3px;color:var(--gold-light);font-weight:700;">◈ نظام البيع: شدّة كاملة (${prod.piecesPerBundle} قطع)</div>
            <div style="color:#7dd3fc;">◈ توزيع المقاسات: <span dir="ltr">${prod.sizes}</span></div>
            <div style="margin-top:4px;font-size:13px;font-weight:900;color:#fff;">سعر الشدّة: ${prod.price} ${curr}</div>`
         : `<div>${desc}</div>
-           <div style="margin-top:8px;color:var(--gold-light);font-weight:700;">◈ Wholesale Bundle (${prod.piecesPerBundle} pcs)</div>
+           ${colorName ? `<div style="margin-top:8px;color:#00f3ff;font-weight:800;">◈ Selected Color: ${colorName}</div>` : ''}
+           <div style="margin-top:3px;color:var(--gold-light);font-weight:700;">◈ Wholesale Bundle (${prod.piecesPerBundle} pcs)</div>
            <div style="color:#7dd3fc;">◈ Size Ratio: ${prod.sizes}</div>
            <div style="margin-top:4px;font-size:13px;font-weight:900;color:#fff;">Bundle Price: ${prod.price} ${curr}</div>`;
-
-    document.getElementById('productModal').classList.add('active');
 }
 
 function changeModalQty(delta) {
@@ -842,14 +991,21 @@ function changeModalQty(delta) {
 
 function addCurrentProductToCart() {
     if (!activeModalProduct) return;
-    const existing = cart.find(item => item.id === activeModalProduct.id);
+    const variants = activeModalProduct.variants || [];
+    const activeVar = variants[activeModalVarIdx] || variants[0] || { colorAr: '', colorEn: '' };
+    const cartKey = `${activeModalProduct.id}__${activeModalVarIdx}`;
+
+    const existing = cart.find(item => item.cartKey === cartKey);
     if (existing) {
         existing.qty += activeModalQty;
     } else {
         cart.push({
+            cartKey: cartKey,
             id: activeModalProduct.id,
             nameAr: activeModalProduct.nameAr,
             nameEn: activeModalProduct.nameEn || activeModalProduct.nameAr,
+            colorAr: activeVar.colorAr || '',
+            colorEn: activeVar.colorEn || activeVar.colorAr || '',
             price: activeModalProduct.price,
             piecesPerBundle: activeModalProduct.piecesPerBundle,
             sizes: activeModalProduct.sizes,
@@ -884,14 +1040,16 @@ function openCartModal() {
         }</p>`;
     } else {
         container.innerHTML = cart.map((item, idx) => {
-            const name = currentLang === 'ar' ? item.nameAr : item.nameEn;
+            const baseName = currentLang === 'ar' ? item.nameAr : item.nameEn;
+            const colorTxt = currentLang === 'ar' ? item.colorAr : item.colorEn;
+            const fullName = colorTxt ? `${baseName} (${colorTxt})` : baseName;
             const sub = currentLang === 'ar'
                 ? `${item.qty} شدّة × ${item.price} ${curr} (${item.qty * item.piecesPerBundle} قطعة)`
                 : `${item.qty} Bundles × ${item.price} ${curr} (${item.qty * item.piecesPerBundle} pcs)`;
             return `
             <div class="cart-item-row">
                 <div class="cart-item-info">
-                    <span class="cart-item-name">${name}</span>
+                    <span class="cart-item-name">${fullName}</span>
                     <span class="cart-item-sub">${sub}</span>
                 </div>
                 <button type="button" class="del-item-btn" onclick="removeCartItem(${idx})">✕</button>
@@ -921,7 +1079,7 @@ function sendOrderViaWhatsApp() {
     if (merchant) msg += `*العميل / المتجر:* ${merchant}\n`;
     msg += `--------------------------\n`;
     cart.forEach((item, idx) => {
-        msg += `${idx + 1}. *${item.nameAr}*\n`;
+        msg += `${idx + 1}. *${item.nameAr}*${item.colorAr ? ' — (' + item.colorAr + ')' : ''}\n`;
         msg += `   • الكمية: ${item.qty} شدّة (${item.qty * item.piecesPerBundle} قطعة)\n`;
         msg += `   • المقاسات: ${item.sizes}\n`;
         msg += `   • المجموع: ${item.price * item.qty} ر.س\n`;
@@ -961,7 +1119,7 @@ function renderAdminProductsList() {
         <div class="admin-prod-item">
             <div>
                 <div style="font-weight:800;color:#fff;">${p.nameAr}</div>
-                <div style="font-size:10px;color:var(--gold-light);">${p.price} ر.س — ${p.piecesPerBundle} قطع</div>
+                <div style="font-size:10px;color:var(--gold-light);">${p.price} ر.س — ${p.piecesPerBundle} قطع (${(p.variants||[]).length} ألوان)</div>
             </div>
             <button type="button" class="del-item-btn" onclick="deleteProduct(${idx})">حذف</button>
         </div>
@@ -970,6 +1128,7 @@ function renderAdminProductsList() {
 
 function addNewProduct(e) {
     e.preventDefault();
+    const cName = document.getElementById('npColorName').value.trim() || 'أساسي';
     const newProd = {
         id: 'ezwa-' + Date.now(),
         cat: document.getElementById('npCat').value,
@@ -980,8 +1139,16 @@ function addNewProduct(e) {
         sizes: document.getElementById('npSizes').value.trim(),
         descAr: document.getElementById('npDesc').value.trim(),
         descEn: document.getElementById('npDesc').value.trim(),
-        image: document.getElementById('npImg').value.trim(),
-        colorHex: '#111827'
+        variants: [
+            {
+                colorAr: cName,
+                colorEn: cName,
+                swatch: "#dfb15b",
+                bodyHex: "#111827",
+                sleeveHex: "#111827",
+                image: document.getElementById('npImg').value.trim()
+            }
+        ]
     };
     PRODUCTS.unshift(newProd);
     saveProductsLocally();
@@ -1002,7 +1169,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v2', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v3', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
