@@ -25,7 +25,7 @@
     --gold-light:#f5d69c;
     --gold-matte:#c9a24b;
     --text-main:#ffffff;
-    --store-width:min(470px,96vw);
+    --store-width:min(480px,97vw);
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
 html[dir="ltr"] *{font-family:'Orbitron',sans-serif!important;}
@@ -201,13 +201,13 @@ body{
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
 /* =========================================================
-   مسرح المنتجات الهولوغرامية الطافية بحجم أكبر + زر معاينة التفاصيل
+   مسرح المنتجات الهولوغرامية الطافية بحجم كبير وواضح (192px)
 ========================================================= */
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:22px 8px;
-    padding:6px 2px;
+    gap:24px 4px;
+    padding:6px 0;
     width:100%;
 }
 .product-holo-stage{
@@ -222,7 +222,7 @@ body{
 
 /* شارة NFC وزر التكبير */
 .nfc-micro-chip{
-    position:absolute;top:2px;right:8px;
+    position:absolute;top:2px;right:6px;
     background:rgba(4,12,26,0.85);
     border:1px solid rgba(0,243,255,0.55);
     color:var(--cyan-glow);
@@ -234,45 +234,46 @@ body{
     pointer-events:none;
 }
 .zoom-micro-btn{
-    position:absolute;top:2px;left:8px;
+    position:absolute;top:2px;left:6px;
     background:rgba(4,12,26,0.85);
     border:1px solid rgba(223,177,91,0.6);
     color:var(--gold-light);
-    width:22px;height:22px;border-radius:50%;
+    width:23px;height:23px;border-radius:50%;
     font-size:11px;
     display:flex;align-items:center;justify-content:center;
     cursor:pointer;z-index:5;
     box-shadow:0 0 10px rgba(223,177,91,0.3);
 }
 
-/* مجسم القطعة الطافي المكبّر (164px) */
+/* مجسم القطعة الطافي المكبّر (192px) */
 .product-floater-visual{
-    width:164px;height:164px;
+    width:min(192px, 44vw);
+    height:min(192px, 44vw);
     display:flex;align-items:center;justify-content:center;
     position:relative;
     z-index:3;
     cursor:zoom-in;
     animation:productZeroG 4.2s ease-in-out infinite;
-    filter:drop-shadow(0 16px 20px rgba(0,0,0,0.88)) drop-shadow(0 0 16px rgba(0,243,255,0.24));
+    filter:drop-shadow(0 18px 22px rgba(0,0,0,0.9)) drop-shadow(0 0 18px rgba(0,243,255,0.25));
     transition:opacity 0.22s ease,transform 0.22s ease;
 }
 .product-floater-visual:active{transform:scale(0.95);}
 .product-floater-visual.holo-flash{opacity:0.25;transform:scale(0.92);}
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
 .product-floater-visual img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
-.product-floater-visual svg{width:136px;height:136px;pointer-events:none;}
+.product-floater-visual svg{width:154px;height:154px;pointer-events:none;}
 
 /* شعاع الإسقاط وقاعدة الهولوغرام أسفل كل منتج */
 .product-holo-beam{
-    width:122px;height:34px;
-    margin-top:-14px;
-    background:linear-gradient(to top,rgba(0,243,255,0.35) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
+    width:142px;height:36px;
+    margin-top:-15px;
+    background:linear-gradient(to top,rgba(0,243,255,0.36) 0%,rgba(223,177,91,0.16) 55%,transparent 100%);
     clip-path:polygon(8% 0%,92% 0%,72% 100%,28% 100%);
     pointer-events:none;
     animation:holoBeamFlicker 2.8s infinite alternate;
 }
 .product-holo-pad{
-    width:82px;height:11px;
+    width:96px;height:12px;
     border-radius:50%;
     background:radial-gradient(ellipse at center,#00f3ff 0%,#061326 75%);
     border:1.3px solid var(--gold-primary);
@@ -310,7 +311,7 @@ body{
     margin-top:6px;
     display:flex;flex-direction:column;align-items:center;gap:2px;
     cursor:pointer;
-    padding:4px 8px;
+    padding:4px 6px;
     border-radius:14px;
     transition:background 0.2s;
 }
@@ -445,7 +446,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
 }
 .zoom-stage-area.zoomed-in .zoom-media-wrap{transform:scale(1.65);}
 .zoom-media-wrap img{max-width:100%;max-height:100%;object-fit:contain;}
-.zoom-media-wrap svg{width:280px;height:280px;}
+.zoom-media-wrap svg{width:310px;height:310px;}
 
 .zoom-bottom-controls{
     display:flex;flex-direction:column;align-items:center;gap:10px;
@@ -482,7 +483,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
 .modal-top h3{font-size:15px;font-weight:800;color:var(--gold-light);}
 .close-x{background:rgba(255,255,255,0.08);border:none;color:#fff;width:28px;height:28px;border-radius:9px;font-size:18px;cursor:pointer;}
 
-.detail-visual{width:155px;height:155px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
+.detail-visual{width:195px;height:195px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
 .detail-visual img,.detail-visual svg{width:100%;height:100%;object-fit:contain;}
 
 /* اختيار اللون داخل نافذة التفاصيل */
@@ -934,7 +935,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v5');
+    const savedProds = localStorage.getItem('ezwa_store_products_v6');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1365,7 +1366,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v5', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v6', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
