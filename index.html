@@ -74,18 +74,19 @@ body{
 
 .top-telemetry-bar{
     display:flex;align-items:center;justify-content:space-between;
-    padding:7px 14px;
-    background:rgba(6,13,26,0.75);
+    padding:7px 12px;
+    background:rgba(6,13,26,0.78);
     backdrop-filter:blur(12px);
     border:1px solid rgba(223,177,91,0.28);
     border-radius:20px;
     direction:ltr;
 }
-.portal-tag{font-family:'Orbitron',sans-serif;font-size:8.8px;font-weight:800;letter-spacing:1.3px;color:var(--gold-light);display:flex;align-items:center;gap:6px;}
+.portal-tag{font-family:'Orbitron',sans-serif;font-size:8.5px;font-weight:800;letter-spacing:1.1px;color:var(--gold-light);display:flex;align-items:center;gap:6px;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 7px #10b981;animation:pingDot 1.8s infinite;}
 @keyframes pingDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.3);}}
-.top-actions{display:flex;align-items:center;gap:6px;}
-.pill-mini-btn{background:rgba(8,16,32,0.9);border:1px solid rgba(0,243,255,0.4);color:var(--cyan-glow);padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all 0.2s;}
+.top-actions{display:flex;align-items:center;gap:5px;}
+.pill-mini-btn{background:rgba(8,16,32,0.9);border:1px solid rgba(0,243,255,0.4);color:var(--cyan-glow);padding:4px 9px;border-radius:12px;font-size:9.8px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all 0.2s;}
+.pill-mini-btn.vip-gold{border-color:rgba(223,177,91,0.65);color:var(--gold-light);background:rgba(223,177,91,0.12);}
 .pill-mini-btn:hover{border-color:var(--gold-primary);color:#fff;}
 
 .brand-holo-hero{
@@ -212,7 +213,7 @@ body{
 
 .product-top-hud{
     position:absolute;
-    top:0;left:8px;right:8px;
+    top:0;left:6px;right:6px;
     display:flex;align-items:center;justify-content:space-between;
     z-index:8;
     pointer-events:none;
@@ -222,9 +223,16 @@ body{
     border:1px solid rgba(0,243,255,0.55);
     color:var(--cyan-glow);
     font-family:'Orbitron',sans-serif!important;
-    font-size:7px;font-weight:800;
+    font-size:6.8px;font-weight:800;
+    padding:2px 6px;border-radius:10px;
+    letter-spacing:0.4px;
+}
+.scarcity-micro-pill{
+    background:rgba(223,177,91,0.15);
+    border:1px solid rgba(223,177,91,0.6);
+    color:var(--gold-light);
+    font-size:8.5px;font-weight:800;
     padding:2px 7px;border-radius:10px;
-    letter-spacing:0.6px;
 }
 .zoom-micro-btn{
     background:rgba(4,12,26,0.9);
@@ -315,6 +323,12 @@ body{
     color:var(--gold-light);
     text-shadow:0 0 10px rgba(223,177,91,0.45);
 }
+.drop-progress-bar{
+    width:85%;height:3px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-top:3px;
+}
+.drop-progress-fill{
+    height:100%;background:linear-gradient(90deg,var(--cyan-glow),var(--gold-primary));border-radius:4px;
+}
 
 @keyframes productZeroG{0%,100%{transform:translateY(0px) rotate(-1deg);}50%{transform:translateY(-8px) rotate(1deg);}}
 @keyframes zeroGravityFloatA{0%,100%{transform:translateY(0px);}50%{transform:translateY(-6px);}}
@@ -337,80 +351,19 @@ body{
     justify-content:space-between;
     gap:12px;
 }
-.verif-info-col{
-    text-align:start;
-    flex:1;
-}
-.verif-badge-top{
-    display:inline-flex;align-items:center;gap:5px;
-    color:var(--gold-light);
-    font-size:12.5px;font-weight:800;
-    margin-bottom:3px;
-}
-.verif-sub-txt{
-    font-size:10px;color:#93c5fd;margin-bottom:6px;
-}
-.verif-doc-num{
-    font-size:11.5px;color:#e2e8f0;margin-bottom:9px;
-}
-.verif-doc-num strong{
-    color:var(--cyan-glow);
-    font-family:'Orbitron',sans-serif!important;
-    letter-spacing:0.6px;
-}
-.verif-check-btn{
-    display:inline-block;
-    padding:5px 13px;
-    font-size:10.5px;font-weight:800;
-    color:#020611;
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));
-    border-radius:10px;
-    text-decoration:none;
-    box-shadow:0 0 12px rgba(223,177,91,0.35);
-}
-.verif-qr-box{
-    flex-shrink:0;
-    padding:6px;
-    background:rgba(4,12,26,0.9);
-    border:1px solid rgba(0,243,255,0.45);
-    border-radius:12px;
-    text-align:center;
-}
-.verif-qr-box img{
-    width:68px;height:68px;
-    display:block;border-radius:6px;
-}
-.verif-qr-box span{
-    display:block;
-    color:var(--gold-light);
-    font-size:8.5px;font-weight:700;
-    margin-top:3px;
-}
+.verif-info-col{text-align:start;flex:1;}
+.verif-badge-top{display:inline-flex;align-items:center;gap:5px;color:var(--gold-light);font-size:12.5px;font-weight:800;margin-bottom:3px;}
+.verif-sub-txt{font-size:10px;color:#93c5fd;margin-bottom:6px;}
+.verif-doc-num{font-size:11.5px;color:#e2e8f0;margin-bottom:9px;}
+.verif-doc-num strong{color:var(--cyan-glow);font-family:'Orbitron',sans-serif!important;letter-spacing:0.6px;}
+.verif-check-btn{display:inline-block;padding:5px 13px;font-size:10.5px;font-weight:800;color:#020611;background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));border-radius:10px;text-decoration:none;box-shadow:0 0 12px rgba(223,177,91,0.35);}
+.verif-qr-box{flex-shrink:0;padding:6px;background:rgba(4,12,26,0.9);border:1px solid rgba(0,243,255,0.45);border-radius:12px;text-align:center;}
+.verif-qr-box img{width:68px;height:68px;display:block;border-radius:6px;}
+.verif-qr-box span{display:block;color:var(--gold-light);font-size:8.5px;font-weight:700;margin-top:3px;}
 
-.policy-links-bar{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    margin-top:8px;
-}
-.holo-policy-btn{
-    flex:1;
-    background:rgba(8,18,36,0.85);
-    border:1px solid rgba(0,243,255,0.4);
-    color:var(--cyan-glow);
-    padding:8px 10px;
-    border-radius:14px;
-    font-size:11px;font-weight:700;
-    cursor:pointer;
-    text-align:center;
-    text-decoration:none;
-    transition:all 0.2s;
-}
-.holo-policy-btn:hover{
-    border-color:var(--gold-primary);
-    color:var(--gold-light);
-}
+.policy-links-bar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
+.holo-policy-btn{flex:1;background:rgba(8,18,36,0.85);border:1px solid rgba(0,243,255,0.4);color:var(--cyan-glow);padding:8px 10px;border-radius:14px;font-size:11px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;}
+.holo-policy-btn:hover{border-color:var(--gold-primary);color:var(--gold-light);}
 
 .store-footer{
     margin-top:10px;padding-top:10px;
@@ -426,7 +379,7 @@ body{
     font-size:10px;font-weight:700;cursor:pointer;
 }
 
-/* كرة السلة الهولوغرامية في الزاوية اليسرى */
+/* كرة السلة الهولوغرامية */
 .floating-cart-orb{
     position:fixed;bottom:10px;left:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -461,7 +414,7 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* كرة المساعد الصوتي الناطق (EZWA AI Voice Stylist) في الزاوية اليمنى */
+/* كرة المساعد الصوتي الناطق */
 .floating-ai-orb{
     position:fixed;bottom:10px;right:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -493,20 +446,9 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* مؤشر الموجات الصوتية الهولوغرامية */
-.voice-wave-bar-wrap{
-    display:flex;align-items:center;justify-content:center;gap:4px;
-    height:24px;margin-bottom:8px;
-}
-.v-bar{
-    width:3.5px;height:6px;border-radius:4px;
-    background:var(--cyan-glow);
-    box-shadow:0 0 8px var(--cyan-glow);
-    transition:height 0.15s ease;
-}
-.voice-wave-bar-wrap.speaking .v-bar{
-    animation:voiceEqualizer 0.55s ease-in-out infinite alternate;
-}
+.voice-wave-bar-wrap{display:flex;align-items:center;justify-content:center;gap:4px;height:24px;margin-bottom:8px;}
+.v-bar{width:3.5px;height:6px;border-radius:4px;background:var(--cyan-glow);box-shadow:0 0 8px var(--cyan-glow);transition:height 0.15s ease;}
+.voice-wave-bar-wrap.speaking .v-bar{animation:voiceEqualizer 0.55s ease-in-out infinite alternate;}
 .voice-wave-bar-wrap.speaking .v-bar:nth-child(2){animation-delay:0.1s;background:var(--gold-light);}
 .voice-wave-bar-wrap.speaking .v-bar:nth-child(3){animation-delay:0.2s;}
 .voice-wave-bar-wrap.speaking .v-bar:nth-child(4){animation-delay:0.3s;background:var(--gold-light);}
@@ -515,9 +457,7 @@ body{
 .voice-wave-bar-wrap.speaking .v-bar:nth-child(7){animation-delay:0.05s;}
 @keyframes voiceEqualizer{0%{height:5px;}100%{height:22px;}}
 
-.voice-controls-row{
-    display:flex;align-items:center;gap:6px;margin-top:6px;
-}
+.voice-controls-row{display:flex;align-items:center;gap:6px;margin-top:6px;}
 .mic-speak-btn{
     flex:1;
     background:linear-gradient(135deg,rgba(0,243,255,0.22),rgba(2,132,199,0.35));
@@ -527,24 +467,10 @@ body{
     display:flex;align-items:center;justify-content:center;gap:6px;
     transition:all 0.2s;
 }
-.mic-speak-btn.listening{
-    background:rgba(239,68,68,0.28);
-    border-color:#f87171;
-    color:#fecaca;
-    box-shadow:0 0 16px rgba(239,68,68,0.5);
-}
-.mute-toggle-btn{
-    background:rgba(8,16,32,0.9);
-    border:1px solid rgba(223,177,91,0.55);
-    color:var(--gold-light);
-    width:38px;height:36px;border-radius:12px;
-    font-size:15px;cursor:pointer;
-}
+.mic-speak-btn.listening{background:rgba(239,68,68,0.28);border-color:#f87171;color:#fecaca;box-shadow:0 0 16px rgba(239,68,68,0.5);}
+.mute-toggle-btn{background:rgba(8,16,32,0.9);border:1px solid rgba(223,177,91,0.55);color:var(--gold-light);width:38px;height:36px;border-radius:12px;font-size:15px;cursor:pointer;}
 
-.size-selector-row{
-    display:flex;align-items:center;justify-content:center;
-    gap:8px;margin-bottom:12px;
-}
+.size-selector-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;}
 .size-pill-btn{
     width:42px;height:36px;border-radius:12px;
     background:rgba(8,16,32,0.9);
@@ -562,9 +488,12 @@ body{
     transform:scale(1.06);
 }
 
+/* =========================================================================
+   منظار المعاينة 360° والعدسة المكبرة المجهرية (360° & Fabric Loupe)
+   ========================================================================= */
 .zoom-lightbox-overlay{
     position:fixed;inset:0;
-    background:rgba(1,4,12,0.94);
+    background:rgba(1,4,12,0.95);
     backdrop-filter:blur(14px);
     z-index:1500;
     display:none;flex-direction:column;align-items:center;justify-content:center;
@@ -572,41 +501,86 @@ body{
 }
 .zoom-lightbox-overlay.active{display:flex;animation:holoReveal 0.28s ease-out;}
 .zoom-top-bar{
-    position:fixed;top:16px;left:16px;right:16px;
+    position:fixed;top:14px;left:14px;right:14px;
     display:flex;align-items:center;justify-content:space-between;
     z-index:1520;
 }
-.zoom-title-pill{
-    background:rgba(8,18,36,0.88);
-    border:1px solid rgba(223,177,91,0.55);
-    color:var(--gold-light);
-    padding:6px 14px;border-radius:16px;
-    font-size:12px;font-weight:800;
-}
-.zoom-close-btn{
-    background:rgba(8,18,36,0.9);
-    border:1.5px solid var(--cyan-glow);
-    color:var(--cyan-glow);
-    width:36px;height:36px;border-radius:50%;
-    font-size:20px;font-weight:900;cursor:pointer;
-}
+.zoom-title-pill{background:rgba(8,18,36,0.88);border:1px solid rgba(223,177,91,0.55);color:var(--gold-light);padding:6px 14px;border-radius:16px;font-size:11.5px;font-weight:800;}
+.zoom-close-btn{background:rgba(8,18,36,0.9);border:1.5px solid var(--cyan-glow);color:var(--cyan-glow);width:36px;height:36px;border-radius:50%;font-size:20px;font-weight:900;cursor:pointer;}
 .zoom-stage-area{
-    width:min(94vw,460px);height:64vh;
+    width:min(94vw,440px);height:54vh;
     display:flex;align-items:center;justify-content:center;
-    overflow:hidden;position:relative;cursor:zoom-in;
+    overflow:hidden;position:relative;cursor:grab;
+    perspective:900px;
 }
-.zoom-stage-area.zoomed-in{cursor:zoom-out;}
+.zoom-stage-area:active{cursor:grabbing;}
 .zoom-media-wrap{
     width:100%;height:100%;
     display:flex;align-items:center;justify-content:center;
-    transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    transition:transform 0.12s ease-out;
+    transform-style:preserve-3d;
     filter:drop-shadow(0 20px 35px rgba(0,0,0,0.9)) drop-shadow(0 0 24px rgba(0,243,255,0.28));
 }
-.zoom-stage-area.zoomed-in .zoom-media-wrap{transform:scale(1.65);}
-.zoom-media-wrap img{max-width:100%;max-height:100%;object-fit:contain;transform:scale(1.15);}
-.zoom-media-wrap svg{width:320px;height:320px;}
-.zoom-bottom-controls{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:10px;z-index:1520;}
-.zoom-hint-text{font-size:10.5px;color:#93c5fd;}
+.zoom-media-wrap img{max-width:100%;max-height:100%;object-fit:contain;transform:scale(1.12);pointer-events:none;}
+.zoom-media-wrap svg{width:300px;height:300px;pointer-events:none;}
+.fabric-hotspot-tag{
+    position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+    background:rgba(4,12,26,0.92);border:1px solid var(--cyan-glow);
+    color:var(--cyan-glow);padding:5px 12px;border-radius:14px;font-size:10px;font-weight:700;
+    white-space:nowrap;pointer-events:none;
+}
+.rotate-slider-wrap{
+    width:min(85vw,320px);display:flex;align-items:center;gap:8px;margin-bottom:4px;
+}
+.rotate-slider-wrap input[type=range]{flex:1;accent-color:var(--gold-primary);cursor:pointer;}
+.zoom-bottom-controls{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px;z-index:1520;}
+.zoom-tools-row{display:flex;gap:8px;}
+.tool-pill-btn{background:rgba(8,20,42,0.9);border:1px solid rgba(0,243,255,0.5);color:#fff;padding:6px 12px;border-radius:12px;font-size:11px;font-weight:700;cursor:pointer;}
+.tool-pill-btn.active{background:rgba(223,177,91,0.25);border-color:var(--gold-light);color:var(--gold-light);}
+
+/* =========================================================================
+   مرآة القياس الافتراضية بالذكاء الاصطناعي (AI Virtual Try-On)
+   ========================================================================= */
+.tryon-canvas-stage{
+    width:100%;height:270px;
+    background:radial-gradient(circle at center,#0b1933 0%,#030814 100%);
+    border:1.5px dashed rgba(0,243,255,0.5);
+    border-radius:18px;
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:10px;
+}
+.tryon-user-photo{
+    width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;
+}
+.tryon-garment-overlay{
+    position:relative;z-index:2;width:170px;height:170px;
+    cursor:move;touch-action:none;
+    filter:drop-shadow(0 12px 20px rgba(0,0,0,0.85));
+    transition:transform 0.1s ease;
+}
+.tryon-garment-overlay img,.tryon-garment-overlay svg{width:100%;height:100%;object-fit:contain;pointer-events:none;}
+.tryon-controls-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+
+/* =========================================================================
+   البطاقة الرقمية التفاعلية ونظام الولاء والإحالة (VIP Member Pass)
+   ========================================================================= */
+.vip-holo-card{
+    background:linear-gradient(135deg,#09152b 0%,#030814 55%,#171105 100%);
+    border:1.5px solid var(--gold-primary);
+    border-radius:20px;padding:16px;
+    box-shadow:0 0 32px rgba(223,177,91,0.3),inset 0 0 18px rgba(0,243,255,0.15);
+    position:relative;overflow:hidden;margin-bottom:12px;text-align:start;
+}
+.vip-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.vip-tier-badge{background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));color:#020611;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:900;}
+.vip-progress-track{width:100%;height:7px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;margin:8px 0;}
+.vip-progress-fill{height:100%;background:linear-gradient(90deg,var(--cyan-glow),var(--gold-light));transition:width 0.4s ease;}
+.referral-code-box{
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(4,12,26,0.9);border:1px dashed var(--cyan-glow);
+    border-radius:12px;padding:8px 12px;margin-top:8px;
+}
 
 .holo-modal-overlay{
     position:fixed;inset:0;
@@ -627,10 +601,7 @@ body{
     border-radius:26px;padding:18px;position:relative;
     max-height:86vh;overflow-y:auto;
 }
-.holo-projected-box.ai-theme{
-    border-color:rgba(0,243,255,0.78);
-    box-shadow:0 0 42px rgba(0,243,255,0.3),inset 0 0 20px rgba(0,243,255,0.12);
-}
+.holo-projected-box.ai-theme{border-color:rgba(0,243,255,0.78);box-shadow:0 0 42px rgba(0,243,255,0.3),inset 0 0 20px rgba(0,243,255,0.12);}
 .holo-stage-beam{width:74%;height:52px;margin-top:-4px;background:linear-gradient(to top,rgba(223,177,91,0.36) 0%,rgba(0,243,255,0.12) 55%,transparent 100%);clip-path:polygon(6% 0%,94% 0%,68% 100%,32% 100%);pointer-events:none;}
 .holo-stage-pad{width:124px;height:13px;border-radius:50%;background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.5px solid var(--cyan-glow);box-shadow:0 0 22px rgba(223,177,91,0.85);}
 
@@ -638,7 +609,7 @@ body{
 .modal-top h3{font-size:15px;font-weight:800;color:var(--gold-light);}
 .close-x{background:rgba(255,255,255,0.08);border:none;color:#fff;width:28px;height:28px;border-radius:9px;font-size:18px;cursor:pointer;}
 
-.detail-visual{width:195px;height:195px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
+.detail-visual{width:185px;height:185px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
 .detail-visual img{width:100%;height:100%;object-fit:contain;transform:scale(1.18);}
 .detail-visual svg{width:100%;height:100%;object-fit:contain;}
 
@@ -651,20 +622,15 @@ body{
     color:#cbd5e1;font-size:10.5px;font-weight:700;
     cursor:pointer;transition:all 0.2s;
 }
-.modal-var-chip.active{
-    border-color:var(--cyan-glow);
-    background:rgba(0,243,255,0.16);
-    color:#fff;
-    box-shadow:0 0 12px rgba(0,243,255,0.3);
-}
+.modal-var-chip.active{border-color:var(--cyan-glow);background:rgba(0,243,255,0.16);color:#fff;box-shadow:0 0 12px rgba(0,243,255,0.3);}
 .modal-var-dot{width:12px;height:12px;border-radius:50%;border:1px solid #fff;}
 
-.detail-specs{background:rgba(12,24,46,0.75);border:1px solid rgba(0,243,255,0.28);border-radius:16px;padding:10px 12px;font-size:11.5px;color:#e2e8f0;line-height:1.65;margin-bottom:12px;}
-.qty-row{display:flex;align-items:center;justify-content:space-between;background:rgba(6,14,28,0.9);border:1px solid rgba(223,177,91,0.45);border-radius:14px;padding:8px 12px;margin-bottom:12px;}
+.detail-specs{background:rgba(12,24,46,0.75);border:1px solid rgba(0,243,255,0.28);border-radius:16px;padding:10px 12px;font-size:11.5px;color:#e2e8f0;line-height:1.65;margin-bottom:10px;}
+.qty-row{display:flex;align-items:center;justify-content:space-between;background:rgba(6,14,28,0.9);border:1px solid rgba(223,177,91,0.45);border-radius:14px;padding:8px 12px;margin-bottom:10px;}
 .qty-controls{display:flex;align-items:center;gap:12px;}
 .qty-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--cyan-glow);background:rgba(0,243,255,0.15);color:#fff;font-size:16px;font-weight:900;cursor:pointer;}
 .primary-holo-btn{width:100%;background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));color:#020611;border:none;border-radius:14px;padding:12px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
-.cyan-holo-btn{width:100%;background:linear-gradient(135deg,var(--cyan-glow),#0284c7);color:#020611;border:none;border-radius:14px;padding:11px;font-size:13px;font-weight:900;cursor:pointer;margin-top:8px;}
+.cyan-holo-btn{width:100%;background:linear-gradient(135deg,var(--cyan-glow),#0284c7);color:#020611;border:none;border-radius:14px;padding:10px;font-size:12.5px;font-weight:900;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px;}
 
 .ai-chat-feed{
     background:rgba(5,12,26,0.85);
@@ -677,50 +643,18 @@ body{
     display:flex;flex-direction:column;gap:8px;
     margin-bottom:10px;
 }
-.ai-msg-bubble{
-    background:rgba(12,28,56,0.9);
-    border:1px solid rgba(0,243,255,0.35);
-    border-radius:14px 14px 4px 14px;
-    padding:9px 12px;
-    font-size:11.5px;color:#f1f5f9;line-height:1.6;
-}
-.ai-user-bubble{
-    align-self:flex-end;
-    background:rgba(223,177,91,0.18);
-    border:1px solid rgba(223,177,91,0.5);
-    border-radius:14px 14px 14px 4px;
-    padding:7px 11px;
-    font-size:11px;color:var(--gold-light);font-weight:700;
-}
-.ai-quick-chips{
-    display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;
-}
-.ai-chip-btn{
-    background:rgba(8,18,38,0.9);
-    border:1px solid rgba(223,177,91,0.45);
-    color:var(--gold-light);
-    padding:8px 8px;border-radius:12px;
-    font-size:10.5px;font-weight:700;
-    cursor:pointer;text-align:center;
-    transition:all 0.2s;
-}
+.ai-msg-bubble{background:rgba(12,28,56,0.9);border:1px solid rgba(0,243,255,0.35);border-radius:14px 14px 4px 14px;padding:9px 12px;font-size:11.5px;color:#f1f5f9;line-height:1.6;}
+.ai-user-bubble{align-self:flex-end;background:rgba(223,177,91,0.18);border:1px solid rgba(223,177,91,0.5);border-radius:14px 14px 14px 4px;padding:7px 11px;font-size:11px;color:var(--gold-light);font-weight:700;}
+.ai-quick-chips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}
+.ai-chip-btn{background:rgba(8,18,38,0.9);border:1px solid rgba(223,177,91,0.45);color:var(--gold-light);padding:8px 8px;border-radius:12px;font-size:10.5px;font-weight:700;cursor:pointer;text-align:center;transition:all 0.2s;}
 .ai-chip-btn:hover{border-color:var(--cyan-glow);color:#fff;}
 
-/* حاسبة المقاسات الذكية مع تسميات واضحة لكل مربع */
-.size-calc-box{
-    background:rgba(8,20,42,0.94);
-    border:1px solid rgba(223,177,91,0.55);
-    border-radius:14px;padding:10px;margin-bottom:10px;
-    display:none;
-}
+.size-calc-box{background:rgba(8,20,42,0.94);border:1px solid rgba(223,177,91,0.55);border-radius:14px;padding:10px;margin-bottom:10px;display:none;}
 .size-calc-box.active{display:block;}
 .size-calc-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:6px;margin-bottom:8px;}
 .calc-field-unit{display:flex;flex-direction:column;gap:3px;}
 .calc-field-lbl{font-size:9.5px;font-weight:700;color:#93c5fd;text-align:center;}
-.size-calc-grid input,.size-calc-grid select{
-    width:100%;background:#040b18;border:1px solid rgba(0,243,255,0.4);
-    border-radius:9px;padding:7px 4px;color:#fff;font-size:11px;text-align:center;
-}
+.size-calc-grid input,.size-calc-grid select{width:100%;background:#040b18;border:1px solid rgba(0,243,255,0.4);border-radius:9px;padding:7px 4px;color:#fff;font-size:11px;text-align:center;}
 
 .cart-item-row{display:flex;align-items:center;justify-content:space-between;background:rgba(10,20,40,0.85);border:1px solid rgba(0,243,255,0.25);border-radius:14px;padding:9px 11px;margin-bottom:8px;}
 .cart-item-info{display:flex;flex-direction:column;gap:2px;}
@@ -733,19 +667,9 @@ body{
 .admin-field input,.admin-field select{width:100%;background:#091428;border:1px solid rgba(0,243,255,0.35);border-radius:10px;padding:9px 12px;color:#fff;font-size:12.5px;}
 .admin-prod-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:rgba(10,20,38,0.85);border:1px solid rgba(223,177,91,0.3);border-radius:12px;margin-bottom:7px;font-size:11.5px;}
 
-.policy-list{
-    padding-right:16px;
-    font-size:12px;
-    color:#e2e8f0;
-    line-height:1.75;
-    text-align:start;
-}
-.policy-list li{
-    margin-bottom:8px;
-}
-.policy-list strong{
-    color:var(--gold-light);
-}
+.policy-list{padding-right:16px;font-size:12px;color:#e2e8f0;line-height:1.75;text-align:start;}
+.policy-list li{margin-bottom:8px;}
+.policy-list strong{color:var(--gold-light);}
 
 .toast-notification{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-100px);background:#091326;border:1px solid var(--gold-primary);color:#fff;padding:9px 20px;border-radius:26px;font-size:12px;font-weight:700;transition:transform 0.35s ease;z-index:2500;box-shadow:0 10px 28px rgba(0,0,0,0.85);white-space:nowrap;}
 .toast-notification.show{transform:translateX(-50%) translateY(0);}
@@ -761,10 +685,11 @@ body{
     <div class="top-telemetry-bar">
         <div class="portal-tag">
             <span class="pulse-dot"></span>
-            <span>EZWA // OFFICIAL STORE</span>
+            <span>EZWA // OFFICIAL</span>
         </div>
         <div class="top-actions">
-            <a href="https://namer-io.github.io/Nabil-card/" class="pill-mini-btn">🪪 البطاقة</a>
+            <button type="button" class="pill-mini-btn vip-gold" onclick="openVipPassModal()" id="vipPassBtn">👑 بطاقتي</button>
+            <a href="https://namer-io.github.io/Nabil-card/" class="pill-mini-btn">🪪 المؤسس</a>
             <button type="button" class="pill-mini-btn" onclick="toggleLang()" id="langBtn">EN</button>
         </div>
     </div>
@@ -779,7 +704,7 @@ body{
         </div>
         <h1 class="ezwa-main-title" id="uiStoreTitle">عِـزوة — EZWA</h1>
         <p class="ezwa-sub-tagline" id="uiStoreSub">أزياء رجالية فاخرة مدمجة بتقنية NFC وتوثيق الملكية السحابي</p>
-        <div class="retail-badge" id="uiRetailBadge">◈ إصدارات حصرية • شحن سريع لجميع المناطق ◈</div>
+        <div class="retail-badge" id="uiRetailBadge">◈ إصدارات مرقّمة محدودة • شحن سريع لجميع المناطق ◈</div>
     </header>
 
     <nav class="holo-categories-row" id="categoriesRow">
@@ -900,6 +825,127 @@ body{
     <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div>
 </div>
 
+<!-- =========================================================================
+     1. نافذة البطاقة الرقمية التفاعلية ونظام الولاء والإحالة (VIP Pass)
+     ========================================================================= -->
+<div class="holo-modal-overlay" id="vipPassModal" onclick="closeModal('vipPassModal')">
+    <div class="holo-projected-box" onclick="event.stopPropagation()">
+        <div class="modal-top">
+            <h3>👑 بطاقة عضوية عِزوة الرقمية</h3>
+            <button class="close-x" onclick="closeModal('vipPassModal')">×</button>
+        </div>
+
+        <div class="vip-holo-card">
+            <div class="vip-card-header">
+                <div>
+                    <div style="font-size:10px;color:#93c5fd;">EZWA DIGITAL MEMBER PASS</div>
+                    <div style="font-size:16px;font-weight:900;color:#fff;" id="vipHolderName">عضو نخبة عِزوة</div>
+                </div>
+                <span class="vip-tier-badge" id="vipTierName">طليعة عِزوة</span>
+            </div>
+            <div style="font-size:11.5px;color:#e2e8f0;display:flex;justify-content:space-between;">
+                <span>القطع الموثقة سحابياً: <strong style="color:var(--cyan-glow);" id="vipPiecesCount">0</strong></span>
+                <span>الرتبة التالية: <strong style="color:var(--gold-light);" id="vipNextTier">رواد عِزوة (3 قطع)</strong></span>
+            </div>
+            <div class="vip-progress-track">
+                <div class="vip-progress-fill" id="vipProgressFill" style="width:15%;"></div>
+            </div>
+            <div style="font-size:10px;color:#cbd5e1;line-height:1.6;">
+                • الرتب: <strong>طليعة عِزوة</strong> ← <strong>رواد عِزوة</strong> ← <strong>سفراء عِزوة</strong> ← <strong>أركان عِزوة</strong>
+            </div>
+        </div>
+
+        <div class="admin-field">
+            <label>سجّل اسمك ليظهر على بطاقتك الرقمية:</label>
+            <div style="display:flex;gap:6px;">
+                <input type="text" id="vipNameInput" placeholder="اكتب اسمك هنا...">
+                <button type="button" class="cyan-holo-btn" style="width:auto;margin-top:0;padding:0 14px;" onclick="saveVipMemberName()">حفظ</button>
+            </div>
+        </div>
+
+        <div style="background:rgba(8,20,42,0.85);border:1px solid rgba(223,177,91,0.4);border-radius:14px;padding:12px;text-align:start;">
+            <div style="font-size:12px;font-weight:800;color:var(--gold-light);margin-bottom:4px;">🎁 نظام الإحالة ومكافآت النخبة</div>
+            <div style="font-size:11px;color:#cbd5e1;line-height:1.5;">
+                شارك كود الإحالة الخاص بك مع أصدقائك؛ عند إتمام أول طلب بكودك تحصل على <strong>ترقية مجانية لتغليف البرواز الفاخر</strong> وترتفع رتبتك في عِزوة!
+            </div>
+            <div class="referral-code-box">
+                <span style="font-family:'Orbitron',sans-serif;font-weight:900;color:var(--cyan-glow);font-size:13px;" id="myReferralCode">EZWA-VIP77</span>
+                <button type="button" class="pill-mini-btn vip-gold" onclick="copyReferralCode()">نسخ ومشاركة 📤</button>
+            </div>
+        </div>
+    </div>
+    <div class="holo-stage-beam"></div>
+    <div class="holo-stage-pad"></div>
+</div>
+
+<!-- =========================================================================
+     2. نافذة مرآة القياس الافتراضية بالذكاء الاصطناعي (AI Virtual Try-On)
+     ========================================================================= -->
+<div class="holo-modal-overlay" id="tryOnModal" onclick="closeModal('tryOnModal')">
+    <div class="holo-projected-box ai-theme" onclick="event.stopPropagation()">
+        <div class="modal-top">
+            <h3 style="color:var(--cyan-glow);">🪞 مرآة القياس الافتراضية (AI)</h3>
+            <button class="close-x" onclick="closeModal('tryOnModal')">×</button>
+        </div>
+
+        <div class="tryon-canvas-stage" id="tryOnStage">
+            <img id="tryOnUserImg" class="tryon-user-photo" style="display:none;" alt="صورتك">
+            <div id="tryOnPlaceholder" style="text-align:center;color:#93c5fd;font-size:11.5px;padding:16px;z-index:1;">
+                ارفع صورة شخصية لك (أو صورة نصفية) لمعاينة تناسق القطعة ولونها عليك مباشرة
+            </div>
+            <div class="tryon-garment-overlay" id="tryOnGarmentBox"></div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:10.5px;color:var(--gold-light);">حجم القطعة:</span>
+            <input type="range" min="110" max="250" value="170" style="flex:1;accent-color:var(--cyan-glow);" oninput="resizeTryOnGarment(this.value)">
+        </div>
+
+        <div class="tryon-controls-grid">
+            <label class="cyan-holo-btn" style="margin-top:0;cursor:pointer;font-size:11.5px;">
+                📸 اختر صورتك
+                <input type="file" accept="image/*" style="display:none;" onchange="loadUserTryOnPhoto(event)">
+            </label>
+            <button type="button" class="primary-holo-btn" style="padding:10px;font-size:12px;" onclick="closeModal('tryOnModal')">اعتماد والمواصلة ◈</button>
+        </div>
+        <div style="font-size:10px;color:#94a3b8;text-align:center;">اسحب القطعة بإصبعك فوق صورتك لضبط مكانها على الكتفين</div>
+    </div>
+    <div class="holo-stage-beam"></div>
+    <div class="holo-stage-pad"></div>
+</div>
+
+<!-- =========================================================================
+     3. منظار المعاينة الثلاثي الأبعاد والعدسة المكبرة (360° & Fabric Loupe)
+     ========================================================================= -->
+<div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
+    <div class="zoom-top-bar" onclick="event.stopPropagation()">
+        <div class="zoom-title-pill" id="zoomTitlePill">منظار 360° وتفاصيل النسيج</div>
+        <button type="button" class="zoom-close-btn" onclick="closeZoomLightbox()">×</button>
+    </div>
+
+    <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation()">
+        <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
+        <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قطن فاخر ثقيل + شريحة NFC مشفّرة في شريط السدو</div>
+    </div>
+
+    <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
+        <div class="rotate-slider-wrap">
+            <span style="font-size:10px;color:var(--gold-light);">360°</span>
+            <input type="range" id="rotate360Slider" min="-180" max="180" value="0" oninput="rotate360Product(this.value)">
+            <span style="font-size:10px;color:var(--cyan-glow);" id="rotateDegVal">0°</span>
+        </div>
+        <div class="zoom-tools-row">
+            <button type="button" class="tool-pill-btn" id="loupeToggleBtn" onclick="toggleFabricLoupe()">🔬 عدسة فحص النسيج</button>
+            <button type="button" class="tool-pill-btn" onclick="openTryOnFromZoom()">🪞 جرّبها عليك (AI)</button>
+        </div>
+        <div class="modal-variants-bar" id="zoomVariantsBar"></div>
+        <button type="button" class="primary-holo-btn" style="padding:10px 24px;" onclick="openOrderFromZoom()">
+            <span>🛍️</span>
+            <span id="zoomOrderBtnText">اختر المقاس واطلب هذه القطعة</span>
+        </button>
+    </div>
+</div>
+
 <!-- نافذة سياسة الاستبدال والاسترجاع -->
 <div class="holo-modal-overlay" id="returnPolicyModal" onclick="closeModal('returnPolicyModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
@@ -923,7 +969,7 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- نافذة المساعد الهولوغرامي الناطق -->
+<!-- نافذة المساعد الهولوغرامي الناطق (يدعم الإضافة الصوتية للسلة) -->
 <div class="holo-modal-overlay" id="aiModal" onclick="closeAiModal()">
     <div class="holo-projected-box ai-theme" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -939,11 +985,10 @@ body{
         <div class="ai-chat-feed" id="aiChatFeed">
             <div class="ai-msg-bubble">
                 حياك الله في <strong>عِـزوة (EZWA)</strong> ◈<br>
-                أنا مستشارك الصوتي للأزياء الذكية؛ اختر أي زر بالأسفل أو اضغط على المايكروفون وتحدث معي مباشرة.
+                جرّب أن تقول بصوتك: <em>"أضف هودي برايت الأسود مقاس لارج"</em> وسأضيفه لسلتك فوراً، أو اختر من الأزرار بالأسفل:
             </div>
         </div>
 
-        <!-- حاسبة المقاس الذكية بعناوين واضحة فوق كل مربع + خيار بوكسي فيت -->
         <div class="size-calc-box" id="sizeCalcBox">
             <div style="font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:7px;text-align:center;">📏 أدخل طولك ووزنك واختر نوع القَصّة:</div>
             <div class="size-calc-grid">
@@ -986,27 +1031,6 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- شاشة المعاينة المكبّرة للصورة -->
-<div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
-    <div class="zoom-top-bar" onclick="event.stopPropagation()">
-        <div class="zoom-title-pill" id="zoomTitlePill">معاينة التفاصيل</div>
-        <button type="button" class="zoom-close-btn" onclick="closeZoomLightbox()">×</button>
-    </div>
-
-    <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()">
-        <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
-    </div>
-
-    <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
-        <div class="modal-variants-bar" id="zoomVariantsBar"></div>
-        <span class="zoom-hint-text" id="zoomHintText">🔍 المس الصورة لتكبير التفاصيل أو تصغيرها</span>
-        <button type="button" class="primary-holo-btn" style="padding:10px 24px;" onclick="openOrderFromZoom()">
-            <span>🛍️</span>
-            <span id="zoomOrderBtnText">اختر المقاس واطلب هذه القطعة</span>
-        </button>
-    </div>
-</div>
-
 <!-- نافذة مواصفات القطعة واختيار المقاس الفردي -->
 <div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
@@ -1014,7 +1038,7 @@ body{
             <h3 id="pmTitle">اسم القطعة</h3>
             <button class="close-x" onclick="closeModal('productModal')">×</button>
         </div>
-        <div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)" title="اضغط لتكبير الصورة"></div>
+        <div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)" title="اضغط للمعاينة 360°"></div>
         <div class="modal-variants-bar" id="pmVariantsBar"></div>
 
         <div style="text-align:center;font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;" id="pmSizeLabel">اختر المقاس:</div>
@@ -1033,6 +1057,10 @@ body{
             <span>➕</span>
             <span id="pmAddBtnText">إضافة للسلة</span>
         </button>
+        <button type="button" class="cyan-holo-btn" onclick="openTryOnModal(activeModalProduct.id, activeModalVarIdx)">
+            <span>🪞</span>
+            <span>جرّب القطعة على صورتك (AI Try-On)</span>
+        </button>
     </div>
     <div class="holo-stage-beam"></div>
     <div class="holo-stage-pad"></div>
@@ -1046,18 +1074,24 @@ body{
             <button class="close-x" onclick="closeModal('cartModal')">×</button>
         </div>
         <div id="cartItemsContainer"></div>
-        <div class="admin-field" style="margin-top:10px;">
-            <label id="cmNameLabel">الاسم والمدينة (للتوصيل):</label>
+        <div class="admin-field" style="margin-top:8px;">
+            <label id="cmNameLabel">الاسم والمدينة (للتوصيل وتوثيق الملكية):</label>
             <input type="text" id="merchantNameInput" placeholder="مثال: محمد العتيبي - الرياض">
         </div>
-        <div class="admin-field">
-            <label>خيار التغليف:</label>
-            <select id="packagingOption">
-                <option value="تغليف عِزوة الفاخر">تغليف عِزوة الفاخر (مجاني)</option>
-                <option value="عرض برواز الصورة المبتكر (إهداء)">عرض برواز الصورة المبتكر — للإهداء</option>
-            </select>
+        <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:8px;">
+            <div class="admin-field">
+                <label>خيار التغليف:</label>
+                <select id="packagingOption">
+                    <option value="تغليف عِزوة الفاخر">تغليف عِزوة الفاخر (مجاني)</option>
+                    <option value="عرض برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر (إهداء)</option>
+                </select>
+            </div>
+            <div class="admin-field">
+                <label>كود الإحالة (اختياري):</label>
+                <input type="text" id="referralInputCode" placeholder="EZWA-..." style="direction:ltr;text-transform:uppercase;">
+            </div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(223,177,91,0.3);margin-top:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(223,177,91,0.3);margin-top:4px;">
             <span style="font-size:12px;color:#cbd5e1;" id="cmGrandLabel">الإجمالي النهائي:</span>
             <span style="font-size:16px;font-weight:900;color:var(--gold-light);" id="cmGrandTotal">0 ر.س</span>
         </div>
@@ -1115,6 +1149,16 @@ body{
                     <input type="number" id="npPrice" required placeholder="129">
                 </div>
             </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div class="admin-field">
+                    <label>الكمية المحدودة المتبقية:</label>
+                    <input type="number" id="npStock" value="12" min="1" max="500">
+                </div>
+                <div class="admin-field">
+                    <label>إجمالي الإصدار المرقّم:</label>
+                    <input type="number" id="npTotalDrop" value="50" min="1" max="1000">
+                </div>
+            </div>
             <div class="admin-field">
                 <label>المقاسات المتوفرة (مفصولة بفاصلة):</label>
                 <input type="text" id="npSizes" required value="S, M, L, XL" style="direction:ltr;">
@@ -1158,6 +1202,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "هودي عِزوة ثنائي اللون — أوفرسايز",
         nameEn: "EZWA Two-Tone Oversized Hoodie",
         price: 189,
+        stockLeft: 9,
+        totalDrop: 50,
         sizes: ["S", "M", "L", "XL"],
         descAr: "هودي ستريت وير ثقيل 420 GSM بتصميم أكمام متباينة وخطوط جانبية بارزة، مدمج بشريحة NFC مشفّرة لتوثيق ملكيتك سحابياً.",
         descEn: "420 GSM heavyweight two-tone oversized hoodie with contrast sleeves and embedded encrypted NFC tag.",
@@ -1174,6 +1220,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "هودي Different — أوفرسايز",
         nameEn: "EZWA Different Oversized Hoodie",
         price: 189,
+        stockLeft: 7,
+        totalDrop: 40,
         sizes: ["S", "M", "L", "XL"],
         descAr: "هودي ستريت وير فاخر بقصة كتف ساقطة وطباعة بارزة وتطريز على الكم، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
         descEn: "Luxury drop-shoulder oversized hoodie with layered chest print & sleeve embroidery, integrated with cloud NFC.",
@@ -1190,6 +1238,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "هودي BRIGHT — أوفرسايز",
         nameEn: "EZWA BRIGHT Oversized Hoodie",
         price: 189,
+        stockLeft: 6,
+        totalDrop: 50,
         sizes: ["S", "M", "L", "XL"],
         descAr: "هودي ستريت وير فاخر بتطريز BRIGHT ثلاثي الأبعاد على الصدر وقصة أوفرسايز مريحة، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
         descEn: "Luxury oversized hoodie with 3D outlined BRIGHT chest applique and embedded encrypted cloud NFC verification.",
@@ -1206,6 +1256,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "تيشيرت اكتشف الرياض — المصمك",
         nameEn: "Discover Riyadh — Masmak Boxy Tee",
         price: 119,
+        stockLeft: 5,
+        totalDrop: 30,
         sizes: ["S", "M", "L", "XL"],
         descAr: "قصة بوكسي فيت فاخرة باللون العنابي، قطن 280 GSM، مطرز بشريط سدو يضم شريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
         descEn: "Luxury burgundy boxy-fit tee, 280 GSM heavy cotton, Sadu hem with embedded encrypted NFC chip for cloud ownership.",
@@ -1220,6 +1272,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "تيشيرت عِزوة الملكي — ذهبي مطفي",
         nameEn: "EZWA Royal Matte Gold Boxy Tee",
         price: 115,
+        stockLeft: 11,
+        totalDrop: 50,
         sizes: ["S", "M", "L", "XL"],
         descAr: "تصميم عِزوة باللون الذهبي الفاخر المطفي مع النخلة والسيفين، قماش قطني ثقيل وشريحة NFC مدمجة في الحافة السفلية.",
         descEn: "Matte luxury gold EZWA emblem with palm & crossed swords, heavyweight cotton & embedded hem NFC chip.",
@@ -1233,6 +1287,8 @@ const DEFAULT_PRODUCTS = [
         nameAr: "بنطال عِزوة أوفرسايز — كارجو",
         nameEn: "EZWA Oversized Street Cargo Pants",
         price: 149,
+        stockLeft: 8,
+        totalDrop: 40,
         sizes: ["30", "32", "34", "36"],
         descAr: "بنطال ستريت وير بقصة مريحة وخامة متينة مقاومة للتجعد مع شارة NFC منسوجة على الجيب الجانبي.",
         descEn: "Relaxed-fit street cargo pants with wrinkle-resistant fabric and woven side-pocket NFC badge.",
@@ -1244,7 +1300,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v3');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v4');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1260,11 +1316,56 @@ let activeModalSize = 'L';
 let activeModalQty = 1;
 let activeZoomProdId = null;
 let activeZoomVarIdx = 0;
+let isLoupeActive = false;
 let isVoiceMuted = false;
 
 /* =========================================================================
-   محرك الصوت الناطق للمساعد الذكي
-========================================================================= */
+   إدارة البطاقة الرقمية ونظام الولاء والإحالة (VIP Tiers)
+   ========================================================================= */
+let vipData = { name: "عضو نخبة عِزوة", pieces: 0, code: "EZWA-" + Math.floor(1000 + Math.random() * 9000) };
+try {
+    const savedVip = localStorage.getItem('ezwa_vip_member_v1');
+    if (savedVip) vipData = JSON.parse(savedVip);
+    else localStorage.setItem('ezwa_vip_member_v1', JSON.stringify(vipData));
+} catch(e) {}
+
+function getVipTierInfo(pieces) {
+    if (pieces >= 10) return { title: "أركان عِزوة 👑", next: "أعلى رتبة ملكية", pct: 100 };
+    if (pieces >= 6) return { title: "سفراء عِزوة ◈", next: "أركان عِزوة (10 قطع)", pct: Math.min(100, (pieces / 10) * 100) };
+    if (pieces >= 3) return { title: "رواد عِزوة ◈", next: "سفراء عِزوة (6 قطع)", pct: Math.min(100, (pieces / 6) * 100) };
+    return { title: "طليعة عِزوة", next: "رواد عِزوة (3 قطع)", pct: Math.max(15, (pieces / 3) * 100) };
+}
+
+function openVipPassModal() {
+    const tier = getVipTierInfo(vipData.pieces);
+    document.getElementById('vipHolderName').innerText = vipData.name;
+    document.getElementById('vipTierName').innerText = tier.title;
+    document.getElementById('vipPiecesCount').innerText = vipData.pieces + " قطعة";
+    document.getElementById('vipNextTier').innerText = tier.next;
+    document.getElementById('vipProgressFill').style.width = tier.pct + "%";
+    document.getElementById('myReferralCode').innerText = vipData.code;
+    document.getElementById('vipPassModal').classList.add('active');
+}
+
+function saveVipMemberName() {
+    const val = document.getElementById('vipNameInput').value.trim();
+    if (!val) return;
+    vipData.name = val;
+    try { localStorage.setItem('ezwa_vip_member_v1', JSON.stringify(vipData)); } catch(e) {}
+    openVipPassModal();
+    showToast('تم تحديث اسمك على البطاقة الرقمية ◈');
+}
+
+function copyReferralCode() {
+    const shareTxt = `تسوق أزياء عِزوة الذكية بتقنية NFC واستخدم كود الإحالة الخاص بي (${vipData.code}) للحصول على ترقية مجانية لتغليف البرواز الفاخر: ${window.location.href}`;
+    navigator.clipboard.writeText(shareTxt).then(() => {
+        showToast('تم نسخ رابط وكود الإحالة لمشاركته ◈');
+    });
+}
+
+/* =========================================================================
+   محرك الصوت الناطق + التحديث الصوتي السريع للمقاسات (Voice-to-Cart)
+   ========================================================================= */
 function speakAiVoice(plainText) {
     if (isVoiceMuted || !('speechSynthesis' in window)) return;
     try {
@@ -1328,6 +1429,55 @@ function startVoiceRecognition() {
 
 function handleSpokenQuery(text) {
     const q = text.toLowerCase();
+
+    // التحقق من نية الإضافة السريعة للسلة بالصوت (Voice-to-Cart)
+    if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('هودي') || q.includes('تيشيرت') || q.includes('بنطال')) {
+        let targetProd = PRODUCTS[0];
+        if (q.includes('برايت') || q.includes('bright')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-bright') || targetProd;
+        else if (q.includes('ديفرنت') || q.includes('different')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-diff') || targetProd;
+        else if (q.includes('المصمك') || q.includes('الرياض') || q.includes('عنابي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-1') || targetProd;
+        else if (q.includes('ملكي') || q.includes('ذهبي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-2') || targetProd;
+        else if (q.includes('بنطال') || q.includes('كارجو')) targetProd = PRODUCTS.find(p => p.cat === 'pants') || targetProd;
+
+        // تحديد المقاس المنطوق
+        let chosenSize = targetProd.cat === 'pants' ? '32' : 'L';
+        if (q.includes('سمول') || q.includes('small') || q.includes(' s ')) chosenSize = 'S';
+        else if (q.includes('ميديم') || q.includes('وسط') || q.includes('medium')) chosenSize = 'M';
+        else if (q.includes('اكس لارج') || q.includes('إكس لارج') || q.includes('xl')) chosenSize = 'XL';
+        else if (q.includes('لارج') || q.includes('large')) chosenSize = 'L';
+
+        // تحديد اللون المنطوق إن وُجد
+        let varIdx = 0;
+        if (targetProd.variants) {
+            const foundIdx = targetProd.variants.findIndex(v =>
+                (q.includes('أسود') || q.includes('اسود')) && v.colorAr.includes('أسود') ||
+                (q.includes('أزرق') || q.includes('ازرق')) && v.colorAr.includes('أزرق') ||
+                (q.includes('بيج') && v.colorAr.includes('بيج')) ||
+                (q.includes('عنابي') && v.colorAr.includes('عنابي'))
+            );
+            if (foundIdx >= 0) varIdx = foundIdx;
+        }
+
+        const activeVar = targetProd.variants[varIdx] || targetProd.variants[0];
+        const cartKey = `${targetProd.id}__${varIdx}__${chosenSize}`;
+        const existing = cart.find(i => i.cartKey === cartKey);
+        if (existing) existing.qty += 1;
+        else {
+            cart.push({
+                cartKey, id: targetProd.id, nameAr: targetProd.nameAr, nameEn: targetProd.nameEn,
+                colorAr: activeVar.colorAr, colorEn: activeVar.colorEn, size: chosenSize, price: targetProd.price, qty: 1
+            });
+        }
+        decrementProductStock(targetProd.id, 1);
+        updateCartUI();
+
+        const spokenSize = chosenSize === 'S' ? 'سمول' : chosenSize === 'M' ? 'ميديم' : chosenSize === 'L' ? 'لارج' : chosenSize === 'XL' ? 'إكس لارج' : chosenSize;
+        const reply = `تمت إضافة <strong>${targetProd.nameAr}</strong> (${activeVar.colorAr}) مقاس <strong style="color:#00f3ff;">${chosenSize}</strong> إلى سلتك مباشرة!`;
+        appendAiChat(text, reply);
+        speakAiVoice(`تمت إضافة ${targetProd.nameAr} باللون ${activeVar.colorAr} مقاس ${spokenSize} إلى سلتك بنجاح.`);
+        return;
+    }
+
     if (q.includes('مقاس') || q.includes('طول') || q.includes('وزن') || q.includes('size')) {
         document.getElementById('sizeCalcBox').classList.add('active');
         const reply = 'أهلاً بك، أدخل طولك ووزنك واختر نوع القصة في الحاسبة التي ظهرت أمامك وسأحدد مقاسك الدقيق فوراً.';
@@ -1340,7 +1490,7 @@ function handleSpokenQuery(text) {
     } else if (q.includes('برواز') || q.includes('هدية') || q.includes('غسيل') || q.includes('تغليف')) {
         askAiTopic('frame', text);
     } else {
-        const reply = 'يسعدني خدمتك في عِزوة؛ يمكنك سؤالي عن المقاس المناسب، أو تنسيق طقم كامل، أو ميزة شريحة إن إف سي المدمجة.';
+        const reply = 'يسعدني خدمتك في عِزوة؛ يمكنك قول اسم أي قطعة ومقاسها لأضيفها للسلة فوراً، أو سؤالي عن المقاس المناسب وتقنية الـ NFC.';
         appendAiChat(text, reply);
         speakAiVoice(reply);
     }
@@ -1348,7 +1498,7 @@ function handleSpokenQuery(text) {
 
 /* =========================================================================
    توليد مجسمات هولوغرامية بألوان القطعة
-========================================================================= */
+   ========================================================================= */
 function getHologramSvg(cat, variant) {
     const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
     const sleeve = (variant && variant.sleeveHex) ? variant.sleeveHex : body;
@@ -1390,8 +1540,8 @@ function renderVariantVisual(prod, varIdx) {
 }
 
 /* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام (البيع بالحبة)
-========================================================================= */
+   عرض المنتجات في مسرح الهولوغرام + عداد الندرة للإصدارات المحدودة
+   ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     const filtered = currentCat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentCat);
@@ -1404,6 +1554,9 @@ function renderProducts() {
         const name = currentLang === 'ar' ? p.nameAr : (p.nameEn || p.nameAr);
         const colorLabel = activeVar ? (currentLang === 'ar' ? activeVar.colorAr : (activeVar.colorEn || activeVar.colorAr)) : '';
         const sizesTxt = (p.sizes || ["S","M","L","XL"]).join(' • ');
+        const stockLeft = p.stockLeft !== undefined ? p.stockLeft : 8;
+        const totalDrop = p.totalDrop || 50;
+        const pctLeft = Math.max(10, Math.min(100, (stockLeft / totalDrop) * 100));
 
         const swatchesHtml = variants.length > 1
             ? `<div class="holo-swatch-row" onclick="event.stopPropagation()">
@@ -1419,7 +1572,8 @@ function renderProducts() {
         return `
         <div class="product-holo-stage">
             <div class="product-top-hud">
-                <button type="button" class="zoom-micro-btn" onclick="openZoomLightbox('${p.id}', ${vIdx})" title="تكبير الصورة">🔍</button>
+                <button type="button" class="zoom-micro-btn" onclick="openZoomLightbox('${p.id}', ${vIdx})" title="منظار 360°">🔍</button>
+                <span class="scarcity-micro-pill">${currentLang === 'ar' ? `متبقي ${stockLeft}/${totalDrop}` : `${stockLeft}/${totalDrop} left`}</span>
                 <span class="nfc-micro-chip">NFC ◈</span>
             </div>
             <div class="product-floater-visual" id="vis-${p.id}" onclick="openZoomLightbox('${p.id}', ${vIdx})">
@@ -1431,10 +1585,20 @@ function renderProducts() {
             <div class="product-holo-meta" onclick="openProductModal('${p.id}')">
                 <div class="product-holo-name">${name}</div>
                 <div class="product-holo-bundle">${colorLabel ? colorLabel + ' • ' : ''}<span dir="ltr">${sizesTxt}</span></div>
+                <div class="drop-progress-bar"><div class="drop-progress-fill" style="width:${pctLeft}%;"></div></div>
                 <div class="product-holo-price">${p.price} ${curr}</div>
             </div>
         </div>`;
     }).join('');
+}
+
+function decrementProductStock(prodId, qty) {
+    const p = PRODUCTS.find(item => item.id === prodId);
+    if (p && p.stockLeft > 1) {
+        p.stockLeft = Math.max(1, p.stockLeft - qty);
+        saveProductsLocally();
+        renderProducts();
+    }
 }
 
 function switchCardColor(prodId, varIdx) {
@@ -1460,13 +1624,67 @@ function openReturnPolicyModal() {
 }
 
 /* =========================================================================
+   مرآة القياس الافتراضية بالذكاء الاصطناعي (AI Virtual Try-On)
+   ========================================================================= */
+function openTryOnModal(prodId, varIdx) {
+    const prod = PRODUCTS.find(p => p.id === prodId) || PRODUCTS[0];
+    closeModal('productModal');
+    closeZoomLightbox();
+    document.getElementById('tryOnGarmentBox').innerHTML = renderVariantVisual(prod, varIdx || 0);
+    document.getElementById('tryOnModal').classList.add('active');
+}
+
+function openTryOnFromZoom() {
+    openTryOnModal(activeZoomProdId, activeZoomVarIdx);
+}
+
+function loadUserTryOnPhoto(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        const img = document.getElementById('tryOnUserImg');
+        img.src = ev.target.result;
+        img.style.display = 'block';
+        document.getElementById('tryOnPlaceholder').style.display = 'none';
+        showToast('تم تحميل صورتك! اسحب القطعة لضبط المقاس ◈');
+    };
+    reader.readAsDataURL(file);
+}
+
+function resizeTryOnGarment(val) {
+    const box = document.getElementById('tryOnGarmentBox');
+    box.style.width = val + 'px';
+    box.style.height = val + 'px';
+}
+
+// تفعيل سحب القطعة فوق صورة العميل باللمس أو الماوس
+(function initTryOnDrag() {
+    const box = document.getElementById('tryOnGarmentBox');
+    let isDragging = false, startX = 0, startY = 0, curX = 0, curY = 0;
+    box.addEventListener('pointerdown', e => {
+        isDragging = true;
+        startX = e.clientX - curX;
+        startY = e.clientY - curY;
+        box.setPointerCapture(e.pointerId);
+    });
+    box.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+        curX = e.clientX - startX;
+        curY = e.clientY - startY;
+        box.style.transform = `translate(${curX}px, ${curY}px)`;
+    });
+    box.addEventListener('pointerup', () => { isDragging = false; });
+})();
+
+/* =========================================================================
    تفاعلات المساعد الهولوغرامي الناطق + حاسبة الأوفرسايز والبوكسي فيت
-========================================================================= */
+   ========================================================================= */
 function openAiAssistantModal() {
     document.getElementById('aiModal').classList.add('active');
     speakAiVoice(
         currentLang === 'ar'
-            ? 'حياك الله في عِزوة، أنا مستشارك الصوتي. كيف أساعدك في اختيار مقاسك أو تنسيق إطلالتك؟'
+            ? 'حياك الله في عِزوة، أنا مستشارك الصوتي. قل اسم أي قطعة ومقاسها لأضيفها للسلة فوراً، أو اسألني عن المقاس المناسب.'
             : 'Welcome to EZWA. I am your voice AI stylist. How can I help you today?'
     );
 }
@@ -1497,12 +1715,12 @@ function calculateSmartSize() {
     const pref = document.getElementById('userFitPref').value;
 
     const order = ['S', 'M', 'L', 'XL'];
-    let idx = 2; // L افتراضياً
+    let idx = 2;
 
-    if (w < 62 && h < 172) idx = 0;       // S
-    else if (w < 75 && h < 178) idx = 1;  // M
-    else if (w < 90) idx = 2;             // L
-    else idx = 3;                         // XL
+    if (w < 62 && h < 172) idx = 0;
+    else if (w < 75 && h < 178) idx = 1;
+    else if (w < 90) idx = 2;
+    else idx = 3;
 
     let fitLabel = 'أوفرسايز';
     let fitDesc = 'بقصّة أوفرسايز مريحة (Oversized Fit)';
@@ -1577,28 +1795,20 @@ function addSuggestedOutfitToCart() {
     if (hoodie) {
         cart.push({
             cartKey: `${hoodie.id}__0__${activeModalSize}`,
-            id: hoodie.id,
-            nameAr: hoodie.nameAr,
-            nameEn: hoodie.nameEn,
-            colorAr: hoodie.variants[0].colorAr,
-            colorEn: hoodie.variants[0].colorEn,
-            size: activeModalSize,
-            price: hoodie.price,
-            qty: 1
+            id: hoodie.id, nameAr: hoodie.nameAr, nameEn: hoodie.nameEn,
+            colorAr: hoodie.variants[0].colorAr, colorEn: hoodie.variants[0].colorEn,
+            size: activeModalSize, price: hoodie.price, qty: 1
         });
+        decrementProductStock(hoodie.id, 1);
     }
     if (pants) {
         cart.push({
             cartKey: `${pants.id}__0__32`,
-            id: pants.id,
-            nameAr: pants.nameAr,
-            nameEn: pants.nameEn,
-            colorAr: pants.variants[0].colorAr,
-            colorEn: pants.variants[0].colorEn,
-            size: '32',
-            price: pants.price,
-            qty: 1
+            id: pants.id, nameAr: pants.nameAr, nameEn: pants.nameEn,
+            colorAr: pants.variants[0].colorAr, colorEn: pants.variants[0].colorEn,
+            size: '32', price: pants.price, qty: 1
         });
+        decrementProductStock(pants.id, 1);
     }
     updateCartUI();
     closeAiModal();
@@ -1606,16 +1816,38 @@ function addSuggestedOutfitToCart() {
 }
 
 /* =========================================================================
-   شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom)
-========================================================================= */
+   منظار المعاينة الثلاثي الأبعاد والعدسة المكبرة (360° & Fabric Loupe)
+   ========================================================================= */
 function openZoomLightbox(prodId, varIdx) {
     const prod = PRODUCTS.find(p => p.id === prodId);
     if (!prod) return;
     activeZoomProdId = prodId;
     activeZoomVarIdx = varIdx || 0;
-    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
+    isLoupeActive = false;
+    document.getElementById('loupeToggleBtn').classList.remove('active');
+    document.getElementById('rotate360Slider').value = 0;
+    document.getElementById('rotateDegVal').innerText = '0°';
+    document.getElementById('zoomMediaWrap').style.transform = 'rotateY(0deg) scale(1)';
     updateZoomLightboxContent();
     document.getElementById('zoomLightbox').classList.add('active');
+}
+
+function rotate360Product(deg) {
+    document.getElementById('rotateDegVal').innerText = deg + '°';
+    const scaleVal = isLoupeActive ? 1.65 : 1;
+    document.getElementById('zoomMediaWrap').style.transform = `rotateY(${deg}deg) scale(${scaleVal})`;
+}
+
+function toggleFabricLoupe() {
+    isLoupeActive = !isLoupeActive;
+    const btn = document.getElementById('loupeToggleBtn');
+    btn.classList.toggle('active', isLoupeActive);
+    const deg = document.getElementById('rotate360Slider').value;
+    const scaleVal = isLoupeActive ? 1.65 : 1;
+    document.getElementById('zoomMediaWrap').style.transform = `rotateY(${deg}deg) scale(${scaleVal})`;
+    document.getElementById('fabricHotspotTag').innerText = isLoupeActive
+        ? '🔬 وضع الفحص المجهري: نسيج قطن ثقيل + حياكة سدو مدمجة بشريحة NFC'
+        : '◈ قطن فاخر ثقيل + شريحة NFC مشفّرة في شريط السدو';
 }
 
 function updateZoomLightboxContent() {
@@ -1645,16 +1877,14 @@ function updateZoomLightboxContent() {
 function switchZoomColor(idx) {
     activeZoomVarIdx = idx;
     selectedCardVariantIdx[activeZoomProdId] = idx;
-    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
     updateZoomLightboxContent();
     renderProducts();
 }
 
-function toggleZoomScale() { document.getElementById('zoomStageArea').classList.toggle('zoomed-in'); }
 function closeZoomLightbox() {
     document.getElementById('zoomLightbox').classList.remove('active');
-    document.getElementById('zoomStageArea').classList.remove('zoomed-in');
 }
+
 function openOrderFromZoom() {
     const pid = activeZoomProdId;
     const vidx = activeZoomVarIdx;
@@ -1665,7 +1895,7 @@ function openOrderFromZoom() {
 
 /* =========================================================================
    نافذة تفاصيل القطعة واختيار المقاس الفردي (S, M, L, XL)
-========================================================================= */
+   ========================================================================= */
 function openProductModal(id) {
     const prod = PRODUCTS.find(p => p.id === id);
     if (!prod) return;
@@ -1696,6 +1926,8 @@ function updateProductModalContent() {
     const activeVar = variants[activeModalVarIdx] || variants[0] || { colorAr: '', colorEn: '' };
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
     const availSizes = prod.sizes || ["S", "M", "L", "XL"];
+    const stockLeft = prod.stockLeft !== undefined ? prod.stockLeft : 8;
+    const totalDrop = prod.totalDrop || 50;
 
     document.getElementById('pmTitle').innerText = currentLang === 'ar' ? prod.nameAr : (prod.nameEn || prod.nameAr);
     document.getElementById('pmVisual').innerHTML = renderVariantVisual(prod, activeModalVarIdx);
@@ -1722,7 +1954,10 @@ function updateProductModalContent() {
     document.getElementById('pmSpecs').innerHTML = currentLang === 'ar'
         ? `<div>${desc}</div>
            <div style="margin-top:8px;color:#00f3ff;font-weight:800;">◈ اللون: ${colorName} &nbsp;|&nbsp; المقاس: ${activeModalSize}</div>
-           <div style="margin-top:4px;font-size:13.5px;font-weight:900;color:var(--gold-light);">السعر: ${prod.price} ${curr}</div>`
+           <div style="margin-top:4px;display:flex;justify-content:space-between;align-items:center;">
+               <span style="font-size:13.5px;font-weight:900;color:var(--gold-light);">السعر: ${prod.price} ${curr}</span>
+               <span style="font-size:10.5px;color:#a5f3fc;">متبقي ${stockLeft} من ${totalDrop} قطعة</span>
+           </div>`
         : `<div>${desc}</div>
            <div style="margin-top:8px;color:#00f3ff;font-weight:800;">◈ Color: ${colorName} &nbsp;|&nbsp; Size: ${activeModalSize}</div>
            <div style="margin-top:4px;font-size:13.5px;font-weight:900;color:var(--gold-light);">Price: ${prod.price} ${curr}</div>`;
@@ -1755,14 +1990,15 @@ function addCurrentProductToCart() {
             qty: activeModalQty
         });
     }
+    decrementProductStock(activeModalProduct.id, activeModalQty);
     updateCartUI();
     closeModal('productModal');
     showToast(currentLang === 'ar' ? 'تمت إضافة القطعة إلى السلة ◈' : 'Item added to cart ◈');
 }
 
 /* =========================================================================
-   السلة وإرسال طلب الشراء عبر واتساب
-========================================================================= */
+   السلة وإرسال طلب الشراء عبر واتساب + تحديث نقاط الولاء
+   ========================================================================= */
 function updateCartUI() {
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
     const totalAmount = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
@@ -1813,12 +2049,19 @@ function sendOrderViaWhatsApp() {
     }
     const clientName = document.getElementById('merchantNameInput').value.trim();
     const pkg = document.getElementById('packagingOption').value;
+    const refCode = document.getElementById('referralInputCode').value.trim();
     const totalItems = cart.reduce((s, i) => s + i.qty, 0);
     const totalPrice = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+    // تحديث رصيد القطع في بطاقة العضوية الرقمية تلقائياً
+    vipData.pieces += totalItems;
+    if (clientName) vipData.name = clientName;
+    try { localStorage.setItem('ezwa_vip_member_v1', JSON.stringify(vipData)); } catch(e) {}
 
     let msg = `*طلب جديد — متجر عِزوة (EZWA)* ◈\n`;
     if (clientName) msg += `*العميل:* ${clientName}\n`;
     msg += `*التغليف:* ${pkg}\n`;
+    if (refCode) msg += `*كود الإحالة:* ${refCode}\n`;
     msg += `--------------------------\n`;
     cart.forEach((item, idx) => {
         msg += `${idx + 1}. *${item.nameAr}*\n`;
@@ -1835,7 +2078,7 @@ function sendOrderViaWhatsApp() {
 
 /* =========================================================================
    لوحة إدارة المنتجات السرية من الجوال (PIN: 7884)
-========================================================================= */
+   ========================================================================= */
 function openPinModal() {
     document.getElementById('adminPinInput').value = '';
     document.getElementById('pinErr').style.display = 'none';
@@ -1860,7 +2103,7 @@ function renderAdminProductsList() {
         <div class="admin-prod-item">
             <div>
                 <div style="font-weight:800;color:#fff;">${p.nameAr}</div>
-                <div style="font-size:10px;color:var(--gold-light);">${p.price} ر.س — (${(p.variants||[]).length} ألوان)</div>
+                <div style="font-size:10px;color:var(--gold-light);">${p.price} ر.س — متبقي ${p.stockLeft || 8}/${p.totalDrop || 50}</div>
             </div>
             <button type="button" class="del-item-btn" onclick="deleteProduct(${idx})">حذف</button>
         </div>
@@ -1877,6 +2120,8 @@ function addNewProduct(e) {
         nameAr: document.getElementById('npName').value.trim(),
         nameEn: document.getElementById('npName').value.trim(),
         price: Number(document.getElementById('npPrice').value),
+        stockLeft: Number(document.getElementById('npStock').value) || 12,
+        totalDrop: Number(document.getElementById('npTotalDrop').value) || 50,
         sizes: sizesArr.length ? sizesArr : ["S", "M", "L", "XL"],
         descAr: document.getElementById('npDesc').value.trim(),
         descEn: document.getElementById('npDesc').value.trim(),
@@ -1897,6 +2142,8 @@ function addNewProduct(e) {
     renderAdminProductsList();
     e.target.reset();
     document.getElementById('npSizes').value = 'S, M, L, XL';
+    document.getElementById('npStock').value = '12';
+    document.getElementById('npTotalDrop').value = '50';
     showToast('تمت إضافة القطعة بنجاح ◈');
 }
 
@@ -1909,7 +2156,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v3', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v4', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -1929,13 +2176,14 @@ function toggleLang() {
     document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', currentLang);
     document.getElementById('langBtn').innerText = currentLang === 'ar' ? 'EN' : 'عربي';
+    document.getElementById('vipPassBtn').innerText = currentLang === 'ar' ? '👑 بطاقتي' : '👑 My Pass';
     document.getElementById('uiStoreTitle').innerText = currentLang === 'ar' ? 'عِـزوة — EZWA' : 'EZWA — OFFICIAL';
     document.getElementById('uiStoreSub').innerText = currentLang === 'ar'
         ? 'أزياء رجالية فاخرة مدمجة بتقنية NFC وتوثيق الملكية السحابي'
         : 'Luxury Saudi Streetwear Integrated with Cloud NFC Verification';
     document.getElementById('uiRetailBadge').innerText = currentLang === 'ar'
-        ? '◈ إصدارات حصرية • شحن سريع لجميع المناطق ◈'
-        : '◈ EXCLUSIVE RELEASES • FAST NATIONWIDE SHIPPING ◈';
+        ? '◈ إصدارات مرقّمة محدودة • شحن سريع لجميع المناطق ◈'
+        : '◈ NUMBERED LIMITED DROPS • FAST NATIONWIDE SHIPPING ◈';
     document.getElementById('catAll').innerText = currentLang === 'ar' ? 'الكل' : 'ALL';
     document.getElementById('catTshirts').innerText = currentLang === 'ar' ? 'تيشيرت بوكسي' : 'BOXY TEES';
     document.getElementById('catHoodies').innerText = currentLang === 'ar' ? 'هوديز' : 'HOODIES';
