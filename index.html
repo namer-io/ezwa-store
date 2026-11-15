@@ -402,7 +402,7 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* مؤشر الموجات الصوتية الهولوغرامية أثناء حديث المساعد */
+/* مؤشر الموجات الصوتية الهولوغرامية */
 .voice-wave-bar-wrap{
     display:flex;align-items:center;justify-content:center;gap:4px;
     height:24px;margin-bottom:8px;
@@ -580,8 +580,8 @@ body{
     border:1px solid rgba(0,243,255,0.3);
     border-radius:18px;
     padding:12px;
-    min-height:130px;
-    max-height:220px;
+    min-height:125px;
+    max-height:205px;
     overflow-y:auto;
     display:flex;flex-direction:column;gap:8px;
     margin-bottom:10px;
@@ -615,17 +615,20 @@ body{
 }
 .ai-chip-btn:hover{border-color:var(--cyan-glow);color:#fff;}
 
+/* حاسبة المقاسات الذكية مع تسميات واضحة لكل مربع */
 .size-calc-box{
-    background:rgba(8,20,42,0.92);
-    border:1px solid rgba(223,177,91,0.5);
+    background:rgba(8,20,42,0.94);
+    border:1px solid rgba(223,177,91,0.55);
     border-radius:14px;padding:10px;margin-bottom:10px;
     display:none;
 }
 .size-calc-box.active{display:block;}
-.size-calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;}
+.size-calc-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:6px;margin-bottom:8px;}
+.calc-field-unit{display:flex;flex-direction:column;gap:3px;}
+.calc-field-lbl{font-size:9.5px;font-weight:700;color:#93c5fd;text-align:center;}
 .size-calc-grid input,.size-calc-grid select{
     width:100%;background:#040b18;border:1px solid rgba(0,243,255,0.4);
-    border-radius:9px;padding:7px;color:#fff;font-size:11px;text-align:center;
+    border-radius:9px;padding:7px 4px;color:#fff;font-size:11px;text-align:center;
 }
 
 .cart-item-row{display:flex;align-items:center;justify-content:space-between;background:rgba(10,20,40,0.85);border:1px solid rgba(0,243,255,0.25);border-radius:14px;padding:9px 11px;margin-bottom:8px;}
@@ -744,7 +747,7 @@ body{
     <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
 </div>
 
-<!-- كرة المساعد الصوتي الناطق (EZWA AI Voice Stylist) -->
+<!-- كرة المساعد الصوتي الناطق -->
 <div class="floating-ai-orb" onclick="openAiAssistantModal()" title="مستشار عِزوة الصوتي">
     <div class="ai-orb-sphere">
         <div class="ai-online-ring"></div>
@@ -760,7 +763,7 @@ body{
     <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div>
 </div>
 
-<!-- نافذة المساعد الهولوغرامي الناطق (EZWA AI Voice Stylist) -->
+<!-- نافذة المساعد الهولوغرامي الناطق -->
 <div class="holo-modal-overlay" id="aiModal" onclick="closeAiModal()">
     <div class="holo-projected-box ai-theme" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -768,7 +771,6 @@ body{
             <button class="close-x" onclick="closeAiModal()">×</button>
         </div>
 
-        <!-- موجات الصوت الهولوغرامية -->
         <div class="voice-wave-bar-wrap" id="voiceWaveBars">
             <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
             <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
@@ -781,15 +783,26 @@ body{
             </div>
         </div>
 
+        <!-- حاسبة المقاس الذكية بعناوين واضحة فوق كل مربع + خيار بوكسي فيت -->
         <div class="size-calc-box" id="sizeCalcBox">
-            <div style="font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;">📏 أدخل بياناتك لتحديد مقاسك الدقيق:</div>
+            <div style="font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:7px;text-align:center;">📏 أدخل طولك ووزنك واختر نوع القَصّة:</div>
             <div class="size-calc-grid">
-                <input type="number" id="userHeightInput" placeholder="الطول (سم)" value="175">
-                <input type="number" id="userWeightInput" placeholder="الوزن (كجم)" value="74">
-                <select id="userFitPref">
-                    <option value="oversized">قصة أوفرسايز</option>
-                    <option value="regular">مقاس مضبوط</option>
-                </select>
+                <div class="calc-field-unit">
+                    <span class="calc-field-lbl">الطول (سم)</span>
+                    <input type="number" id="userHeightInput" value="175" inputmode="numeric">
+                </div>
+                <div class="calc-field-unit">
+                    <span class="calc-field-lbl">الوزن (كجم)</span>
+                    <input type="number" id="userWeightInput" value="74" inputmode="numeric">
+                </div>
+                <div class="calc-field-unit">
+                    <span class="calc-field-lbl">نوع القَصّة</span>
+                    <select id="userFitPref">
+                        <option value="oversized">أوفرسايز</option>
+                        <option value="boxy">بوكسي فيت</option>
+                        <option value="regular">مقاس مضبوط</option>
+                    </select>
+                </div>
             </div>
             <button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11.5px;" onclick="calculateSmartSize()">احسب مقاسي الآن ◈</button>
         </div>
@@ -801,7 +814,6 @@ body{
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ تغليف البرواز والغسيل</button>
         </div>
 
-        <!-- صف التحدث بالمايكروفون وكتم الصوت -->
         <div class="voice-controls-row">
             <button type="button" class="mic-speak-btn" id="micSpeakBtn" onclick="startVoiceRecognition()">
                 <span>🎤</span>
@@ -1072,7 +1084,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v2');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v3');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1091,7 +1103,7 @@ let activeZoomVarIdx = 0;
 let isVoiceMuted = false;
 
 /* =========================================================================
-   محرك الصوت الناطق للمساعد الذكي (Web Speech Synthesis & Recognition)
+   محرك الصوت الناطق للمساعد الذكي
 ========================================================================= */
 function speakAiVoice(plainText) {
     if (isVoiceMuted || !('speechSynthesis' in window)) return;
@@ -1158,7 +1170,7 @@ function handleSpokenQuery(text) {
     const q = text.toLowerCase();
     if (q.includes('مقاس') || q.includes('طول') || q.includes('وزن') || q.includes('size')) {
         document.getElementById('sizeCalcBox').classList.add('active');
-        const reply = 'أهلاً بك، أدخل طولك ووزنك في الحاسبة التي ظهرت أمامك وسأحدد مقاسك الدقيق فوراً.';
+        const reply = 'أهلاً بك، أدخل طولك ووزنك واختر نوع القصة في الحاسبة التي ظهرت أمامك وسأحدد مقاسك الدقيق فوراً.';
         appendAiChat(text, reply);
         speakAiVoice(reply);
     } else if (q.includes('طقم') || q.includes('نسق') || q.includes('لبس') || q.includes('outfit')) {
@@ -1284,7 +1296,7 @@ function selectCategory(cat, el) {
 }
 
 /* =========================================================================
-   تفاعلات المساعد الهولوغرامي الناطق
+   تفاعلات المساعد الهولوغرامي الناطق + حاسبة الأوفرسايز والبوكسي فيت
 ========================================================================= */
 function openAiAssistantModal() {
     document.getElementById('aiModal').classList.add('active');
@@ -1304,7 +1316,7 @@ function toggleSizeCalc() {
     const box = document.getElementById('sizeCalcBox');
     box.classList.toggle('active');
     if (box.classList.contains('active')) {
-        speakAiVoice('أدخل طولك ووزنك وسأحسب مقاسك المثالي فوراً.');
+        speakAiVoice('أدخل طولك ووزنك واختر نوع القصة، أوفرسايز أو بوكسي فيت، وسأحسب مقاسك المثالي فوراً.');
     }
 }
 
@@ -1317,37 +1329,52 @@ function appendAiChat(userTxt, botHtml) {
 
 function calculateSmartSize() {
     const h = Number(document.getElementById('userHeightInput').value) || 175;
-    const w = Number(document.getElementById('userWeightInput').value) || 75;
+    const w = Number(document.getElementById('userWeightInput').value) || 74;
     const pref = document.getElementById('userFitPref').value;
 
-    let baseSize = 'L';
-    if (w < 62 && h < 172) baseSize = 'S';
-    else if (w < 75 && h < 178) baseSize = 'M';
-    else if (w < 90) baseSize = 'L';
-    else baseSize = 'XL';
+    const order = ['S', 'M', 'L', 'XL'];
+    let idx = 2; // L افتراضياً
 
-    if (pref === 'regular' && baseSize !== 'S') {
-        const order = ['S', 'M', 'L', 'XL'];
-        baseSize = order[Math.max(0, order.indexOf(baseSize) - 1)];
+    if (w < 62 && h < 172) idx = 0;       // S
+    else if (w < 75 && h < 178) idx = 1;  // M
+    else if (w < 90) idx = 2;             // L
+    else idx = 3;                         // XL
+
+    let fitLabel = 'أوفرسايز';
+    let fitDesc = 'بقصّة أوفرسايز مريحة (Oversized Fit)';
+
+    if (pref === 'boxy') {
+        fitLabel = 'بوكسي فيت';
+        fitDesc = 'بقصّة بوكسي فيت عريضة ومربعة بطول مثالي عند الخصر (Boxy Fit)';
+        // في البوكسي فيت: إذا كان العميل طويل القامة نضمن ألا يكون التيشيرت قصيراً عليه
+        if (h >= 180 && idx < 2) idx = 2;
+        if (h >= 187 && idx < 3) idx = 3;
+    } else if (pref === 'regular') {
+        fitLabel = 'مقاس مضبوط';
+        fitDesc = 'بقصّة مضبوطة وأنيقة (Regular Fit)';
+        idx = Math.max(0, idx - 1);
     }
 
-    const fitText = pref === 'oversized' ? 'بقصّة أوفرسايز مريحة' : 'بقصّة مضبوطة وأنيقة';
-    const spokenSize = baseSize === 'S' ? 'سمول' : baseSize === 'M' ? 'ميديم' : baseSize === 'L' ? 'لارج' : 'إكس لارج';
+    const finalSize = order[idx];
+    const spokenSize = finalSize === 'S' ? 'سمول' : finalSize === 'M' ? 'ميديم' : finalSize === 'L' ? 'لارج' : 'إكس لارج';
 
     appendAiChat(
-        `طولي ${h} سم ووزني ${w} كجم`,
-        `بناءً على قياساتك، مقاسك المثالي في تصاميم <strong>عِـزوة</strong> هو <strong style="color:#00f3ff;font-size:14px;">${baseSize}</strong> (${fitText}).<br>
-         <button type="button" class="cyan-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="applyRecommendedSize('${baseSize}')">اعتماد مقاس ${baseSize} واختيار القطعة ◈</button>`
+        `الطول: ${h} سم | الوزن: ${w} كجم | القَصّة: ${fitLabel}`,
+        `بناءً على قياساتك ونوع القَصّة، مقاسك المثالي في <strong>عِـزوة</strong> هو <strong style="color:#00f3ff;font-size:14px;">${finalSize}</strong> ${fitDesc}.<br>
+         <button type="button" class="cyan-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="applyRecommendedSize('${finalSize}', '${pref}')">اعتماد مقاس ${finalSize} واختيار القطعة ◈</button>`
     );
-    speakAiVoice(`بناءً على طولك ووزنك، مقاسك المثالي في عِزوة هو ${spokenSize} ${fitText}.`);
+    speakAiVoice(`بناءً على طولك ووزنك لقصة ${fitLabel}، مقاسك المثالي في عِزوة هو ${spokenSize}.`);
     document.getElementById('sizeCalcBox').classList.remove('active');
 }
 
-function applyRecommendedSize(size) {
+function applyRecommendedSize(size, pref) {
     activeModalSize = size;
     closeAiModal();
-    if (PRODUCTS.length > 0) {
-        openProductModal(PRODUCTS[0].id);
+    const targetProd = pref === 'boxy'
+        ? (PRODUCTS.find(p => p.cat === 'tshirts') || PRODUCTS[0])
+        : (PRODUCTS.find(p => p.cat === 'hoodies') || PRODUCTS[0]);
+    if (targetProd) {
+        openProductModal(targetProd.id);
         selectModalSize(size);
     }
 }
@@ -1719,7 +1746,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v2', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v3', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
