@@ -38,7 +38,7 @@ body{
     align-items:center;
     overflow-x:hidden;
     position:relative;
-    padding:12px 0 88px 0;
+    padding:12px 0 92px 0;
 }
 .font-tech{font-family:'Orbitron',sans-serif!important;}
 .cyber-backdrop{
@@ -201,13 +201,13 @@ body{
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
 /* =========================================================
-   مسرح المنتجات الهولوغرامية الطافية بتكبير ذكي للصور (scale 1.28)
+   مسرح المنتجات الهولوغرامية (رفع المعلومات فوق الصور بوضوح)
 ========================================================= */
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:26px 4px;
-    padding:10px 0;
+    gap:34px 4px;
+    padding:18px 0 8px 0;
     width:100%;
 }
 .product-holo-stage{
@@ -216,32 +216,40 @@ body{
     align-items:center;
     text-align:center;
     position:relative;
-    padding-top:6px;
+    padding-top:26px;
     user-select:none;
 }
 
-/* شارة NFC وزر التكبير */
+/* شريط المعلومات العلوي المرتفع فوق صورة المنتج */
+.product-top-hud{
+    position:absolute;
+    top:0;
+    left:8px;
+    right:8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:8;
+    pointer-events:none;
+}
 .nfc-micro-chip{
-    position:absolute;top:0;right:6px;
-    background:rgba(4,12,26,0.88);
+    background:rgba(4,12,26,0.9);
     border:1px solid rgba(0,243,255,0.55);
     color:var(--cyan-glow);
     font-family:'Orbitron',sans-serif!important;
     font-size:7px;font-weight:800;
-    padding:2px 6px;border-radius:10px;
+    padding:2px 7px;border-radius:10px;
     letter-spacing:0.6px;
-    z-index:6;
-    pointer-events:none;
 }
 .zoom-micro-btn{
-    position:absolute;top:0;left:6px;
-    background:rgba(4,12,26,0.88);
-    border:1px solid rgba(223,177,91,0.6);
+    background:rgba(4,12,26,0.9);
+    border:1px solid rgba(223,177,91,0.65);
     color:var(--gold-light);
-    width:24px;height:24px;border-radius:50%;
+    width:23px;height:23px;border-radius:50%;
     font-size:11px;
     display:flex;align-items:center;justify-content:center;
-    cursor:pointer;z-index:6;
+    cursor:pointer;
+    pointer-events:auto;
     box-shadow:0 0 10px rgba(223,177,91,0.3);
 }
 
@@ -263,7 +271,7 @@ body{
 .product-floater-visual img{
     width:100%;height:100%;
     object-fit:contain;
-    transform:scale(1.28);
+    transform:scale(1.26);
     transform-origin:center bottom;
     pointer-events:none;
 }
@@ -359,8 +367,8 @@ body{
 ========================================================= */
 .floating-cart-orb{
     position:fixed;
-    bottom:12px;
-    left:10px;
+    bottom:10px;
+    left:8px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -369,11 +377,11 @@ body{
     user-select:none;
     transition:transform 0.2s ease;
 }
-html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
+html[dir="ltr"] .floating-cart-orb{left:auto;right:8px;}
 .floating-cart-orb:active{transform:scale(0.92);}
 
 .cart-orb-sphere{
-    width:46px;height:46px;
+    width:42px;height:42px;
     border-radius:50%;
     background:radial-gradient(circle at 35% 30%,rgba(223,177,91,0.34) 0%,rgba(6,14,28,0.95) 82%);
     border:1.6px solid var(--gold-light);
@@ -387,8 +395,8 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
     position:absolute;top:-3px;right:-3px;
     background:var(--cyan-glow);color:#020611;
     font-family:'Orbitron',sans-serif!important;
-    font-size:9.5px;font-weight:900;
-    min-width:18px;height:18px;border-radius:50%;
+    font-size:9px;font-weight:900;
+    min-width:17px;height:17px;border-radius:50%;
     border:1.5px solid #020611;
     box-shadow:0 0 10px rgba(0,243,255,0.8);
     display:flex;align-items:center;justify-content:center;
@@ -398,9 +406,9 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
     background:rgba(4,10,22,0.92);
     border:1px solid rgba(223,177,91,0.55);
     color:var(--gold-light);
-    padding:1px 7px;
-    border-radius:9px;
-    font-size:8.5px;
+    padding:1px 6px;
+    border-radius:8px;
+    font-size:8px;
     font-weight:800;
     white-space:nowrap;
     box-shadow:0 4px 10px rgba(0,0,0,0.85);
@@ -634,7 +642,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
 <div class="floating-cart-orb" onclick="openCartModal()" title="سلة طلبات الجملة">
     <div class="cart-orb-sphere">
         <span class="cart-badge-count" id="cartCountBadge">0</span>
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6" stroke="#00f3ff"/>
             <path d="M16 10a4 4 0 0 1-8 0" stroke="#00f3ff"/>
@@ -777,7 +785,7 @@ html[dir="ltr"] .floating-cart-orb{left:auto;right:10px;}
             </div>
             <div class="admin-field">
                 <label>اسم ملف الصورة المفرّغة (PNG) أو رابطها (اختياري):</label>
-                <input type="text" id="npImg" placeholder="مثال: hoodie-black.png" style="direction:ltr;">
+                <input type="text" id="npImg" placeholder="مثال: hoodie-bright-black.png" style="direction:ltr;">
             </div>
             <div class="admin-field">
                 <label>وصف الخامة وميزة الـ NFC:</label>
@@ -898,6 +906,51 @@ const DEFAULT_PRODUCTS = [
         ]
     },
     {
+        id: "ezwa-hoodie-bright",
+        cat: "hoodies",
+        nameAr: "هودي BRIGHT — أوفرسايز",
+        nameEn: "EZWA BRIGHT Oversized Hoodie",
+        price: 690,
+        piecesPerBundle: 6,
+        sizes: "1S - 2M - 2L - 1XL",
+        descAr: "هودي ستريت وير فاخر بتطريز BRIGHT ثلاثي الأبعاد على الصدر وقصة أوفرسايز مريحة، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
+        descEn: "Luxury oversized hoodie with 3D outlined BRIGHT chest applique and embedded encrypted cloud NFC verification.",
+        variants: [
+            {
+                colorAr: "أسود ملكي",
+                colorEn: "Jet Black",
+                swatch: "#151518",
+                bodyHex: "#151518",
+                sleeveHex: "#151518",
+                image: "hoodie-bright-black.png"
+            },
+            {
+                colorAr: "أزرق ثلجي",
+                colorEn: "Ice Sky Blue",
+                swatch: "#9ec8e2",
+                bodyHex: "#9ec8e2",
+                sleeveHex: "#9ec8e2",
+                image: "hoodie-bright-iceblue.png"
+            },
+            {
+                colorAr: "كحلي داكن",
+                colorEn: "Deep Navy",
+                swatch: "#1e2942",
+                bodyHex: "#1e2942",
+                sleeveHex: "#1e2942",
+                image: "hoodie-bright-navy.png"
+            },
+            {
+                colorAr: "بيج رملي",
+                colorEn: "Sand Beige",
+                swatch: "#d6cbbd",
+                bodyHex: "#d6cbbd",
+                sleeveHex: "#d6cbbd",
+                image: "hoodie-bright-beige.png"
+            }
+        ]
+    },
+    {
         id: "ezwa-1",
         cat: "tshirts",
         nameAr: "تيشيرت اكتشف الرياض — المصمك",
@@ -944,7 +997,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_store_products_v7');
+    const savedProds = localStorage.getItem('ezwa_store_products_v8');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1004,7 +1057,7 @@ function renderVariantVisual(prod, varIdx) {
 }
 
 /* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام (الضغط على الصورة يكبّرها، والضغط على الاسم يفتح الطلب)
+   عرض المنتجات في مسرح الهولوغرام (معلومات مرفوعة فوق الصورة بوضوح)
 ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -1034,8 +1087,10 @@ function renderProducts() {
 
         return `
         <div class="product-holo-stage">
-            <span class="nfc-micro-chip">NFC ◈</span>
-            <button type="button" class="zoom-micro-btn" onclick="openZoomLightbox('${p.id}', ${vIdx})" title="تكبير الصورة">🔍</button>
+            <div class="product-top-hud">
+                <button type="button" class="zoom-micro-btn" onclick="openZoomLightbox('${p.id}', ${vIdx})" title="تكبير الصورة">🔍</button>
+                <span class="nfc-micro-chip">NFC ◈</span>
+            </div>
             <div class="product-floater-visual" id="vis-${p.id}" onclick="openZoomLightbox('${p.id}', ${vIdx})">
                 ${renderVariantVisual(p, vIdx)}
             </div>
@@ -1375,7 +1430,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_store_products_v7', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_store_products_v8', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
