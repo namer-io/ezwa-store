@@ -60,11 +60,9 @@ body{
 }
 #quantum-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
 
-/* تموّجات الماء الضوئية */
 .water-ripple-ring{position:fixed;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(0.1);border:1.5px solid rgba(223,177,91,0.85);box-shadow:0 0 12px rgba(0,243,255,0.4);z-index:9999;animation:waterRippleExpand 1s cubic-bezier(0.16,1,0.3,1) forwards;}
 @keyframes waterRippleExpand{0%{width:10px;height:10px;opacity:0.95;transform:translate(-50%,-50%) scale(0.2);}100%{width:130px;height:130px;opacity:0;transform:translate(-50%,-50%) scale(1.2);}}
 
-/* الحاوية الرئيسية للمتجر */
 .store-shell{
     width:var(--store-width);
     display:flex;
@@ -74,7 +72,6 @@ body{
     z-index:10;
 }
 
-/* الشريط العلوي */
 .top-telemetry-bar{
     display:flex;align-items:center;justify-content:space-between;
     padding:7px 14px;
@@ -91,7 +88,6 @@ body{
 .pill-mini-btn{background:rgba(8,16,32,0.9);border:1px solid rgba(0,243,255,0.4);color:var(--cyan-glow);padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all 0.2s;}
 .pill-mini-btn:hover{border-color:var(--gold-primary);color:#fff;}
 
-/* رأس العلامة الهولوغرامي لعِزوة بشعار الحصان */
 .brand-holo-hero{
     display:flex;
     flex-direction:column;
@@ -154,9 +150,6 @@ body{
     font-size:10px;font-weight:800;
 }
 
-/* =========================================================
-   صف الأقسام الهولوغرامية الطافية بأيقونات ليزرية ذهبية وسيانية
-========================================================= */
 .holo-categories-row{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -200,9 +193,6 @@ body{
 .cat-tag{margin-top:4px;font-size:9.2px;font-weight:700;color:#94a3b8;white-space:nowrap;transition:color 0.2s;}
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(223,177,91,0.5);}
 
-/* =========================================================
-   مسرح المنتجات الهولوغرامية (معلومات مرفوعة فوق الصورة)
-========================================================= */
 .holo-products-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -292,7 +282,6 @@ body{
 }
 .product-holo-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(0,243,255,0.45);animation:emitterPulseRing 2.2s infinite;}
 
-/* كرات الألوان المتوهجة */
 .holo-swatch-row{
     display:flex;align-items:center;justify-content:center;
     gap:7px;margin-top:8px;z-index:5;
@@ -309,7 +298,6 @@ body{
     box-shadow:0 0 10px rgba(0,243,255,0.9),0 0 16px rgba(223,177,91,0.6);
 }
 
-/* بيانات المنتج الطافية أسفل القاعدة (تفتح اختيار المقاس والشراء) */
 .product-holo-meta{
     margin-top:6px;
     display:flex;flex-direction:column;align-items:center;gap:2px;
@@ -347,9 +335,7 @@ body{
     font-size:10px;font-weight:700;cursor:pointer;
 }
 
-/* =========================================================
-   1. كرة السلة الهولوغرامية في الزاوية اليسرى
-========================================================= */
+/* كرة السلة الهولوغرامية في الزاوية اليسرى */
 .floating-cart-orb{
     position:fixed;bottom:10px;left:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -384,9 +370,7 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* =========================================================
-   2. كرة المساعد الهولوغرامي الذكي (EZWA AI Stylist) في الزاوية اليمنى
-========================================================= */
+/* كرة المساعد الصوتي الناطق (EZWA AI Voice Stylist) في الزاوية اليمنى */
 .floating-ai-orb{
     position:fixed;bottom:10px;right:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -418,9 +402,54 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* =========================================================
-   أزرار اختيار المقاس الفردي (S, M, L, XL)
-========================================================= */
+/* مؤشر الموجات الصوتية الهولوغرامية أثناء حديث المساعد */
+.voice-wave-bar-wrap{
+    display:flex;align-items:center;justify-content:center;gap:4px;
+    height:24px;margin-bottom:8px;
+}
+.v-bar{
+    width:3.5px;height:6px;border-radius:4px;
+    background:var(--cyan-glow);
+    box-shadow:0 0 8px var(--cyan-glow);
+    transition:height 0.15s ease;
+}
+.voice-wave-bar-wrap.speaking .v-bar{
+    animation:voiceEqualizer 0.55s ease-in-out infinite alternate;
+}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(2){animation-delay:0.1s;background:var(--gold-light);}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(3){animation-delay:0.2s;}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(4){animation-delay:0.3s;background:var(--gold-light);}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(5){animation-delay:0.15s;}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(6){animation-delay:0.25s;background:var(--gold-light);}
+.voice-wave-bar-wrap.speaking .v-bar:nth-child(7){animation-delay:0.05s;}
+@keyframes voiceEqualizer{0%{height:5px;}100%{height:22px;}}
+
+.voice-controls-row{
+    display:flex;align-items:center;gap:6px;margin-top:6px;
+}
+.mic-speak-btn{
+    flex:1;
+    background:linear-gradient(135deg,rgba(0,243,255,0.22),rgba(2,132,199,0.35));
+    border:1px solid var(--cyan-glow);
+    color:#fff;border-radius:12px;padding:9px 12px;
+    font-size:11.5px;font-weight:800;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    transition:all 0.2s;
+}
+.mic-speak-btn.listening{
+    background:rgba(239,68,68,0.28);
+    border-color:#f87171;
+    color:#fecaca;
+    box-shadow:0 0 16px rgba(239,68,68,0.5);
+}
+.mute-toggle-btn{
+    background:rgba(8,16,32,0.9);
+    border:1px solid rgba(223,177,91,0.55);
+    color:var(--gold-light);
+    width:38px;height:36px;border-radius:12px;
+    font-size:15px;cursor:pointer;
+}
+
 .size-selector-row{
     display:flex;align-items:center;justify-content:center;
     gap:8px;margin-bottom:12px;
@@ -442,9 +471,6 @@ body{
     transform:scale(1.06);
 }
 
-/* =========================================================
-   شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom)
-========================================================= */
 .zoom-lightbox-overlay{
     position:fixed;inset:0;
     background:rgba(1,4,12,0.94);
@@ -491,9 +517,6 @@ body{
 .zoom-bottom-controls{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:10px;z-index:1520;}
 .zoom-hint-text{font-size:10.5px;color:#93c5fd;}
 
-/* =========================================================
-   نوافذ الإسقاط الهولوغرامية (المنتج + المساعد الذكي + السلة + الإدارة)
-========================================================= */
 .holo-modal-overlay{
     position:fixed;inset:0;
     background:rgba(2,6,17,0.88);
@@ -511,7 +534,7 @@ body{
     border:1.5px solid rgba(223,177,91,0.72);
     box-shadow:0 0 38px rgba(0,243,255,0.25),inset 0 0 20px rgba(223,177,91,0.14);
     border-radius:26px;padding:18px;position:relative;
-    max-height:85vh;overflow-y:auto;
+    max-height:86vh;overflow-y:auto;
 }
 .holo-projected-box.ai-theme{
     border-color:rgba(0,243,255,0.78);
@@ -520,7 +543,7 @@ body{
 .holo-stage-beam{width:74%;height:52px;margin-top:-4px;background:linear-gradient(to top,rgba(223,177,91,0.36) 0%,rgba(0,243,255,0.12) 55%,transparent 100%);clip-path:polygon(6% 0%,94% 0%,68% 100%,32% 100%);pointer-events:none;}
 .holo-stage-pad{width:124px;height:13px;border-radius:50%;background:radial-gradient(ellipse at center,#dfb15b 0%,#140e04 75%);border:1.5px solid var(--cyan-glow);box-shadow:0 0 22px rgba(223,177,91,0.85);}
 
-.modal-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(223,177,91,0.25);padding-bottom:10px;margin-bottom:12px;}
+.modal-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(223,177,91,0.25);padding-bottom:10px;margin-bottom:10px;}
 .modal-top h3{font-size:15px;font-weight:800;color:var(--gold-light);}
 .close-x{background:rgba(255,255,255,0.08);border:none;color:#fff;width:28px;height:28px;border-radius:9px;font-size:18px;cursor:pointer;}
 
@@ -552,14 +575,13 @@ body{
 .primary-holo-btn{width:100%;background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));color:#020611;border:none;border-radius:14px;padding:12px;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
 .cyan-holo-btn{width:100%;background:linear-gradient(135deg,var(--cyan-glow),#0284c7);color:#020611;border:none;border-radius:14px;padding:11px;font-size:13px;font-weight:900;cursor:pointer;margin-top:8px;}
 
-/* عناصر المساعد الذكي (EZWA AI Stylist) */
 .ai-chat-feed{
     background:rgba(5,12,26,0.85);
     border:1px solid rgba(0,243,255,0.3);
     border-radius:18px;
     padding:12px;
-    min-height:140px;
-    max-height:240px;
+    min-height:130px;
+    max-height:220px;
     overflow-y:auto;
     display:flex;flex-direction:column;gap:8px;
     margin-bottom:10px;
@@ -580,7 +602,7 @@ body{
     font-size:11px;color:var(--gold-light);font-weight:700;
 }
 .ai-quick-chips{
-    display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;
+    display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;
 }
 .ai-chip-btn{
     background:rgba(8,18,38,0.9);
@@ -606,14 +628,12 @@ body{
     border-radius:9px;padding:7px;color:#fff;font-size:11px;text-align:center;
 }
 
-/* عناصر السلة */
 .cart-item-row{display:flex;align-items:center;justify-content:space-between;background:rgba(10,20,40,0.85);border:1px solid rgba(0,243,255,0.25);border-radius:14px;padding:9px 11px;margin-bottom:8px;}
 .cart-item-info{display:flex;flex-direction:column;gap:2px;}
 .cart-item-name{font-size:12px;font-weight:800;color:#fff;}
 .cart-item-sub{font-size:10px;color:var(--gold-light);}
 .del-item-btn{background:rgba(248,113,113,0.18);border:1px solid #f87171;color:#fca5a5;border-radius:8px;padding:4px 8px;font-size:10px;cursor:pointer;}
 
-/* نماذج الإدارة */
 .admin-field{margin-bottom:10px;text-align:start;}
 .admin-field label{display:block;font-size:11px;color:#93c5fd;margin-bottom:4px;}
 .admin-field input,.admin-field select{width:100%;background:#091428;border:1px solid rgba(0,243,255,0.35);border-radius:10px;padding:9px 12px;color:#fff;font-size:12.5px;}
@@ -630,7 +650,6 @@ body{
 <canvas id="quantum-canvas"></canvas>
 
 <div class="store-shell">
-    <!-- الشريط العلوي -->
     <div class="top-telemetry-bar">
         <div class="portal-tag">
             <span class="pulse-dot"></span>
@@ -642,7 +661,6 @@ body{
         </div>
     </div>
 
-    <!-- رأس العلامة الهولوغرامي لعِزوة بشعار الحصان -->
     <header class="brand-holo-hero">
         <div class="ezwa-emblem-floater">
             <div class="ezwa-crest-orb">
@@ -656,7 +674,6 @@ body{
         <div class="retail-badge" id="uiRetailBadge">◈ إصدارات حصرية • شحن سريع لجميع المناطق ◈</div>
     </header>
 
-    <!-- صف الأقسام الهولوغرامية الطافية بأيقونات ليزرية ذهبية وسيانية -->
     <nav class="holo-categories-row" id="categoriesRow">
         <div class="cat-holo-unit gold-t active" data-cat="all" onclick="selectCategory('all',this)">
             <div class="cat-cone"></div>
@@ -706,17 +723,15 @@ body{
         </div>
     </nav>
 
-    <!-- مسرح المنتجات الهولوغرامية الطافية -->
     <main class="holo-products-grid" id="productsGrid"></main>
 
-    <!-- الفوتر السري للإدارة -->
     <footer class="store-footer">
         <span>EZWA © NAMER-IO</span>
         <button type="button" class="admin-lock-btn" onclick="openPinModal()">⚙️ إدارة المنتجات 🔒</button>
     </footer>
 </div>
 
-<!-- 1. كرة السلة الهولوغرامية في الزاوية اليسرى -->
+<!-- كرة السلة الهولوغرامية -->
 <div class="floating-cart-orb" onclick="openCartModal()" title="سلة المشتريات">
     <div class="cart-orb-sphere">
         <span class="cart-badge-count" id="cartCountBadge">0</span>
@@ -729,8 +744,8 @@ body{
     <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
 </div>
 
-<!-- 2. كرة المساعد الهولوغرامي الذكي (EZWA AI Stylist) في الزاوية اليمنى -->
-<div class="floating-ai-orb" onclick="openAiAssistantModal()" title="مساعد عِزوة الذكي">
+<!-- كرة المساعد الصوتي الناطق (EZWA AI Voice Stylist) -->
+<div class="floating-ai-orb" onclick="openAiAssistantModal()" title="مستشار عِزوة الصوتي">
     <div class="ai-orb-sphere">
         <div class="ai-online-ring"></div>
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -742,25 +757,30 @@ body{
             <path d="M9.5 16.2c1.5 1 3.5 1 5 0" stroke="#f5d69c"/>
         </svg>
     </div>
-    <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة AI</div>
+    <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div>
 </div>
 
-<!-- نافذة المساعد الهولوغرامي الذكي (EZWA AI Stylist & Concierge) -->
-<div class="holo-modal-overlay" id="aiModal" onclick="closeModal('aiModal')">
+<!-- نافذة المساعد الهولوغرامي الناطق (EZWA AI Voice Stylist) -->
+<div class="holo-modal-overlay" id="aiModal" onclick="closeAiModal()">
     <div class="holo-projected-box ai-theme" onclick="event.stopPropagation()">
         <div class="modal-top">
-            <h3 style="color:var(--cyan-glow);" id="aiModalTitle">🤖 مساعد عِزوة الذكي (AI Stylist)</h3>
-            <button class="close-x" onclick="closeModal('aiModal')">×</button>
+            <h3 style="color:var(--cyan-glow);" id="aiModalTitle">🎙️ مستشار عِزوة الصوتي (AI)</h3>
+            <button class="close-x" onclick="closeAiModal()">×</button>
+        </div>
+
+        <!-- موجات الصوت الهولوغرامية -->
+        <div class="voice-wave-bar-wrap" id="voiceWaveBars">
+            <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
+            <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
         </div>
 
         <div class="ai-chat-feed" id="aiChatFeed">
             <div class="ai-msg-bubble">
                 حياك الله في <strong>عِـزوة (EZWA)</strong> ◈<br>
-                أنا مستشارك الشخصي للأزياء الذكية؛ أقدر أساعدك في اختيار <strong>مقاسك المثالي</strong>، <strong>تنسيق طقم كامل</strong>، أو شرح <strong>تقنية الـ NFC</strong> وتغليف البرواز الفاخر. كيف أخدمك؟
+                أنا مستشارك الصوتي للأزياء الذكية؛ اختر أي زر بالأسفل أو اضغط على المايكروفون وتحدث معي مباشرة.
             </div>
         </div>
 
-        <!-- حاسبة المقاس الذكية (تظهر عند اختيار مستشار المقاسات) -->
         <div class="size-calc-box" id="sizeCalcBox">
             <div style="font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;">📏 أدخل بياناتك لتحديد مقاسك الدقيق:</div>
             <div class="size-calc-grid">
@@ -780,12 +800,21 @@ body{
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('nfc')">📡 وش ميزة الـ NFC؟</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ تغليف البرواز والغسيل</button>
         </div>
+
+        <!-- صف التحدث بالمايكروفون وكتم الصوت -->
+        <div class="voice-controls-row">
+            <button type="button" class="mic-speak-btn" id="micSpeakBtn" onclick="startVoiceRecognition()">
+                <span>🎤</span>
+                <span id="micBtnLabel">تحدّث مع المستشار بصوتك</span>
+            </button>
+            <button type="button" class="mute-toggle-btn" id="muteToggleBtn" onclick="toggleVoiceMute()" title="كتم/تشغيل الصوت">🔊</button>
+        </div>
     </div>
     <div class="holo-stage-beam"></div>
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- شاشة المعاينة المكبّرة للصورة (Full-Screen Holo-Zoom) -->
+<!-- شاشة المعاينة المكبّرة للصورة -->
 <div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
     <div class="zoom-top-bar" onclick="event.stopPropagation()">
         <div class="zoom-title-pill" id="zoomTitlePill">معاينة التفاصيل</div>
@@ -806,7 +835,7 @@ body{
     </div>
 </div>
 
-<!-- نافذة مواصفات القطعة واختيار المقاس الفردي (بالحبة) -->
+<!-- نافذة مواصفات القطعة واختيار المقاس الفردي -->
 <div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -816,7 +845,6 @@ body{
         <div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)" title="اضغط لتكبير الصورة"></div>
         <div class="modal-variants-bar" id="pmVariantsBar"></div>
 
-        <!-- اختيار المقاس الفردي -->
         <div style="text-align:center;font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;" id="pmSizeLabel">اختر المقاس:</div>
         <div class="size-selector-row" id="pmSizesRow"></div>
 
@@ -944,9 +972,6 @@ body{
 <div class="toast-notification" id="toastBox">تم التنفيذ بنجاح</div>
 
 <script>
-/* =========================================================================
-   قائمة_منتجات_عزوة_بالحبة (B2C Retail Edition)
-========================================================================= */
 const STORE_CONFIG = {
     whatsappNumber: "966510205330",
     adminPin: "7884",
@@ -1047,7 +1072,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v1');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v2');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1063,9 +1088,94 @@ let activeModalSize = 'L';
 let activeModalQty = 1;
 let activeZoomProdId = null;
 let activeZoomVarIdx = 0;
+let isVoiceMuted = false;
 
 /* =========================================================================
-   توليد مجسمات هولوغرامية بألوان القطعة عند عدم وجود صورة PNG مرفوعة
+   محرك الصوت الناطق للمساعد الذكي (Web Speech Synthesis & Recognition)
+========================================================================= */
+function speakAiVoice(plainText) {
+    if (isVoiceMuted || !('speechSynthesis' in window)) return;
+    try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(plainText);
+        utter.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+        utter.rate = 0.98;
+        utter.pitch = 1.02;
+
+        const waveEl = document.getElementById('voiceWaveBars');
+        utter.onstart = () => { if (waveEl) waveEl.classList.add('speaking'); };
+        utter.onend = () => { if (waveEl) waveEl.classList.remove('speaking'); };
+        utter.onerror = () => { if (waveEl) waveEl.classList.remove('speaking'); };
+
+        window.speechSynthesis.speak(utter);
+    } catch (e) {}
+}
+
+function stopAiVoice() {
+    try {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        const waveEl = document.getElementById('voiceWaveBars');
+        if (waveEl) waveEl.classList.remove('speaking');
+    } catch (e) {}
+}
+
+function toggleVoiceMute() {
+    isVoiceMuted = !isVoiceMuted;
+    const btn = document.getElementById('muteToggleBtn');
+    btn.innerText = isVoiceMuted ? '🔇' : '🔊';
+    if (isVoiceMuted) stopAiVoice();
+    else speakAiVoice(currentLang === 'ar' ? 'تم تفعيل الصوت، تفضل بسؤالي' : 'Voice enabled, how can I help you?');
+}
+
+function startVoiceRecognition() {
+    const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRec) {
+        showToast(currentLang === 'ar' ? 'المتصفح لا يدعم المايكروفون، استخدم الأزرار السريعة' : 'Voice input not supported on this browser');
+        return;
+    }
+    stopAiVoice();
+    const rec = new SpeechRec();
+    rec.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+    const btn = document.getElementById('micSpeakBtn');
+    const lbl = document.getElementById('micBtnLabel');
+
+    rec.onstart = () => {
+        btn.classList.add('listening');
+        lbl.innerText = currentLang === 'ar' ? 'أستمع إليك الآن...' : 'Listening...';
+    };
+    rec.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        handleSpokenQuery(transcript);
+    };
+    rec.onend = () => {
+        btn.classList.remove('listening');
+        lbl.innerText = currentLang === 'ar' ? 'تحدّث مع المستشار بصوتك' : 'Speak with AI Stylist';
+    };
+    rec.start();
+}
+
+function handleSpokenQuery(text) {
+    const q = text.toLowerCase();
+    if (q.includes('مقاس') || q.includes('طول') || q.includes('وزن') || q.includes('size')) {
+        document.getElementById('sizeCalcBox').classList.add('active');
+        const reply = 'أهلاً بك، أدخل طولك ووزنك في الحاسبة التي ظهرت أمامك وسأحدد مقاسك الدقيق فوراً.';
+        appendAiChat(text, reply);
+        speakAiVoice(reply);
+    } else if (q.includes('طقم') || q.includes('نسق') || q.includes('لبس') || q.includes('outfit')) {
+        askAiTopic('outfit', text);
+    } else if (q.includes('شريحة') || q.includes('nfc') || q.includes('تقنية') || q.includes('توثيق')) {
+        askAiTopic('nfc', text);
+    } else if (q.includes('برواز') || q.includes('هدية') || q.includes('غسيل') || q.includes('تغليف')) {
+        askAiTopic('frame', text);
+    } else {
+        const reply = 'يسعدني خدمتك في عِزوة؛ يمكنك سؤالي عن المقاس المناسب، أو تنسيق طقم كامل، أو ميزة شريحة إن إف سي المدمجة.';
+        appendAiChat(text, reply);
+        speakAiVoice(reply);
+    }
+}
+
+/* =========================================================================
+   توليد مجسمات هولوغرامية بألوان القطعة
 ========================================================================= */
 function getHologramSvg(cat, variant) {
     const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
@@ -1174,14 +1284,28 @@ function selectCategory(cat, el) {
 }
 
 /* =========================================================================
-   المساعد الهولوغرامي الذكي (EZWA AI Stylist & Concierge)
+   تفاعلات المساعد الهولوغرامي الناطق
 ========================================================================= */
 function openAiAssistantModal() {
     document.getElementById('aiModal').classList.add('active');
+    speakAiVoice(
+        currentLang === 'ar'
+            ? 'حياك الله في عِزوة، أنا مستشارك الصوتي. كيف أساعدك في اختيار مقاسك أو تنسيق إطلالتك؟'
+            : 'Welcome to EZWA. I am your voice AI stylist. How can I help you today?'
+    );
+}
+
+function closeAiModal() {
+    stopAiVoice();
+    closeModal('aiModal');
 }
 
 function toggleSizeCalc() {
-    document.getElementById('sizeCalcBox').classList.toggle('active');
+    const box = document.getElementById('sizeCalcBox');
+    box.classList.toggle('active');
+    if (box.classList.contains('active')) {
+        speakAiVoice('أدخل طولك ووزنك وسأحسب مقاسك المثالي فوراً.');
+    }
 }
 
 function appendAiChat(userTxt, botHtml) {
@@ -1207,47 +1331,53 @@ function calculateSmartSize() {
         baseSize = order[Math.max(0, order.indexOf(baseSize) - 1)];
     }
 
-    const fitText = pref === 'oversized' ? 'بقصّة أوفرسايز مريحة (Streetwear Fit)' : 'بقصّة مضبوطة وأنيقة';
+    const fitText = pref === 'oversized' ? 'بقصّة أوفرسايز مريحة' : 'بقصّة مضبوطة وأنيقة';
+    const spokenSize = baseSize === 'S' ? 'سمول' : baseSize === 'M' ? 'ميديم' : baseSize === 'L' ? 'لارج' : 'إكس لارج';
+
     appendAiChat(
         `طولي ${h} سم ووزني ${w} كجم`,
-        `بناءً على قياساتك، مقاسك المثالي في تصاميم <strong>عِـزوة</strong> هو <strong style="color:#00f3ff;font-size:14px;">${baseSize}</strong> ${fitText}.<br>
+        `بناءً على قياساتك، مقاسك المثالي في تصاميم <strong>عِـزوة</strong> هو <strong style="color:#00f3ff;font-size:14px;">${baseSize}</strong> (${fitText}).<br>
          <button type="button" class="cyan-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="applyRecommendedSize('${baseSize}')">اعتماد مقاس ${baseSize} واختيار القطعة ◈</button>`
     );
+    speakAiVoice(`بناءً على طولك ووزنك، مقاسك المثالي في عِزوة هو ${spokenSize} ${fitText}.`);
     document.getElementById('sizeCalcBox').classList.remove('active');
 }
 
 function applyRecommendedSize(size) {
     activeModalSize = size;
-    closeModal('aiModal');
+    closeAiModal();
     if (PRODUCTS.length > 0) {
         openProductModal(PRODUCTS[0].id);
         selectModalSize(size);
     }
 }
 
-function askAiTopic(topic) {
+function askAiTopic(topic, customUserText) {
     if (topic === 'outfit') {
         appendAiChat(
-            'نسّق لي طقم ستريت وير متكامل',
+            customUserText || 'نسّق لي طقم ستريت وير متكامل',
             `أقترح عليك إطلالة <strong>عِـزوة الملكية</strong>:<br>
              • <strong>القطعة العلوية:</strong> هودي BRIGHT الأسود الملكي (189 ر.س)<br>
              • <strong>القطعة السفلية:</strong> بنطال عِزوة أوفرسايز الكارجو الفحمي (149 ر.س)<br>
              <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف الطقم الكامل للسلة (338 ر.س)</button>`
         );
+        speakAiVoice('أقترح عليك تنسيق هودي برايت الأسود الملكي مع بنطال عِزوة الكارجو الفحمي لإطلالة ستريت وير متكاملة.');
     } else if (topic === 'nfc') {
         appendAiChat(
-            'كيف تعمل تقنية الـ NFC في الملابس؟',
+            customUserText || 'كيف تعمل تقنية الـ NFC في الملابس؟',
             `كل قطعة من <strong>عِـزوة</strong> مزوّدة بشريحة <strong>NFC ذكية مشفّرة</strong> مخيّطة بدقة في الحافة:<br>
              1. قرّب جوالك من الشعار لتفتح صفحتك الرقمية الخاصة.<br>
              2. توثّق ملكيتك للقطعة سحابياً برقم تسلسلي فريد يثبت أصالتها.<br>
              3. مقاومة للماء والغسيل والحرارة بالكامل.`
         );
+        speakAiVoice('كل قطعة من عِزوة مزودة بشريحة إن إف سي ذكية مشفرة؛ بمجرد تقريب جوالك منها تفتح صفحتك الرقمية وتوثق ملكيتك للقطعة سحابياً، وهي مقاومة للماء والغسيل بالكامل.');
     } else if (topic === 'frame') {
         appendAiChat(
-            'ما هي فكرة تغليف البرواز وطريقة الغسيل؟',
+            customUserText || 'ما هي فكرة تغليف البرواز وطريقة الغسيل؟',
             `• <strong>تغليف البرواز المبتكر:</strong> يمكنك اختيار تقديم القطعة داخل <strong>برواز صورة فاخر</strong> كطريقة عرض استثنائية عند الإهداء.<br>
              • <strong>العناية بالغسيل:</strong> يُغسل مقلوباً بماء بارد (30 درجة) للحفاظ على فخامة القطن وشريحة الـ NFC.`
         );
+        speakAiVoice('يمكنك اختيار تقديم القطعة داخل برواز صورة فاخر كفكرة عرض مبتكرة للإهداء، وللعناية بالقطعة يُفضل غسلها مقلوبة بماء بارد.');
     }
 }
 
@@ -1281,7 +1411,7 @@ function addSuggestedOutfitToCart() {
         });
     }
     updateCartUI();
-    closeModal('aiModal');
+    closeAiModal();
     showToast('تمت إضافة الطقم الكامل للسلة بنجاح ◈');
 }
 
@@ -1589,7 +1719,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v1', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v2', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -1604,9 +1734,6 @@ function exportUpdatedHtmlCode() {
     });
 }
 
-/* =========================================================================
-   تبديل اللغة + المؤثرات البصرية
-========================================================================= */
 function toggleLang() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
     document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
@@ -1623,7 +1750,7 @@ function toggleLang() {
     document.getElementById('catTshirts').innerText = currentLang === 'ar' ? 'تيشيرت بوكسي' : 'BOXY TEES';
     document.getElementById('catHoodies').innerText = currentLang === 'ar' ? 'هوديز' : 'HOODIES';
     document.getElementById('catPants').innerText = currentLang === 'ar' ? 'بناطيل أوفرسايز' : 'PANTS';
-    document.getElementById('aiOrbTag').innerText = currentLang === 'ar' ? 'مستشار عِزوة AI' : 'EZWA AI Stylist';
+    document.getElementById('aiOrbTag').innerText = currentLang === 'ar' ? 'مستشار عِزوة 🔊' : 'EZWA AI Voice 🔊';
     document.getElementById('pmSizeLabel').innerText = currentLang === 'ar' ? 'اختر المقاس:' : 'Select Size:';
     document.getElementById('pmQtyLabel').innerText = currentLang === 'ar' ? 'الكمية (بالحبة):' : 'Quantity:';
     document.getElementById('pmAddBtnText').innerText = currentLang === 'ar' ? 'إضافة للسلة' : 'Add to Cart';
@@ -1642,7 +1769,6 @@ function showToast(msg) {
     setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-/* تموّجات اللمس + جزيئات الفضاء */
 document.addEventListener('pointerdown', e => {
     const r = document.createElement('div');
     r.className = 'water-ripple-ring';
