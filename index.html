@@ -471,7 +471,7 @@ body{
     transform:scale(1.06);
 }
 
-/* شاشة المعاينة المكبرة وفحص النسيج */
+/* شاشة المعاينة المكبّرة النظيفة */
 .zoom-lightbox-overlay{
     position:fixed;inset:0;
     background:rgba(1,4,12,0.95);
@@ -529,6 +529,48 @@ body{
     display:flex;align-items:center;justify-content:space-between;
     background:rgba(4,12,26,0.9);border:1px dashed var(--cyan-glow);
     border-radius:12px;padding:8px 12px;margin-top:8px;
+}
+
+/* =========================================================================
+   الفاتورة الإلكترونية الرسمية القابلة للطباعة والحفظ PDF
+   ========================================================================= */
+.invoice-holo-sheet{
+    background:linear-gradient(165deg,#071329 0%,#030814 100%);
+    border:1.5px solid var(--gold-primary);
+    border-radius:18px;
+    padding:16px;
+    text-align:start;
+    box-shadow:0 0 28px rgba(223,177,91,0.28);
+}
+.inv-header-row{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:1px dashed rgba(223,177,91,0.4);
+    padding-bottom:10px;margin-bottom:10px;
+}
+.inv-meta-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:6px;
+    font-size:11px;color:#cbd5e1;
+    background:rgba(10,24,48,0.65);
+    padding:9px;border-radius:12px;margin-bottom:10px;
+}
+.inv-items-table{
+    width:100%;border-collapse:collapse;font-size:11px;margin-bottom:10px;
+}
+.inv-items-table th{
+    text-align:start;color:var(--gold-light);
+    border-bottom:1px solid rgba(0,243,255,0.3);
+    padding:5px 2px;
+}
+.inv-items-table td{
+    padding:6px 2px;color:#fff;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.inv-total-banner{
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(223,177,91,0.16);
+    border:1px solid var(--gold-primary);
+    border-radius:12px;padding:9px 12px;
+    font-weight:900;color:var(--gold-light);font-size:13.5px;
 }
 
 .holo-modal-overlay{
@@ -611,9 +653,9 @@ body{
 .cart-item-sub{font-size:10px;color:var(--gold-light);}
 .del-item-btn{background:rgba(248,113,113,0.18);border:1px solid #f87171;color:#fca5a5;border-radius:8px;padding:4px 8px;font-size:10px;cursor:pointer;}
 
-.admin-field{margin-bottom:10px;text-align:start;}
-.admin-field label{display:block;font-size:11px;color:#93c5fd;margin-bottom:4px;}
-.admin-field input,.admin-field select{width:100%;background:#091428;border:1px solid rgba(0,243,255,0.35);border-radius:10px;padding:9px 12px;color:#fff;font-size:12.5px;}
+.admin-field{margin-bottom:9px;text-align:start;}
+.admin-field label{display:block;font-size:10.5px;color:#93c5fd;margin-bottom:3px;}
+.admin-field input,.admin-field select{width:100%;background:#091428;border:1px solid rgba(0,243,255,0.35);border-radius:10px;padding:8px 11px;color:#fff;font-size:12px;}
 .admin-prod-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:rgba(10,20,38,0.85);border:1px solid rgba(223,177,91,0.3);border-radius:12px;margin-bottom:7px;font-size:11.5px;}
 
 .policy-list{padding-right:16px;font-size:12px;color:#e2e8f0;line-height:1.75;text-align:start;}
@@ -622,6 +664,15 @@ body{
 
 .toast-notification{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-100px);background:#091326;border:1px solid var(--gold-primary);color:#fff;padding:9px 20px;border-radius:26px;font-size:12px;font-weight:700;transition:transform 0.35s ease;z-index:2500;box-shadow:0 10px 28px rgba(0,0,0,0.85);white-space:nowrap;}
 .toast-notification.show{transform:translateX(-50%) translateY(0);}
+
+@media print {
+    body * { visibility: hidden; }
+    #invoiceModal, #invoiceModal * { visibility: visible; }
+    #invoiceModal { position: absolute; inset: 0; background: #fff !important; padding: 0; }
+    .invoice-holo-sheet { background: #fff !important; color: #000 !important; border: 2px solid #000; box-shadow: none; }
+    .invoice-holo-sheet * { color: #000 !important; }
+    .no-print { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -745,7 +796,7 @@ body{
 
     <footer class="store-footer">
         <span>EZWA © NAMER-IO • الرياض</span>
-        <button type="button" class="admin-lock-btn" onclick="openPinModal()">⚙️ إدارة المنتجات 🔒</button>
+        <button type="button" class="admin-lock-btn" onclick="openPinModal()">⚙️ إدارة المتجر 🔒</button>
     </footer>
 </div>
 
@@ -778,7 +829,7 @@ body{
     <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div>
 </div>
 
-<!-- 1. نافذة البطاقة الرقمية التفاعلية ونظام الولاء والإحالة -->
+<!-- نافذة البطاقة الرقمية التفاعلية ونظام الولاء والإحالة -->
 <div class="holo-modal-overlay" id="vipPassModal" onclick="closeModal('vipPassModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -829,7 +880,7 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- 2. شاشة المعاينة المكبّرة النظيفة (بدون 3D وبدون تداخل) -->
+<!-- شاشة المعاينة المكبّرة النظيفة -->
 <div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
     <div class="zoom-top-bar" onclick="event.stopPropagation()">
         <div class="zoom-title-pill" id="zoomTitlePill">معاينة التفاصيل</div>
@@ -967,7 +1018,7 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- نافذة السلة وإرسال طلب الشراء عبر واتساب -->
+<!-- نافذة السلة وإتمام الطلب المباشر داخل المتجر (Formspree + فاتورة فورية) -->
 <div class="holo-modal-overlay" id="cartModal" onclick="closeModal('cartModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -975,16 +1026,29 @@ body{
             <button class="close-x" onclick="closeModal('cartModal')">×</button>
         </div>
         <div id="cartItemsContainer"></div>
-        <div class="admin-field" style="margin-top:8px;">
-            <label id="cmNameLabel">الاسم والمدينة (للتوصيل وتوثيق الملكية):</label>
-            <input type="text" id="merchantNameInput" placeholder="مثال: محمد العتيبي - الرياض">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+            <div class="admin-field">
+                <label id="cmNameLabel">الاسم الكامل *:</label>
+                <input type="text" id="merchantNameInput" required placeholder="محمد العتيبي">
+            </div>
+            <div class="admin-field">
+                <label>رقم الجوال *:</label>
+                <input type="tel" id="clientPhoneInput" required placeholder="05xxxxxxxx" style="direction:ltr;">
+            </div>
         </div>
+
+        <div class="admin-field">
+            <label>المدينة والعنوان للتوصيل *:</label>
+            <input type="text" id="clientCityInput" required placeholder="مثال: الرياض - حي العليا">
+        </div>
+
         <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:8px;">
             <div class="admin-field">
                 <label>خيار التغليف:</label>
                 <select id="packagingOption">
                     <option value="تغليف عِزوة الفاخر">تغليف عِزوة الفاخر (مجاني)</option>
-                    <option value="عرض برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر (إهداء)</option>
+                    <option value="برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر (إهداء)</option>
                 </select>
             </div>
             <div class="admin-field">
@@ -992,27 +1056,95 @@ body{
                 <input type="text" id="referralInputCode" placeholder="EZWA-..." style="direction:ltr;text-transform:uppercase;">
             </div>
         </div>
+
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(223,177,91,0.3);margin-top:4px;">
             <span style="font-size:12px;color:#cbd5e1;" id="cmGrandLabel">الإجمالي النهائي:</span>
             <span style="font-size:16px;font-weight:900;color:var(--gold-light);" id="cmGrandTotal">0 ر.س</span>
         </div>
-        <button type="button" class="primary-holo-btn" onclick="sendOrderViaWhatsApp()">
-            <span>💬</span>
-            <span id="cmSendWaBtn">إتمام الطلب عبر واتساب</span>
+
+        <button type="button" class="primary-holo-btn" id="submitOrderBtn" onclick="submitDirectStoreOrder()">
+            <span>🧾</span>
+            <span id="cmSendWaBtn">تأكيد الطلب وإصدار الفاتورة ◈</span>
         </button>
     </div>
     <div class="holo-stage-beam"></div>
     <div class="holo-stage-pad"></div>
 </div>
 
+<!-- =========================================================================
+     نافذة الفاتورة الرسمية الفورية للعميل (قابلة للطباعة والحفظ PDF)
+     ========================================================================= -->
+<div class="holo-modal-overlay" id="invoiceModal" onclick="closeModal('invoiceModal')">
+    <div class="holo-projected-box" onclick="event.stopPropagation()">
+        <div class="modal-top no-print">
+            <h3>✅ تم استلام طلبك بنجاح</h3>
+            <button class="close-x" onclick="closeModal('invoiceModal')">×</button>
+        </div>
+
+        <div class="invoice-holo-sheet" id="invoicePrintArea">
+            <div class="inv-header-row">
+                <div>
+                    <div style="font-size:16px;font-weight:900;color:var(--gold-light);">عِـزوة — EZWA</div>
+                    <div style="font-size:10px;color:#93c5fd;">فاتورة مبيعات إلكترونية مبسطة</div>
+                    <div style="font-size:9.5px;color:#cbd5e1;margin-top:2px;">وثيقة العمل الحر: <strong dir="ltr">FL-749408046</strong></div>
+                </div>
+                <div style="text-align:end;">
+                    <div style="font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;color:var(--cyan-glow);" id="invNumberTag">#EZ-1001</div>
+                    <div style="font-size:10px;color:#cbd5e1;margin-top:3px;" id="invDateTag">2026-11-16</div>
+                </div>
+            </div>
+
+            <div class="inv-meta-grid">
+                <div><strong>العميل:</strong> <span id="invClientName">-</span></div>
+                <div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div>
+                <div><strong>العنوان:</strong> <span id="invClientCity">-</span></div>
+                <div><strong>التغليف:</strong> <span id="invPackaging">-</span></div>
+            </div>
+
+            <table class="inv-items-table">
+                <thead>
+                    <tr>
+                        <th>القطعة والمقاس</th>
+                        <th>العدد</th>
+                        <th>المبلغ</th>
+                    </tr>
+                </thead>
+                <tbody id="invItemsTbody"></tbody>
+            </table>
+
+            <div class="inv-total-banner">
+                <span>الإجمالي المستحق:</span>
+                <span id="invGrandTotalVal">0 ر.س</span>
+            </div>
+
+            <div style="margin-top:10px;font-size:10px;color:#94a3b8;text-align:center;">
+                تم إرسال نسخة من طلبك لإدارة متجر عِزوة وسيتم التواصل معك لتأكيد التوصيل ◈
+            </div>
+        </div>
+
+        <div class="no-print" style="margin-top:10px;">
+            <button type="button" class="primary-holo-btn" onclick="window.print()">
+                <span>🖨️</span>
+                <span>طباعة / حفظ الفاتورة (PDF)</span>
+            </button>
+            <button type="button" class="cyan-holo-btn" id="invWaShareBtn">
+                <span>💬</span>
+                <span>إرسال نسخة الفاتورة عبر واتساب (اختياري)</span>
+            </button>
+        </div>
+    </div>
+    <div class="holo-stage-beam no-print"></div>
+    <div class="holo-stage-pad no-print"></div>
+</div>
+
 <!-- نافذة الرقم السري للإدارة -->
 <div class="holo-modal-overlay" id="pinModal" onclick="closeModal('pinModal')">
     <div class="holo-projected-box" style="max-width:340px;text-align:center;" onclick="event.stopPropagation()">
         <div class="modal-top">
-            <h3>قفل إدارة المنتجات</h3>
+            <h3>قفل إدارة المتجر</h3>
             <button class="close-x" onclick="closeModal('pinModal')">×</button>
         </div>
-        <p style="font-size:12px;color:#cbd5e1;margin-bottom:12px;">أدخل الرقم السري الخاص بالمالك (7884) لإضافة أو تعديل القطع:</p>
+        <p style="font-size:12px;color:#cbd5e1;margin-bottom:12px;">أدخل الرقم السري الخاص بالمالك (7884) لإدارة المنتجات والطلبات:</p>
         <form onsubmit="verifyAdminPin(event)">
             <div class="admin-field">
                 <input type="password" id="adminPinInput" maxlength="8" inputmode="numeric" placeholder="••••" style="text-align:center;font-family:'Orbitron',sans-serif;font-size:20px;letter-spacing:8px;">
@@ -1023,56 +1155,73 @@ body{
     </div>
 </div>
 
-<!-- لوحة إدارة المنتجات من الجوال -->
+<!-- لوحة إدارة المنتجات والطلبات المستلمة من الجوال -->
 <div class="holo-modal-overlay" id="adminModal" onclick="closeModal('adminModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
-            <h3>إدارة قطع عِزوة (بالحبة)</h3>
+            <h3>لوحة إدارة متجر عِزوة</h3>
             <button class="close-x" onclick="closeModal('adminModal')">×</button>
         </div>
 
-        <form onsubmit="addNewProduct(event)" style="border-bottom:1px solid rgba(0,243,255,0.25);padding-bottom:12px;margin-bottom:12px;">
-            <div class="admin-field">
-                <label>اسم القطعة:</label>
-                <input type="text" id="npName" required placeholder="مثال: تيشيرت بوكسي المصمك - عنابي">
+        <div style="display:flex;gap:6px;margin-bottom:12px;">
+            <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11.5px;" onclick="switchAdminTab('orders')">📦 الطلبات المستلمة</button>
+            <button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11.5px;" onclick="switchAdminTab('products')">👕 إدارة القطع</button>
+        </div>
+
+        <!-- تبويب الطلبات المستلمة -->
+        <div id="adminOrdersTab">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <span style="font-size:11.5px;font-weight:800;color:var(--gold-light);">سجل الطلبات المباشرة:</span>
+                <a href="https://formspree.io/forms/xaqaazbz/submissions" target="_blank" class="pill-mini-btn">فتح Formspree ↗</a>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div id="adminOrdersList"></div>
+        </div>
+
+        <!-- تبويب إدارة المنتجات -->
+        <div id="adminProductsTab" style="display:none;">
+            <form onsubmit="addNewProduct(event)" style="border-bottom:1px solid rgba(0,243,255,0.25);padding-bottom:12px;margin-bottom:12px;">
                 <div class="admin-field">
-                    <label>القسم:</label>
-                    <select id="npCat">
-                        <option value="tshirts">تيشيرت بوكسي</option>
-                        <option value="hoodies">هوديز</option>
-                        <option value="pants">بناطيل أوفرسايز</option>
-                    </select>
+                    <label>اسم القطعة:</label>
+                    <input type="text" id="npName" required placeholder="مثال: تيشيرت بوكسي المصمك - عنابي">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <div class="admin-field">
+                        <label>القسم:</label>
+                        <select id="npCat">
+                            <option value="tshirts">تيشيرت بوكسي</option>
+                            <option value="hoodies">هوديز</option>
+                            <option value="pants">بناطيل أوفرسايز</option>
+                        </select>
+                    </div>
+                    <div class="admin-field">
+                        <label>سعر الحبة (ر.س):</label>
+                        <input type="number" id="npPrice" required placeholder="129">
+                    </div>
                 </div>
                 <div class="admin-field">
-                    <label>سعر الحبة (ر.س):</label>
-                    <input type="number" id="npPrice" required placeholder="129">
+                    <label>المقاسات المتوفرة (مفصولة بفاصلة):</label>
+                    <input type="text" id="npSizes" required value="S, M, L, XL" style="direction:ltr;">
                 </div>
-            </div>
-            <div class="admin-field">
-                <label>المقاسات المتوفرة (مفصولة بفاصلة):</label>
-                <input type="text" id="npSizes" required value="S, M, L, XL" style="direction:ltr;">
-            </div>
-            <div class="admin-field">
-                <label>اسم اللون:</label>
-                <input type="text" id="npColorName" value="أسود × ذهبي">
-            </div>
-            <div class="admin-field">
-                <label>اسم ملف الصورة المفرّغة (PNG) أو رابطها (اختياري):</label>
-                <input type="text" id="npImg" placeholder="مثال: hoodie-bright-black.png" style="direction:ltr;">
-            </div>
-            <div class="admin-field">
-                <label>وصف الخامة وميزة الـ NFC:</label>
-                <input type="text" id="npDesc" value="قطن فاخر 280 GSM + شريحة NFC مدمجة في شريط السدو للتوثيق السحابي">
-            </div>
-            <button type="submit" class="primary-holo-btn">➕ إضافة القطعة للمتجر</button>
-        </form>
+                <div class="admin-field">
+                    <label>اسم اللون:</label>
+                    <input type="text" id="npColorName" value="أسود × ذهبي">
+                </div>
+                <div class="admin-field">
+                    <label>اسم ملف الصورة المفرّغة (PNG) أو رابطها (اختياري):</label>
+                    <input type="text" id="npImg" placeholder="مثال: hoodie-bright-black.png" style="direction:ltr;">
+                </div>
+                <div class="admin-field">
+                    <label>وصف الخامة وميزة الـ NFC:</label>
+                    <input type="text" id="npDesc" value="قطن فاخر 280 GSM + شريحة NFC مدمجة في شريط السدو للتوثيق السحابي">
+                </div>
+                <button type="submit" class="primary-holo-btn">➕ إضافة القطعة للمتجر</button>
+            </form>
 
-        <div style="font-size:11.5px;font-weight:800;color:var(--gold-light);margin-bottom:8px;">القطع الحالية في المتجر:</div>
-        <div id="adminProductsList"></div>
+            <div style="font-size:11.5px;font-weight:800;color:var(--gold-light);margin-bottom:8px;">القطع الحالية في المتجر:</div>
+            <div id="adminProductsList"></div>
 
-        <button type="button" class="cyan-holo-btn" onclick="exportUpdatedHtmlCode()">📋 نسخ الكود المحدّث لرفعه في GitHub</button>
+            <button type="button" class="cyan-holo-btn" onclick="exportUpdatedHtmlCode()">📋 نسخ الكود المحدّث لرفعه في GitHub</button>
+        </div>
     </div>
 </div>
 
@@ -1080,6 +1229,7 @@ body{
 
 <script>
 const STORE_CONFIG = {
+    formspreeEndpoint: "https://formspree.io/f/xaqaazbz",
     whatsappNumber: "966510205330",
     adminPin: "7884",
     currencyAr: "ر.س",
@@ -1179,11 +1329,17 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v6');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v7');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 }
+
+let savedOrders = [];
+try {
+    const rawOrders = localStorage.getItem('ezwa_store_orders_v1');
+    if (rawOrders) savedOrders = JSON.parse(rawOrders);
+} catch(e) {}
 
 let selectedCardVariantIdx = {};
 let currentLang = 'ar';
@@ -1414,7 +1570,7 @@ function renderVariantVisual(prod, varIdx) {
 }
 
 /* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام (بدون شارة متبقي فوق رأس الموديل)
+   عرض المنتجات في مسرح الهولوغرام
    ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -1784,7 +1940,7 @@ function addCurrentProductToCart() {
 }
 
 /* =========================================================================
-   السلة وإرسال طلب الشراء عبر واتساب + تحديث نقاط الولاء
+   السلة وإرسال الطلب مباشرة للمتجر (Formspree) + إصدار فاتورة فورية للعميل
    ========================================================================= */
 function updateCartUI() {
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
@@ -1829,41 +1985,125 @@ function removeCartItem(index) {
     openCartModal();
 }
 
-function sendOrderViaWhatsApp() {
+async function submitDirectStoreOrder() {
     if (cart.length === 0) {
         showToast(currentLang === 'ar' ? 'أضف قطعة واحدة على الأقل أولاً' : 'Please add at least one item first');
         return;
     }
     const clientName = document.getElementById('merchantNameInput').value.trim();
+    const clientPhone = document.getElementById('clientPhoneInput').value.trim();
+    const clientCity = document.getElementById('clientCityInput').value.trim();
     const pkg = document.getElementById('packagingOption').value;
     const refCode = document.getElementById('referralInputCode').value.trim();
+
+    if (!clientName || !clientPhone || !clientCity) {
+        showToast(currentLang === 'ar' ? 'يرجى إدخال الاسم ورقم الجوال والمدينة' : 'Please fill Name, Phone & City');
+        return;
+    }
+
+    const submitBtn = document.getElementById('submitOrderBtn');
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+    document.getElementById('cmSendWaBtn').innerText = currentLang === 'ar' ? 'جاري إرسال الطلب وإصدار الفاتورة...' : 'Processing Order...';
+
+    const invoiceNo = 'EZ-' + Math.floor(100000 + Math.random() * 900000);
+    const todayStr = new Date().toLocaleDateString('ar-SA');
     const totalItems = cart.reduce((s, i) => s + i.qty, 0);
     const totalPrice = cart.reduce((s, i) => s + (i.price * i.qty), 0);
 
+    const itemsSummaryText = cart.map((item, idx) =>
+        `${idx + 1}) ${item.nameAr} | اللون: ${item.colorAr} | المقاس: ${item.size} | العدد: ${item.qty} × ${item.price} ر.س = ${item.price * item.qty} ر.س`
+    ).join('\n');
+
+    const orderRecord = {
+        invoiceNo,
+        date: todayStr,
+        clientName,
+        clientPhone,
+        clientCity,
+        packaging: pkg,
+        referral: refCode || 'لا يوجد',
+        items: JSON.parse(JSON.stringify(cart)),
+        totalItems,
+        totalPrice
+    };
+
+    try {
+        await fetch(STORE_CONFIG.formspreeEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                _subject: `طلب جديد من متجر عِزوة (${invoiceNo}) - ${clientName}`,
+                رقم_الفاتورة: invoiceNo,
+                التاريخ: todayStr,
+                اسم_العميل: clientName,
+                رقم_الجوال: clientPhone,
+                المدينة_والعنوان: clientCity,
+                التغليف: pkg,
+                كود_الإحالة: refCode || 'لا يوجد',
+                تفاصيل_الطلب: itemsSummaryText,
+                إجمالي_القطع: totalItems,
+                الإجمالي_النهائي: `${totalPrice} ر.س`
+            })
+        });
+    } catch (err) {}
+
+    // حفظ الطلب في سجل المتجر وتحديث بطاقة العضوية
+    savedOrders.unshift(orderRecord);
+    try { localStorage.setItem('ezwa_store_orders_v1', JSON.stringify(savedOrders)); } catch(e) {}
+
     vipData.pieces += totalItems;
-    if (clientName) vipData.name = clientName;
+    vipData.name = clientName;
     try { localStorage.setItem('ezwa_vip_member_v1', JSON.stringify(vipData)); } catch(e) {}
 
-    let msg = `*طلب جديد — متجر عِزوة (EZWA)* ◈\n`;
-    if (clientName) msg += `*العميل:* ${clientName}\n`;
-    msg += `*التغليف:* ${pkg}\n`;
-    if (refCode) msg += `*كود الإحالة:* ${refCode}\n`;
-    msg += `--------------------------\n`;
-    cart.forEach((item, idx) => {
-        msg += `${idx + 1}. *${item.nameAr}*\n`;
-        msg += `   • اللون: ${item.colorAr} | المقاس: *${item.size}*\n`;
-        msg += `   • العدد: ${item.qty} × ${item.price} ر.س = *${item.price * item.qty} ر.س*\n`;
-    });
-    msg += `--------------------------\n`;
-    msg += `*إجمالي القطع:* ${totalItems} قطعة\n`;
-    msg += `*الإجمالي النهائي:* ${totalPrice} ر.س`;
+    // تفريغ السلة وإعادة زر الطلب لحالته الطبيعية
+    cart = [];
+    updateCartUI();
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+    document.getElementById('cmSendWaBtn').innerText = currentLang === 'ar' ? 'تأكيد الطلب وإصدار الفاتورة ◈' : 'Confirm Order & Issue Invoice ◈';
 
-    const waUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-    window.open(waUrl, '_blank');
+    closeModal('cartModal');
+    showGeneratedInvoice(orderRecord);
+}
+
+function showGeneratedInvoice(order) {
+    document.getElementById('invNumberTag').innerText = '#' + order.invoiceNo;
+    document.getElementById('invDateTag').innerText = order.date;
+    document.getElementById('invClientName').innerText = order.clientName;
+    document.getElementById('invClientPhone').innerText = order.clientPhone;
+    document.getElementById('invClientCity').innerText = order.clientCity;
+    document.getElementById('invPackaging').innerText = order.packaging;
+    document.getElementById('invGrandTotalVal').innerText = order.totalPrice + ' ر.س';
+
+    document.getElementById('invItemsTbody').innerHTML = order.items.map(item => `
+        <tr>
+            <td>${item.nameAr}<br><span style="font-size:9.5px;color:#93c5fd;">${item.colorAr} • مقاس ${item.size}</span></td>
+            <td>${item.qty}</td>
+            <td>${item.qty * item.price} ر.س</td>
+        </tr>
+    `).join('');
+
+    const waBtn = document.getElementById('invWaShareBtn');
+    waBtn.onclick = function() {
+        let msg = `*فاتورة طلب — متجر عِزوة (EZWA)* ◈\n`;
+        msg += `*رقم الفاتورة:* #${order.invoiceNo}\n`;
+        msg += `*العميل:* ${order.clientName} (${order.clientCity})\n`;
+        msg += `*التغليف:* ${order.packaging}\n`;
+        msg += `--------------------------\n`;
+        order.items.forEach((it, i) => {
+            msg += `${i + 1}. ${it.nameAr} (${it.colorAr} • ${it.size}) × ${it.qty} = ${it.qty * it.price} ر.س\n`;
+        });
+        msg += `--------------------------\n`;
+        msg += `*الإجمالي:* ${order.totalPrice} ر.س`;
+        window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+    };
+
+    document.getElementById('invoiceModal').classList.add('active');
 }
 
 /* =========================================================================
-   لوحة إدارة المنتجات السرية من الجوال (PIN: 7884)
+   لوحة إدارة المتجر والطلبات المستلمة من الجوال (PIN: 7884)
    ========================================================================= */
 function openPinModal() {
     document.getElementById('adminPinInput').value = '';
@@ -1876,11 +2116,45 @@ function verifyAdminPin(e) {
     e.preventDefault();
     if (document.getElementById('adminPinInput').value.trim() === STORE_CONFIG.adminPin) {
         closeModal('pinModal');
+        renderAdminOrdersList();
         renderAdminProductsList();
+        switchAdminTab('orders');
         document.getElementById('adminModal').classList.add('active');
     } else {
         document.getElementById('pinErr').style.display = 'block';
     }
+}
+
+function switchAdminTab(tab) {
+    document.getElementById('adminOrdersTab').style.display = tab === 'orders' ? 'block' : 'none';
+    document.getElementById('adminProductsTab').style.display = tab === 'products' ? 'block' : 'none';
+}
+
+function renderAdminOrdersList() {
+    const box = document.getElementById('adminOrdersList');
+    if (!savedOrders || savedOrders.length === 0) {
+        box.innerHTML = `<div style="text-align:center;color:#94a3b8;font-size:11.5px;padding:18px 0;">لا توجد طلبات مسجلة محلياً بعد — جميع الطلبات تصل مباشرة إلى حسابك في Formspree وبريدك الإلكتروني.</div>`;
+        return;
+    }
+    box.innerHTML = savedOrders.map((ord, idx) => `
+        <div class="admin-prod-item" style="flex-direction:column;align-items:stretch;gap:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <strong style="color:var(--cyan-glow);font-family:'Orbitron',sans-serif;">#${ord.invoiceNo}</strong>
+                <span style="color:var(--gold-light);font-weight:800;">${ord.totalPrice} ر.س</span>
+            </div>
+            <div style="font-size:11px;color:#e2e8f0;">${ord.clientName} — <span dir="ltr">${ord.clientPhone}</span> (${ord.clientCity})</div>
+            <div style="display:flex;gap:6px;">
+                <button type="button" class="pill-mini-btn vip-gold" onclick="viewSavedOrderInvoice(${idx})">🧾 عرض الفاتورة</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function viewSavedOrderInvoice(idx) {
+    const ord = savedOrders[idx];
+    if (!ord) return;
+    closeModal('adminModal');
+    showGeneratedInvoice(ord);
 }
 
 function renderAdminProductsList() {
@@ -1938,7 +2212,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v6', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v7', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -1975,7 +2249,7 @@ function toggleLang() {
     document.getElementById('pmQtyLabel').innerText = currentLang === 'ar' ? 'الكمية (بالحبة):' : 'Quantity:';
     document.getElementById('pmAddBtnText').innerText = currentLang === 'ar' ? 'إضافة للسلة' : 'Add to Cart';
     document.getElementById('cmTitle').innerText = currentLang === 'ar' ? 'سلة مشتريات عِزوة' : 'EZWA Shopping Cart';
-    document.getElementById('cmSendWaBtn').innerText = currentLang === 'ar' ? 'إتمام الطلب عبر واتساب' : 'Complete Order via WhatsApp';
+    document.getElementById('cmSendWaBtn').innerText = currentLang === 'ar' ? 'تأكيد الطلب وإصدار الفاتورة ◈' : 'Confirm Order & Issue Invoice ◈';
     document.getElementById('uiVerifTitle').innerText = currentLang === 'ar' ? 'متجر موثّق رسمياً' : 'Officially Verified Store';
     document.getElementById('uiVerifSub').innerText = currentLang === 'ar' ? 'منصة العمل الحر — المملكة العربية السعودية' : 'Freelance Platform — Saudi Arabia';
     document.getElementById('uiDocLbl').innerText = currentLang === 'ar' ? 'رقم الوثيقة:' : 'Document ID:';
