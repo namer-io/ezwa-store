@@ -289,7 +289,7 @@ body.entrance-locked{
 .cat-tag{margin-top:4px;font-size:9.2px;font-weight:700;color:#94a3b8;white-space:nowrap;transition:color 0.2s;}
 .cat-holo-unit.active .cat-tag{color:var(--gold-light);text-shadow:0 0 8px rgba(212,175,55,0.45);}
 
-.holo-products-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 4px;padding:18px 0 8px 0;width:100%;}
+.holo-products-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 4px;padding:18px 0 54px 0;width:100%;}
 .product-holo-stage{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding-top:26px;user-select:none;}
 .product-top-hud{position:absolute;top:0;left:8px;right:8px;display:flex;align-items:center;justify-content:space-between;z-index:8;pointer-events:none;}
 .nfc-micro-chip{background:rgba(14,14,18,0.92);border:1px solid rgba(212,175,55,0.55);color:var(--gold-light);font-family:'Orbitron',sans-serif!important;font-size:7px;font-weight:800;padding:2px 7px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.6);animation:zeroGravityFloatSlow 3.5s ease-in-out infinite;}
@@ -351,17 +351,30 @@ body.entrance-locked{
 .store-footer{margin-top:10px;padding-top:10px;border-top:1px solid rgba(212,175,55,0.22);display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#94a3b8;}
 .admin-lock-btn{background:rgba(16,16,20,0.92);border:1px solid rgba(212,175,55,0.45);color:var(--gold-light);padding:5px 12px;border-radius:14px;font-size:10px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.6);animation:zeroGravityFloatSlow 4s ease-in-out infinite;}
 
-.floating-cart-orb{position:fixed;bottom:10px;left:10px;display:flex;flex-direction:column;align-items:center;z-index:900;cursor:pointer;user-select:none;animation:zeroGravityFloat 3.5s ease-in-out infinite;transition:transform 0.2s ease;}
-.floating-cart-orb:active{transform:scale(0.92);}
-.cart-orb-sphere{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(212,175,55,0.34) 0%,rgba(12,12,16,0.96) 82%);border:1.6px solid var(--gold-light);box-shadow:0 10px 24px rgba(0,0,0,0.9),0 0 18px rgba(212,175,55,0.45);display:flex;align-items:center;justify-content:center;position:relative;}
+.floating-cart-orb{position:fixed;bottom:6px;left:6px;transform:scale(0.88);display:flex;flex-direction:column;align-items:center;z-index:900;cursor:pointer;user-select:none;transition:transform 0.2s ease;}
+.floating-cart-orb:active{transform:scale(0.82);}
+.cart-orb-sphere{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(212,175,55,0.34) 0%,rgba(12,12,16,0.96) 82%);border:1.6px solid var(--gold-light);box-shadow:0 10px 24px rgba(0,0,0,0.9),0 0 20px rgba(212,175,55,0.55);display:flex;align-items:center;justify-content:center;position:relative;animation:zeroGravityFloat 3.5s ease-in-out infinite;}
 .cart-badge-count{position:absolute;top:-3px;right:-3px;background:var(--gold-primary);color:#070709;font-family:'Orbitron',sans-serif!important;font-size:9px;font-weight:900;min-width:17px;height:17px;border-radius:50%;border:1.5px solid #070709;box-shadow:0 0 10px rgba(212,175,55,0.75);display:flex;align-items:center;justify-content:center;}
 .cart-orb-price-pill{margin-top:3px;background:rgba(10,10,13,0.92);border:1px solid rgba(212,175,55,0.55);color:var(--gold-light);padding:1px 6px;border-radius:8px;font-size:8px;font-weight:800;white-space:nowrap;}
 
-.floating-ai-orb{position:fixed;bottom:10px;right:10px;display:flex;flex-direction:column;align-items:center;z-index:900;cursor:pointer;user-select:none;animation:zeroGravityFloat 3.2s ease-in-out infinite;transition:transform 0.2s ease;}
-.floating-ai-orb:active{transform:scale(0.92);}
-.ai-orb-sphere{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(212,175,55,0.28) 0%,rgba(10,10,13,0.96) 82%);border:1.6px solid var(--gold-primary);box-shadow:0 10px 24px rgba(0,0,0,0.9),0 0 20px rgba(212,175,55,0.45);display:flex;align-items:center;justify-content:center;position:relative;}
+.floating-ai-orb{position:fixed;bottom:6px;right:6px;transform:scale(0.88);display:flex;flex-direction:column;align-items:center;z-index:900;cursor:pointer;user-select:none;transition:transform 0.2s ease;}
+.floating-ai-orb:active{transform:scale(0.82);}
+.ai-orb-sphere{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(212,175,55,0.28) 0%,rgba(10,10,13,0.96) 82%);border:1.6px solid var(--gold-primary);box-shadow:0 10px 24px rgba(0,0,0,0.9),0 0 20px rgba(212,175,55,0.45);display:flex;align-items:center;justify-content:center;position:relative;animation:zeroGravityFloat 3.2s ease-in-out infinite;}
 .ai-online-ring{position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(212,175,55,0.5);animation:emitterPulseRing 2s infinite;pointer-events:none;}
 .ai-orb-tag-pill{margin-top:3px;background:rgba(10,10,13,0.92);border:1px solid rgba(212,175,55,0.55);color:var(--gold-light);padding:1px 7px;border-radius:8px;font-size:8px;font-weight:800;white-space:nowrap;}
+
+.floating-cart-orb::after,
+.floating-ai-orb::after{
+    content:'';
+    width:40px;
+    height:9px;
+    margin-top:3px;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center, rgba(245,214,156,0.95) 0%, rgba(212,175,55,0.48) 55%, transparent 78%);
+    border:1px solid rgba(245,214,156,0.85);
+    box-shadow:0 0 16px rgba(212,175,55,0.85), 0 4px 12px rgba(212,175,55,0.4);
+    pointer-events:none;
+}
 
 .voice-wave-bar-wrap{display:flex;align-items:center;justify-content:center;gap:4px;height:24px;margin-bottom:8px;}
 .v-bar{width:3.5px;height:6px;border-radius:4px;background:var(--gold-primary);box-shadow:0 0 8px var(--gold-primary);transition:height 0.15s ease;}
