@@ -380,10 +380,10 @@ body.entrance-locked{
 
 .holo-categories-row{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(2,1fr);
     align-items:end;
     justify-items:center;
-    padding:2px 2px;
+    padding:2px 24px;
     width:100%;
 }
 .cat-holo-unit{
@@ -413,8 +413,6 @@ body.entrance-locked{
     animation:zeroGravityFloatA 3.6s ease-in-out infinite;
 }
 .cat-holo-unit:nth-child(2) .cat-orb{animation-delay:0.4s;}
-.cat-holo-unit:nth-child(3) .cat-orb{animation-delay:0.8s;}
-.cat-holo-unit:nth-child(4) .cat-orb{animation-delay:1.2s;}
 .cat-holo-unit.active.gold-t .cat-orb{border-color:var(--gold-light);box-shadow:0 0 18px rgba(223,177,91,0.7),inset 0 0 10px rgba(223,177,91,0.35);}
 .cat-holo-unit.active.cyan-t .cat-orb{border-color:var(--cyan-glow);box-shadow:0 0 18px rgba(0,243,255,0.7),inset 0 0 10px rgba(0,243,255,0.35);}
 
@@ -480,7 +478,6 @@ body.entrance-locked{
 .product-floater-visual:active{transform:scale(0.95);}
 .product-floater-visual.holo-flash{opacity:0.25;transform:scale(0.92);}
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
-/* دمج الأسود النقي ليذوب مع خلفية المتجر الداكنة وكأنه مقصوص بدون خلفية */
 .product-floater-visual img{
     width:100%;height:100%;
     object-fit:contain;
@@ -1038,30 +1035,6 @@ body.entrance-locked{
             <div class="cat-pad"></div>
             <span class="cat-tag" id="catTshirts">تيشيرت بوكسي</span>
         </div>
-
-        <div class="cat-holo-unit gold-t" data-cat="hoodies" onclick="selectCategory('hoodies',this)">
-            <div class="cat-cone"></div>
-            <div class="cat-orb">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 3h6l2 3 4 3-2 4-2-1v9H7v-9l-2 1-2-4 4-3 2-3z"/>
-                    <path d="M9 3c0 2.5 6 2.5 6 0"/>
-                </svg>
-            </div>
-            <div class="cat-pad"></div>
-            <span class="cat-tag" id="catHoodies">هوديز</span>
-        </div>
-
-        <div class="cat-holo-unit cyan-t" data-cat="pants" onclick="selectCategory('pants',this)">
-            <div class="cat-cone"></div>
-            <div class="cat-orb">
-                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 3h12l1.5 18h-4.5l-3-10-3 10H4.5L6 3z"/>
-                    <line x1="6" y1="6.5" x2="18" y2="6.5" stroke="#dfb15b"/>
-                </svg>
-            </div>
-            <div class="cat-pad"></div>
-            <span class="cat-tag" id="catPants">بناطيل أوفرسايز</span>
-        </div>
     </nav>
 
     <main class="holo-products-grid" id="productsGrid"></main>
@@ -1188,7 +1161,7 @@ body.entrance-locked{
     </div>
     <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()">
         <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
-        <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قطن 100% + شريحة NFC مدمجة</div>
+        <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قصة بوكس فيت مدمج بـ NFC • قطن 100 %</div>
     </div>
     <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
         <button type="button" class="tool-pill-btn" id="loupeToggleBtn" onclick="toggleZoomScale()">🔬 تكبير / تصغير تفاصيل النسيج</button>
@@ -1254,8 +1227,8 @@ body.entrance-locked{
                 <div class="calc-field-unit">
                     <span class="calc-field-lbl">نوع القَصّة</span>
                     <select id="userFitPref">
-                        <option value="oversized">أوفرسايز</option>
                         <option value="boxy">بوكسي فيت</option>
+                        <option value="oversized">أوفرسايز</option>
                         <option value="regular">مقاس مضبوط</option>
                     </select>
                 </div>
@@ -1264,7 +1237,7 @@ body.entrance-locked{
         </div>
         <div class="ai-quick-chips">
             <button type="button" class="ai-chip-btn" onclick="toggleSizeCalc()">📏 مستشار المقاسات</button>
-            <button type="button" class="ai-chip-btn" onclick="askAiTopic('outfit')">👔 نسّق لي طقم كامل</button>
+            <button type="button" class="ai-chip-btn" onclick="askAiTopic('outfit')">👔 رشّح لي تيشيرت</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('nfc')">📡 وش ميزة الـ NFC؟</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ تغليف البرواز والغسيل</button>
         </div>
@@ -1510,8 +1483,6 @@ body.entrance-locked{
                         <label>القسم:</label>
                         <select id="npCat">
                             <option value="tshirts">تيشيرت بوكسي</option>
-                            <option value="hoodies">هوديز</option>
-                            <option value="pants">بناطيل أوفرسايز</option>
                         </select>
                     </div>
                     <div class="admin-field">
@@ -1758,73 +1729,12 @@ const DEFAULT_PRODUCTS = [
         variants: [
             { colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197067.png" }
         ]
-    },
-    {
-        id: "ezwa-hoodie-dual",
-        cat: "hoodies",
-        nameAr: "هودي عِزوة ثنائي اللون — أوفرسايز",
-        nameEn: "EZWA Two-Tone Oversized Hoodie",
-        price: 189,
-        sizes: ["S", "M", "L", "XL"],
-        descAr: "هودي ستريت وير ثقيل 420 GSM بتصميم أكمام متباينة وخطوط جانبية بارزة، مدمج بشريحة NFC مشفّرة لتوثيق ملكيتك سحابياً.",
-        descEn: "420 GSM heavyweight two-tone oversized hoodie with contrast sleeves and embedded encrypted NFC tag.",
-        variants: [
-            { colorAr: "أسود × بيج", colorEn: "Black × Beige", swatch: "linear-gradient(135deg, #18181b 50%, #dfd3c3 50%)", bodyHex: "#18181b", sleeveHex: "#dfd3c3", image: "hoodie-black.png" },
-            { colorAr: "أزرق × أبيض", colorEn: "Blue × White", swatch: "linear-gradient(135deg, #3b63a8 50%, #f8fafc 50%)", bodyHex: "#3b63a8", sleeveHex: "#f8fafc", image: "hoodie-blue.png" },
-            { colorAr: "أبيض × أزرق", colorEn: "White × Blue", swatch: "linear-gradient(135deg, #f8fafc 50%, #3b63a8 50%)", bodyHex: "#f8fafc", sleeveHex: "#3b63a8", image: "hoodie-white.png" },
-            { colorAr: "بيج × أسود", colorEn: "Beige × Black", swatch: "linear-gradient(135deg, #dfd3c3 50%, #18181b 50%)", bodyHex: "#dfd3c3", sleeveHex: "#18181b", image: "hoodie-beige.png" }
-        ]
-    },
-    {
-        id: "ezwa-hoodie-diff",
-        cat: "hoodies",
-        nameAr: "هودي Different — أوفرسايز",
-        nameEn: "EZWA Different Oversized Hoodie",
-        price: 189,
-        sizes: ["S", "M", "L", "XL"],
-        descAr: "هودي ستريت وير فاخر بقصة كتف ساقطة وطباعة بارزة وتطريز على الكم، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
-        descEn: "Luxury drop-shoulder oversized hoodie with layered chest print & sleeve embroidery, integrated with cloud NFC.",
-        variants: [
-            { colorAr: "أخضر فستقي", colorEn: "Sage Mint", swatch: "#8ca8a9", bodyHex: "#8ca8a9", sleeveHex: "#8ca8a9", image: "hoodie-diff-mint.png" },
-            { colorAr: "فحمي داكن", colorEn: "Washed Charcoal", swatch: "#5a5361", bodyHex: "#5a5361", sleeveHex: "#5a5361", image: "hoodie-diff-charcoal.png" },
-            { colorAr: "أزرق سماوي", colorEn: "Sky Denim Blue", swatch: "#6b93c4", bodyHex: "#6b93c4", sleeveHex: "#6b93c4", image: "hoodie-diff-blue.png" },
-            { colorAr: "أسود ملكي", colorEn: "Jet Black", swatch: "#17171a", bodyHex: "#17171a", sleeveHex: "#17171a", image: "hoodie-diff-black.png" }
-        ]
-    },
-    {
-        id: "ezwa-hoodie-bright",
-        cat: "hoodies",
-        nameAr: "هودي BRIGHT — أوفرسايز",
-        nameEn: "EZWA BRIGHT Oversized Hoodie",
-        price: 189,
-        sizes: ["S", "M", "L", "XL"],
-        descAr: "هودي ستريت وير فاخر بتطريز BRIGHT ثلاثي الأبعاد على الصدر وقصة أوفرسايز مريحة، مدمج بشريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
-        descEn: "Luxury oversized hoodie with 3D outlined BRIGHT chest applique and embedded encrypted cloud NFC verification.",
-        variants: [
-            { colorAr: "أسود ملكي", colorEn: "Jet Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "hoodie-bright-black.png" },
-            { colorAr: "أزرق ثلجي", colorEn: "Ice Sky Blue", swatch: "#9ec8e2", bodyHex: "#9ec8e2", sleeveHex: "#9ec8e2", image: "hoodie-bright-iceblue.png" },
-            { colorAr: "كحلي داكن", colorEn: "Deep Navy", swatch: "#1e2942", bodyHex: "#1e2942", sleeveHex: "#1e2942", image: "hoodie-bright-navy.png" },
-            { colorAr: "بيج رملي", colorEn: "Sand Beige", swatch: "#d6cbbd", bodyHex: "#d6cbbd", sleeveHex: "#d6cbbd", image: "hoodie-bright-beige.png" }
-        ]
-    },
-    {
-        id: "ezwa-4",
-        cat: "pants",
-        nameAr: "بنطال عِزوة أوفرسايز — كارجو",
-        nameEn: "EZWA Oversized Street Cargo Pants",
-        price: 149,
-        sizes: ["30", "32", "34", "36"],
-        descAr: "بنطال ستريت وير بقصة مريحة وخامة متينة مقاومة للتجعد مع شارة NFC منسوجة على الجيب الجانبي.",
-        descEn: "Relaxed-fit street cargo pants with wrinkle-resistant fabric and woven side-pocket NFC badge.",
-        variants: [
-            { colorAr: "أسود فحمي", colorEn: "Charcoal Black", swatch: "#0f172a", bodyHex: "#0f172a", sleeveHex: "#0f172a", image: "" }
-        ]
     }
 ];
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v9');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v10');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1949,15 +1859,19 @@ function startVoiceRecognition() {
 
 function handleSpokenQuery(text) {
     const q = text.toLowerCase();
-    if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('هودي') || q.includes('تيشيرت') || q.includes('بنطال')) {
+    if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('تيشيرت') || q.includes('المصمك') || q.includes('برغندي') || q.includes('أسود') || q.includes('اسود')) {
         let targetProd = PRODUCTS[0];
-        if (q.includes('برايت') || q.includes('bright')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-bright') || targetProd;
-        else if (q.includes('ديفرنت') || q.includes('different')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-diff') || targetProd;
-        else if (q.includes('أسود') || q.includes('اسود')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-back') || targetProd;
-        else if (q.includes('المصمك') || q.includes('الرياض') || q.includes('برغندي') || q.includes('عنابي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || targetProd;
-        else if (q.includes('بنطال') || q.includes('كارجو')) targetProd = PRODUCTS.find(p => p.cat === 'pants') || targetProd;
+        if ((q.includes('أسود') || q.includes('اسود')) && (q.includes('أمامي') || q.includes('امامي') || q.includes('ezwa'))) {
+            targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-front') || targetProd;
+        } else if (q.includes('أسود') || q.includes('اسود')) {
+            targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-back') || targetProd;
+        } else if (q.includes('أمامي') || q.includes('امامي') || q.includes('ezwa')) {
+            targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-front') || targetProd;
+        } else {
+            targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || targetProd;
+        }
 
-        let chosenSize = targetProd.cat === 'pants' ? '32' : 'L';
+        let chosenSize = 'L';
         if (q.includes('سمول') || q.includes('small') || q.includes(' s ')) chosenSize = 'S';
         else if (q.includes('ميديم') || q.includes('وسط') || q.includes('medium')) chosenSize = 'M';
         else if (q.includes('اكس لارج') || q.includes('إكس لارج') || q.includes('xl')) chosenSize = 'XL';
@@ -1975,7 +1889,7 @@ function handleSpokenQuery(text) {
         }
         updateCartUI();
 
-        const spokenSize = chosenSize === 'S' ? 'سمول' : chosenSize === 'M' ? 'ميديم' : chosenSize === 'L' ? 'لارج' : chosenSize === 'XL' ? 'إكس لارج' : chosenSize;
+        const spokenSize = chosenSize === 'S' ? 'سمول' : chosenSize === 'M' ? 'ميديم' : chosenSize === 'L' ? 'لارج' : 'إكس لارج';
         const reply = `تمت إضافة <strong>${targetProd.nameAr}</strong> مقاس <strong style="color:#00f3ff;">${chosenSize}</strong> إلى سلتك مباشرة!`;
         appendAiChat(text, reply);
         speakAiVoice(`تمت إضافة ${targetProd.nameAr} مقاس ${spokenSize} إلى سلتك بنجاح.`);
@@ -1987,40 +1901,17 @@ function handleSpokenQuery(text) {
         const reply = 'أهلاً بك، أدخل طولك ووزنك واختر نوع القصة في الحاسبة التي ظهرت أمامك وسأحدد مقاسك الدقيق فوراً.';
         appendAiChat(text, reply);
         speakAiVoice(reply);
-    } else if (q.includes('طقم') || q.includes('نسق') || q.includes('لبس') || q.includes('outfit')) {
-        askAiTopic('outfit', text);
     } else if (q.includes('شريحة') || q.includes('nfc') || q.includes('تقنية') || q.includes('توثيق')) {
         askAiTopic('nfc', text);
     } else if (q.includes('برواز') || q.includes('هدية') || q.includes('غسيل') || q.includes('تغليف')) {
         askAiTopic('frame', text);
     } else {
-        const reply = 'يسعدني خدمتك في عِزوة؛ يمكنك قول اسم أي قطعة ومقاسها لأضيفها للسلة فوراً، أو سؤالي عن المقاس المناسب وتقنية الـ NFC.';
-        appendAiChat(text, reply);
-        speakAiVoice(reply);
+        askAiTopic('outfit', text);
     }
 }
 
 function getHologramSvg(cat, variant) {
     const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
-    const sleeve = (variant && variant.sleeveHex) ? variant.sleeveHex : body;
-    if (cat === 'hoodies') {
-        return `<svg viewBox="0 0 140 140" fill="none">
-            <path d="M46 28L22 44L32 66L44 58V44L46 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
-            <path d="M94 28L118 44L108 66L96 58V44L94 28Z" fill="${sleeve}" stroke="#dfb15b" stroke-width="1.8"/>
-            <path d="M46 28C46 20 56 15 70 15C84 15 94 20 94 28L96 44V116H44V44L46 28Z" fill="${body}" stroke="#dfb15b" stroke-width="2.2"/>
-            <path d="M54 28C54 36 86 36 86 28" stroke="#00f3ff" stroke-width="1.8"/>
-            <circle cx="70" cy="64" r="9" stroke="#dfb15b" stroke-width="1.6"/>
-            <text x="70" y="67" fill="#f5d69c" font-size="8" font-weight="bold" text-anchor="middle">عزوة</text>
-            <rect x="48" y="108" width="44" height="5" rx="2" fill="#dfb15b" opacity="0.8"/>
-        </svg>`;
-    } else if (cat === 'pants') {
-        return `<svg viewBox="0 0 140 140" fill="none">
-            <path d="M44 22H96L104 118H78L70 62L62 118H36L44 22Z" fill="${body}" stroke="#00f3ff" stroke-width="2.2"/>
-            <path d="M44 30H96" stroke="#dfb15b" stroke-width="2"/>
-            <rect x="82" y="54" width="12" height="16" rx="2" stroke="#dfb15b" stroke-width="1.5"/>
-            <circle cx="88" cy="62" r="2" fill="#00f3ff"/>
-        </svg>`;
-    }
     return `<svg viewBox="0 0 140 140" fill="none">
         <path d="M45 26L58 20C62 26 78 26 82 20L95 26L118 44L106 64L92 55V116H48V55L34 64L22 44L45 26Z" fill="${body}" stroke="#dfb15b" stroke-width="2.2"/>
         <path d="M58 20C62 27 78 27 82 20" stroke="#00f3ff" stroke-width="1.8"/>
@@ -2148,14 +2039,12 @@ function calculateSmartSize() {
     else if (w < 90) idx = 2;
     else idx = 3;
 
-    let fitLabel = 'أوفرسايز';
-    let fitDesc = 'بقصّة أوفرسايز مريحة (Oversized Fit)';
+    let fitLabel = 'بوكسي فيت';
+    let fitDesc = 'بقصّة بوكسي فيت عريضة ومربعة مدمجة بـ NFC • قطن 100 %';
 
-    if (pref === 'boxy') {
-        fitLabel = 'بوكسي فيت';
-        fitDesc = 'بقصّة بوكسي فيت عريضة ومربعة بطول مثالي عند الخصر (Boxy Fit)';
-        if (h >= 180 && idx < 2) idx = 2;
-        if (h >= 187 && idx < 3) idx = 3;
+    if (pref === 'oversized') {
+        fitLabel = 'أوفرسايز';
+        fitDesc = 'بقصّة أوفرسايز مريحة (Oversized Fit)';
     } else if (pref === 'regular') {
         fitLabel = 'مقاس مضبوط';
         fitDesc = 'بقصّة مضبوطة وأنيقة (Regular Fit)';
@@ -2168,18 +2057,16 @@ function calculateSmartSize() {
     appendAiChat(
         `الطول: ${h} سم | الوزن: ${w} كجم | القَصّة: ${fitLabel}`,
         `بناءً على قياساتك ونوع القَصّة، مقاسك المثالي في <strong>عِـزوة</strong> هو <strong style="color:#00f3ff;font-size:14px;">${finalSize}</strong> ${fitDesc}.<br>
-         <button type="button" class="cyan-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="applyRecommendedSize('${finalSize}', '${pref}')">اعتماد مقاس ${finalSize} واختيار القطعة ◈</button>`
+         <button type="button" class="cyan-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="applyRecommendedSize('${finalSize}')">اعتماد مقاس ${finalSize} واختيار القطعة ◈</button>`
     );
     speakAiVoice(`بناءً على طولك ووزنك لقصة ${fitLabel}، مقاسك المثالي في عِزوة هو ${spokenSize}.`);
     document.getElementById('sizeCalcBox').classList.remove('active');
 }
 
-function applyRecommendedSize(size, pref) {
+function applyRecommendedSize(size) {
     activeModalSize = size;
     closeAiModal();
-    const targetProd = pref === 'boxy'
-        ? (PRODUCTS.find(p => p.cat === 'tshirts') || PRODUCTS[0])
-        : (PRODUCTS.find(p => p.cat === 'hoodies') || PRODUCTS[0]);
+    const targetProd = PRODUCTS[0];
     if (targetProd) {
         openProductModal(targetProd.id);
         selectModalSize(size);
@@ -2189,13 +2076,12 @@ function applyRecommendedSize(size, pref) {
 function askAiTopic(topic, customUserText) {
     if (topic === 'outfit') {
         appendAiChat(
-            customUserText || 'نسّق لي طقم ستريت وير متكامل',
+            customUserText || 'رشّح لي تيشيرت من تشكيلة المصمك',
             `أقترح عليك إطلالة <strong>عِـزوة الملكية</strong>:<br>
-            • <strong>القطعة العلوية:</strong> تيشيرت بوكس فيت برغندي — المصمك (199 ر.س)<br>
-            • <strong>القطعة السفلية:</strong> بنطال عِزوة أوفرسايز الكارجو الفحمي (149 ر.س)<br>
-             <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف الطقم الكامل للسلة (348 ر.س)</button>`
+            • <strong>تيشيرت بوكس فيت برغندي — المصمك:</strong> 199 ر.س (قطن 100 % + NFC)<br>
+             <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف التيشيرت للسلة (199 ر.س)</button>`
         );
-        speakAiVoice('أقترح عليك تنسيق تيشيرت بوكس فيت برغندي المصمك مع بنطال عِزوة الكارجو الفحمي لإطلالة ستريت وير متكاملة.');
+        speakAiVoice('أقترح عليك تيشيرت بوكس فيت برغندي المصمك بسعر 199 ريال، قطن 100 بالمئة ومدمج بشريحة إن إف سي.');
     } else if (topic === 'nfc') {
         appendAiChat(
             customUserText || 'كيف تعمل تقنية الـ NFC في الملابس؟',
@@ -2209,7 +2095,7 @@ function askAiTopic(topic, customUserText) {
         appendAiChat(
             customUserText || 'ما هي فكرة تغليف البرواز وطريقة الغسيل؟',
             `• <strong>تغليف البرواز المبتكر:</strong> يمكنك اختيار تقديم القطعة داخل <strong>برواز صورة فاخر</strong> كطريقة عرض استثنائية عند الإهداء.<br>
-            • <strong>العناية بالغسيل:</strong> يُغسل مقلوباً بماء بارد (30 درجة) للحفاظ على فخامة القطن وشريحة الـ NFC.`
+            • <strong>العناية بالغسيل:</strong> يُغسل مقلوباً بماء بارد (30 درجة) للحفاظ على فخامة القطن 100% وشريحة الـ NFC.`
         );
         speakAiVoice('يمكنك اختيار تقديم القطعة داخل برواز صورة فاخر كفكرة عرض مبتكرة للإهداء، وللعناية بالقطعة يُفضل غسلها مقلوبة بماء بارد.');
     }
@@ -2217,7 +2103,6 @@ function askAiTopic(topic, customUserText) {
 
 function addSuggestedOutfitToCart() {
     const tee = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || PRODUCTS[0];
-    const pants = PRODUCTS.find(p => p.cat === 'pants');
     if (tee) {
         cart.push({
             cartKey: `${tee.id}__0__${activeModalSize}`,
@@ -2226,17 +2111,9 @@ function addSuggestedOutfitToCart() {
             size: activeModalSize, price: tee.price, qty: 1
         });
     }
-    if (pants) {
-        cart.push({
-            cartKey: `${pants.id}__0__32`,
-            id: pants.id, nameAr: pants.nameAr, nameEn: pants.nameEn,
-            colorAr: pants.variants[0].colorAr, colorEn: pants.variants[0].colorEn,
-            size: '32', price: pants.price, qty: 1
-        });
-    }
     updateCartUI();
     closeAiModal();
-    showToast('تمت إضافة الطقم الكامل للسلة بنجاح ◈');
+    showToast('تمت إضافة التيشيرت إلى السلة بنجاح ◈');
 }
 
 function openZoomLightbox(prodId, varIdx) {
@@ -2507,7 +2384,7 @@ async function submitDirectStoreOrder() {
                 التاريخ: todayStr,
                 اسم_العميل: clientName,
                 رقم_الجوال: clientPhone,
-                العنوان_الوطني: fullAddress,
+                المدينة_والعنوان: fullAddress,
                 الرمز_البريدي: nationalPostal || 'غير محدد',
                 طريقة_الدفع: paymentLabelWithRef,
                 التغليف: pkg,
@@ -2650,7 +2527,7 @@ function renderAdminProductsList() {
 
 function addNewProduct(e) {
     e.preventDefault();
-    const cName = document.getElementById('npColorName').value.trim() || 'أساسي';
+    const cName = document.getElementById('npColorName').value.trim() || 'برغندي';
     const sizesArr = document.getElementById('npSizes').value.split(',').map(s => s.trim()).filter(Boolean);
     const newProd = {
         id: 'ezwa-' + Date.now(),
@@ -2690,7 +2567,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v9', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v10', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -2720,8 +2597,6 @@ function toggleLang() {
         : '◈ EXCLUSIVE RELEASES • FAST NATIONWIDE SHIPPING ◈';
     document.getElementById('catAll').innerText = currentLang === 'ar' ? 'الكل' : 'ALL';
     document.getElementById('catTshirts').innerText = currentLang === 'ar' ? 'تيشيرت بوكسي' : 'BOXY TEES';
-    document.getElementById('catHoodies').innerText = currentLang === 'ar' ? 'هوديز' : 'HOODIES';
-    document.getElementById('catPants').innerText = currentLang === 'ar' ? 'بناطيل أوفرسايز' : 'PANTS';
     document.getElementById('aiOrbTag').innerText = currentLang === 'ar' ? 'مستشار عِزوة 🔊' : 'EZWA AI Voice 🔊';
     document.getElementById('pmSizeLabel').innerText = currentLang === 'ar' ? 'اختر المقاس:' : 'Select Size:';
     document.getElementById('pmQtyLabel').innerText = currentLang === 'ar' ? 'الكمية (بالحبة):' : 'Quantity:';
