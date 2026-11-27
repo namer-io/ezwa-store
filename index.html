@@ -765,8 +765,18 @@ body.entrance-locked{
     text-align:start;
 }
 .bank-transfer-box.active{display:block;}
+.bank-layout-flex{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.bank-info-col{flex:1;min-width:0;}
 .bank-detail-line{font-size:10.5px;color:#e2e8f0;margin-bottom:4px;line-height:1.45;}
 .bank-detail-line strong{color:var(--gold-light);}
+.bank-qr-panel{
+    flex-shrink:0;padding:5px;background:#040b18;
+    border:1px solid rgba(0,243,255,0.45);border-radius:10px;text-align:center;
+}
+.bank-qr-panel img{width:64px;height:64px;display:block;border-radius:5px;}
+.bank-qr-panel span{display:block;font-size:8.5px;font-weight:800;color:var(--gold-light);margin-top:2px;}
 .iban-copy-row{
     display:flex;align-items:center;justify-content:space-between;gap:6px;
     background:#040b18;border:1px dashed rgba(0,243,255,0.45);
@@ -1313,9 +1323,19 @@ body.entrance-locked{
                 <input type="tel" id="clientPhoneInput" required placeholder="05xxxxxxxx" style="direction:ltr;">
             </div>
         </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div class="admin-field">
+                <label>المدينة والحي *:</label>
+                <input type="text" id="clientCityInput" required placeholder="الرياض - حي العليا">
+            </div>
+            <div class="admin-field">
+                <label>الرمز البريدي (العنوان الوطني):</label>
+                <input type="text" id="nationalPostalInput" maxlength="5" inputmode="numeric" placeholder="12214" style="direction:ltr;text-align:center;">
+            </div>
+        </div>
         <div class="admin-field">
-            <label>المدينة والعنوان للتوصيل *:</label>
-            <input type="text" id="clientCityInput" required placeholder="مثال: الرياض - حي العليا">
+            <label>الشارع ورقم المبنى (العنوان الوطني):</label>
+            <input type="text" id="nationalStreetInput" placeholder="شارع الملك فهد - مبنى 4210">
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             <div class="admin-field">
@@ -1335,9 +1355,17 @@ body.entrance-locked{
         </div>
 
         <div class="bank-transfer-box active" id="bankTransferBox">
-            <div class="bank-detail-line"><strong>البنك:</strong> <span id="uiBankName">مصرف الراجحي</span></div>
-            <div class="bank-detail-line"><strong>المستفيد:</strong> <span id="uiBankBeneficiary">يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات</span></div>
-            <div class="bank-detail-line"><strong>الوثيقة:</strong> <span dir="ltr" id="uiBankDoc">FL-749408046</span></div>
+            <div class="bank-layout-flex">
+                <div class="bank-info-col">
+                    <div class="bank-detail-line"><strong>البنك:</strong> <span id="uiBankName">مصرف الراجحي</span></div>
+                    <div class="bank-detail-line"><strong>المستفيد:</strong> <span id="uiBankBeneficiary">يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات</span></div>
+                    <div class="bank-detail-line"><strong>الوثيقة:</strong> <span dir="ltr" id="uiBankDoc">FL-749408046</span></div>
+                </div>
+                <div class="bank-qr-panel">
+                    <img id="cartBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=dfb15b&bgcolor=040b18&data=SA6280000448608016270480" alt="QR للآيبان البنكي">
+                    <span>QR الآيبان</span>
+                </div>
+            </div>
             <div class="iban-copy-row">
                 <span class="iban-code-str" id="uiBankIban">SA6280000448608016270480</span>
                 <button type="button" class="copy-iban-btn" onclick="copyBankIban()">نسخ الآيبان</button>
@@ -1387,10 +1415,16 @@ body.entrance-locked{
             <div class="inv-meta-grid">
                 <div><strong>العميل:</strong> <span id="invClientName">-</span></div>
                 <div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div>
-                <div><strong>العنوان:</strong> <span id="invClientCity">-</span></div>
+                <div style="grid-column:1 / -1;"><strong>العنوان الوطني:</strong> <span id="invClientAddressFull">-</span></div>
                 <div><strong>التغليف:</strong> <span id="invPackaging">-</span></div>
-                <div style="grid-column:1 / -1;"><strong>الدفع:</strong> <span id="invPaymentMethod">-</span></div>
-                <div style="grid-column:1 / -1;" id="invBankSummaryRow"><strong>الآيبان:</strong> <span dir="ltr" style="font-family:'Orbitron',sans-serif;font-size:10px;color:var(--cyan-glow);">SA6280000448608016270480</span></div>
+                <div><strong>الدفع:</strong> <span id="invPaymentMethod">-</span></div>
+                <div id="invBankSummaryRow" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:4px;border-top:1px dashed rgba(223,177,91,0.25);">
+                    <div style="min-width:0;">
+                        <div style="font-size:10px;color:var(--gold-light);font-weight:800;">مصرف الراجحي — IBAN</div>
+                        <div dir="ltr" style="font-family:'Orbitron',sans-serif;font-size:9.5px;color:var(--cyan-glow);overflow-x:auto;">SA6280000448608016270480</div>
+                    </div>
+                    <img id="invBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&color=dfb15b&bgcolor=040b18&data=SA6280000448608016270480" alt="QR للآيبان البنكي" style="width:56px;height:56px;border-radius:6px;border:1px solid rgba(0,243,255,0.45);flex-shrink:0;">
+                </div>
             </div>
             <table class="inv-items-table">
                 <thead>
@@ -1522,6 +1556,21 @@ const STORE_CONFIG = {
     bankIban: "SA6280000448608016270480"
 };
 
+function buildBankQrUrl(amountSar) {
+    const payload = amountSar && Number(amountSar) > 0
+        ? `IBAN:${STORE_CONFIG.bankIban}|BANK:${STORE_CONFIG.bankName}|AMOUNT:${Number(amountSar)}SAR`
+        : STORE_CONFIG.bankIban;
+    return `https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=dfb15b&bgcolor=040b18&data=${encodeURIComponent(payload)}`;
+}
+
+function refreshBankQrCodes(amountSar) {
+    const url = buildBankQrUrl(amountSar);
+    const cartQr = document.getElementById('cartBankQrImg');
+    const invQr = document.getElementById('invBankQrImg');
+    if (cartQr) cartQr.src = url;
+    if (invQr) invQr.src = url;
+}
+
 function toggleBankTransferDetails() {
     const sel = document.getElementById('paymentMethodSelect');
     const box = document.getElementById('bankTransferBox');
@@ -1539,6 +1588,14 @@ function copyBankIban() {
     }).catch(() => {
         showToast('تعذر النسخ التلقائي');
     });
+}
+
+function formatNationalAddress(city, postal, street) {
+    const parts = [];
+    if (city) parts.push(city);
+    if (street) parts.push(street);
+    if (postal) parts.push(`الرمز البريدي: ${postal}`);
+    return parts.length ? parts.join(' — ') : '-';
 }
 
 /* =========================================================================
@@ -2330,6 +2387,7 @@ function updateCartUI() {
     document.getElementById('cartCountBadge').innerText = totalItems;
     document.getElementById('cartOrbPrice').innerText = `${totalAmount} ${curr}`;
     document.getElementById('cmGrandTotal').innerText = `${totalAmount} ${curr}`;
+    refreshBankQrCodes(totalAmount);
 }
 
 function openCartModal() {
@@ -2374,6 +2432,9 @@ async function submitDirectStoreOrder() {
     const clientName = document.getElementById('merchantNameInput').value.trim();
     const clientPhone = document.getElementById('clientPhoneInput').value.trim();
     const clientCity = document.getElementById('clientCityInput').value.trim();
+    const nationalPostal = (document.getElementById('nationalPostalInput') ? document.getElementById('nationalPostalInput').value.trim() : '');
+    const nationalStreet = (document.getElementById('nationalStreetInput') ? document.getElementById('nationalStreetInput').value.trim() : '');
+    const fullAddress = formatNationalAddress(clientCity, nationalPostal, nationalStreet);
     const paymentMethod = document.getElementById('paymentMethodSelect').value;
     const transferRef = (document.getElementById('transferRefInput') ? document.getElementById('transferRefInput').value.trim() : '');
     const pkg = document.getElementById('packagingOption').value;
@@ -2406,6 +2467,9 @@ async function submitDirectStoreOrder() {
         clientName,
         clientPhone,
         clientCity,
+        nationalPostal,
+        nationalStreet,
+        fullAddress,
         paymentMethod: paymentLabelWithRef,
         isBankTransfer: paymentMethod.includes('تحويل بنكي'),
         packaging: pkg,
@@ -2425,7 +2489,8 @@ async function submitDirectStoreOrder() {
                 التاريخ: todayStr,
                 اسم_العميل: clientName,
                 رقم_الجوال: clientPhone,
-                المدينة_والعنوان: clientCity,
+                العنوان_الوطني: fullAddress,
+                الرمز_البريدي: nationalPostal || 'غير محدد',
                 طريقة_الدفع: paymentLabelWithRef,
                 التغليف: pkg,
                 كود_الإحالة: refCode || 'لا يوجد',
@@ -2454,16 +2519,18 @@ async function submitDirectStoreOrder() {
 }
 
 function showGeneratedInvoice(order) {
+    refreshBankQrCodes(order.totalPrice);
     document.getElementById('invNumberTag').innerText = '#' + order.invoiceNo;
     document.getElementById('invDateTag').innerText = order.date;
     document.getElementById('invClientName').innerText = order.clientName;
     document.getElementById('invClientPhone').innerText = order.clientPhone;
-    document.getElementById('invClientCity').innerText = order.clientCity;
+    const addrText = order.fullAddress || formatNationalAddress(order.clientCity, order.nationalPostal, order.nationalStreet);
+    document.getElementById('invClientAddressFull').innerText = addrText;
     document.getElementById('invPackaging').innerText = order.packaging;
     document.getElementById('invPaymentMethod').innerText = order.paymentMethod || 'تحويل بنكي مباشر (الراجحي)';
     const bankRow = document.getElementById('invBankSummaryRow');
     if (bankRow) {
-        bankRow.style.display = (order.isBankTransfer !== false) ? 'block' : 'none';
+        bankRow.style.display = (order.isBankTransfer !== false) ? 'flex' : 'none';
     }
     document.getElementById('invGrandTotalVal').innerText = order.totalPrice + ' ر.س';
 
@@ -2477,9 +2544,11 @@ function showGeneratedInvoice(order) {
 
     const waBtn = document.getElementById('invWaShareBtn');
     waBtn.onclick = function() {
+        const addrLine = order.fullAddress || formatNationalAddress(order.clientCity, order.nationalPostal, order.nationalStreet);
         let msg = `*فاتورة طلب — متجر عِزوة (EZWA)* ◈\n`;
         msg += `*رقم الفاتورة:* #${order.invoiceNo}\n`;
-        msg += `*العميل:* ${order.clientName} (${order.clientCity})\n`;
+        msg += `*العميل:* ${order.clientName}\n`;
+        msg += `*العنوان الوطني:* ${addrLine}\n`;
         msg += `*طريقة الدفع:* ${order.paymentMethod || 'تحويل بنكي مباشر (الراجحي)'}\n`;
         msg += `*التغليف:* ${order.packaging}\n`;
         msg += `--------------------------\n`;
@@ -2531,7 +2600,8 @@ function renderAdminOrdersList() {
                 <strong style="color:var(--cyan-glow);font-family:'Orbitron',sans-serif;">#${ord.invoiceNo}</strong>
                 <span style="color:var(--gold-light);font-weight:800;">${ord.totalPrice} ر.س</span>
             </div>
-            <div style="font-size:11px;color:#e2e8f0;">${ord.clientName} — <span dir="ltr">${ord.clientPhone}</span> (${ord.clientCity})</div>
+            <div style="font-size:11px;color:#e2e8f0;">${ord.clientName} — <span dir="ltr">${ord.clientPhone}</span></div>
+            <div style="font-size:10px;color:#cbd5e1;">العنوان: ${ord.fullAddress || ord.clientCity}</div>
             <div style="font-size:10px;color:#93c5fd;">الدفع: ${ord.paymentMethod || 'تحويل بنكي'}</div>
             <div style="display:flex;gap:6px;">
                 <button type="button" class="pill-mini-btn vip-gold" onclick="viewSavedOrderInvoice(${idx})">🧾 عرض الفاتورة</button>
@@ -2701,3 +2771,6 @@ window.onload = function() {
 </script>
 </body>
 </html>
+```[cite: 5]
+
+<FollowUp label="هل تريد إضافة رابط الفيديو الثالث (video_2.mp4) من Cloudinary إلى قائمة التشغيل في الكود؟" query="نعم، سأعطيك رابط الفيديو الثالث لإضافته إلى قائمة التشغيل في الكود."/>
