@@ -40,6 +40,206 @@ body{
     position:relative;
     padding:10px 0 96px 0;
 }
+body.entrance-locked{
+    overflow:hidden;
+    height:100dvh;
+}
+
+/* =========================================================================
+   واجهة مدخل البروجكتر الهولوجرامي الفضائي (تظهر أولاً وتنكشف للمتجر)
+   ========================================================================= */
+.ezwa-entrance-overlay{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100dvh;
+    background:#020611;
+    z-index:3000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.ezwa-entrance-overlay.dismissed{
+    opacity:0;
+    transform:scale(1.04);
+    pointer-events:none;
+}
+.ezwa-holo-stage{
+    position:relative;
+    width:100vw;
+    height:100dvh;
+    background:#020611;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+}
+@media (min-width: 768px) {
+    .ezwa-holo-stage{
+        width:480px;
+        height:94dvh;
+        border-radius:28px;
+        box-shadow:0 0 80px rgba(223,177,91,0.16), inset 0 0 0 1px rgba(223,177,91,0.22);
+    }
+}
+.holo-projection-zone{
+    position:relative;
+    width:100%;
+    height:82dvh;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 6%, #000000 16%, #000000 76%, rgba(0,0,0,0.45) 90%, transparent 100%);
+    mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 6%, #000000 16%, #000000 76%, rgba(0,0,0,0.45) 90%, transparent 100%);
+}
+.holo-video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    display:block;
+    filter:contrast(1.04) saturate(1.06);
+    transition:opacity 0.25s ease;
+}
+.holo-scanline{
+    position:absolute;
+    left:0;
+    right:0;
+    height:2px;
+    background:linear-gradient(90deg, transparent, rgba(223,177,91,0.6), transparent);
+    box-shadow:0 0 14px rgba(223,177,91,0.45);
+    opacity:0.55;
+    pointer-events:none;
+    animation:holoScanMove 5.5s ease-in-out infinite;
+}
+@keyframes holoScanMove{
+    0%{top:14%;opacity:0;}
+    15%{opacity:0.55;}
+    85%{opacity:0.55;}
+    100%{top:78%;opacity:0;}
+}
+.projector-beam-glow{
+    position:absolute;
+    bottom:85px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120%;
+    height:240px;
+    background:radial-gradient(ellipse at 50% 100%, rgba(223,177,91,0.22) 0%, rgba(0,243,255,0.06) 45%, transparent 75%);
+    pointer-events:none;
+    z-index:2;
+}
+.projector-base-wrap{
+    position:absolute;
+    bottom:18px;
+    left:0;
+    right:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    z-index:10;
+    padding:0 20px;
+}
+.orbital-emitter{
+    position:relative;
+    width:240px;
+    height:44px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:12px;
+    pointer-events:none;
+}
+.emitter-core{
+    width:130px;
+    height:14px;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center, #fff3c4 0%, #dfb15b 45%, rgba(223,177,91,0) 75%);
+    box-shadow:0 0 28px rgba(223,177,91,0.85), 0 0 55px rgba(0,243,255,0.35);
+    animation:holoCorePulse 3s ease-in-out infinite;
+}
+.orbit-ring{
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(223,177,91,0.45);
+}
+.orbit-ring.ring-1{
+    width:195px;
+    height:28px;
+    animation:holoRingSpin 10s linear infinite;
+}
+.orbit-ring.ring-2{
+    width:235px;
+    height:38px;
+    border-style:dashed;
+    border-color:rgba(0,243,255,0.32);
+    animation:holoRingSpinRev 16s linear infinite;
+}
+@keyframes holoCorePulse{0%,100%{transform:scale(1);opacity:0.92;}50%{transform:scale(1.07);opacity:1;}}
+@keyframes holoRingSpin{0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);}}
+@keyframes holoRingSpinRev{0%{transform:rotateZ(360deg);}100%{transform:rotateZ(0deg);}}
+
+.entrance-cta-group{
+    width:100%;
+    max-width:340px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.btn-order-primary{
+    width:100%;
+    padding:13px 24px;
+    border-radius:999px;
+    background:linear-gradient(135deg, #f5d69c 0%, #dfb15b 50%, #c9a24b 100%);
+    color:#020611;
+    font-size:16px;
+    font-weight:900;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 8px 28px rgba(223,177,91,0.38);
+    transition:transform 0.2s ease;
+}
+.btn-order-primary:active{transform:scale(0.97);}
+.btn-enter-store{
+    width:100%;
+    padding:10px 20px;
+    border-radius:999px;
+    background:rgba(6,14,28,0.78);
+    border:1px solid rgba(0,243,255,0.45);
+    color:#e2e8f0;
+    font-size:14px;
+    font-weight:700;
+    text-align:center;
+    cursor:pointer;
+    backdrop-filter:blur(8px);
+    transition:all 0.2s ease;
+}
+.btn-enter-store:hover{
+    border-color:var(--gold-light);
+    color:var(--gold-light);
+}
+.sound-toggle{
+    position:absolute;
+    top:18px;
+    left:18px;
+    z-index:20;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(4,10,22,0.65);
+    border:1px solid rgba(223,177,91,0.4);
+    color:var(--gold-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    backdrop-filter:blur(6px);
+}
+
+/* =========================================================================
+   تنسيقات المتجر الأساسي
+   ========================================================================= */
 .font-tech{font-family:'Orbitron',sans-serif!important;}
 .cyber-backdrop{
     position:fixed;inset:0;z-index:-3;
@@ -85,7 +285,7 @@ body{
     border-radius:20px;
     direction:ltr;
 }
-.portal-tag{font-family:'Orbitron',sans-serif;font-size:8.2px;font-weight:800;letter-spacing:0.8px;color:var(--gold-light);display:flex;align-items:center;gap:5px;}
+.portal-tag{font-family:'Orbitron',sans-serif;font-size:8.2px;font-weight:800;letter-spacing:0.8px;color:var(--gold-light);display:flex;align-items:center;gap:5px;cursor:pointer;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 7px #10b981;animation:pingDot 1.8s infinite;}
 @keyframes pingDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.3);}}
 .top-actions{display:flex;align-items:center;gap:5px;}
@@ -320,7 +520,6 @@ body{
 @keyframes emitterPulseRing{0%{transform:scale(0.85);opacity:0.9;}100%{transform:scale(1.45);opacity:0;}}
 @keyframes holoBeamFlicker{0%,100%{opacity:0.8;}50%{opacity:1;}75%{opacity:0.65;}}
 
-/* بطاقة التوثيق الرسمي الهولوغرامية */
 .holo-verification-card{
     margin-top:16px;
     padding:14px 16px;
@@ -362,7 +561,6 @@ body{
     font-size:10px;font-weight:700;cursor:pointer;
 }
 
-/* كرة السلة الهولوغرامية */
 .floating-cart-orb{
     position:fixed;bottom:10px;left:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -397,7 +595,6 @@ body{
     font-size:8px;font-weight:800;white-space:nowrap;
 }
 
-/* كرة المساعد الصوتي الناطق */
 .floating-ai-orb{
     position:fixed;bottom:10px;right:10px;
     display:flex;flex-direction:column;align-items:center;
@@ -471,7 +668,6 @@ body{
     transform:scale(1.06);
 }
 
-/* شاشة المعاينة المكبّرة النظيفة */
 .zoom-lightbox-overlay{
     position:fixed;inset:0;
     background:rgba(1,4,12,0.95);
@@ -513,7 +709,6 @@ body{
 .tool-pill-btn{background:rgba(8,20,42,0.9);border:1px solid rgba(0,243,255,0.5);color:#fff;padding:6px 14px;border-radius:12px;font-size:11px;font-weight:700;cursor:pointer;}
 .tool-pill-btn.active{background:rgba(223,177,91,0.25);border-color:var(--gold-light);color:var(--gold-light);}
 
-/* البطاقة الرقمية التفاعلية ونظام الولاء والإحالة */
 .vip-holo-card{
     background:linear-gradient(135deg,#09152b 0%,#030814 55%,#171105 100%);
     border:1.5px solid var(--gold-primary);
@@ -531,9 +726,6 @@ body{
     border-radius:12px;padding:8px 12px;margin-top:8px;
 }
 
-/* =========================================================================
-   الفاتورة الإلكترونية الرسمية القابلة للطباعة والحفظ PDF
-   ========================================================================= */
 .invoice-holo-sheet{
     background:linear-gradient(165deg,#071329 0%,#030814 100%);
     border:1.5px solid var(--gold-primary);
@@ -675,16 +867,53 @@ body{
 }
 </style>
 </head>
-<body>
+<body class="entrance-locked">
 
+<!-- =========================================================================
+     شاشة مدخل البروجكتر الهولوجرامي الفضائي (تظهر أولاً وتنكشف للمتجر)
+     ========================================================================= -->
+<section class="ezwa-entrance-overlay" id="ezwaEntranceOverlay">
+    <div class="ezwa-holo-stage">
+        <button type="button" class="sound-toggle" id="entranceSoundBtn" aria-label="تشغيل أو كتم الصوت">
+            <svg id="entranceSoundIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+        </button>
+
+        <div class="holo-projection-zone">
+            <video id="ezwaEntranceVideo" class="holo-video" autoplay muted playsinline preload="auto"></video>
+            <div class="holo-scanline"></div>
+        </div>
+
+        <div class="projector-beam-glow"></div>
+
+        <div class="projector-base-wrap">
+            <div class="orbital-emitter">
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-1"></div>
+                <div class="emitter-core"></div>
+            </div>
+
+            <div class="entrance-cta-group">
+                <button type="button" class="btn-order-primary" onclick="orderFeaturedFromEntrance()">اطلب الإصدار الآن</button>
+                <button type="button" class="btn-enter-store" onclick="enterHoloStore()">دخول المتجر</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+     خلفية وهوية متجر عِزوة الهولوجرامي المتكامل
+     ========================================================================= -->
 <div class="cyber-backdrop"></div>
 <div class="cyber-grid-overlay"></div>
 <canvas id="quantum-canvas"></canvas>
 
 <div class="store-shell">
-    <!-- الشريط العلوي المثبّت دائماً للوصول الفوري للبطاقة الرقمية -->
     <div class="top-telemetry-bar">
-        <div class="portal-tag">
+        <div class="portal-tag" onclick="reopenHoloEntrance()" title="العودة لشاشة البروجكتر">
             <span class="pulse-dot"></span>
             <span>EZWA // STORE</span>
         </div>
@@ -759,7 +988,6 @@ body{
 
     <main class="holo-products-grid" id="productsGrid"></main>
 
-    <!-- بطاقة التوثيق الرسمي المتكاملة بالباركود الذهبي -->
     <section class="holo-verification-card" aria-label="توثيق المتجر الرسمي">
         <div class="verif-info-col">
             <div class="verif-badge-top">
@@ -781,7 +1009,6 @@ body{
         </div>
     </section>
 
-    <!-- أزرار سياسة الاسترجاع والبطاقة الرقمية وخدمة العملاء -->
     <div class="policy-links-bar">
         <button type="button" class="holo-policy-btn" onclick="openReturnPolicyModal()" id="uiReturnPolicyBtn">
             📜 سياسة الاسترجاع
@@ -800,7 +1027,6 @@ body{
     </footer>
 </div>
 
-<!-- كرة السلة الهولوغرامية -->
 <div class="floating-cart-orb" onclick="openCartModal()" title="سلة المشتريات">
     <div class="cart-orb-sphere">
         <span class="cart-badge-count" id="cartCountBadge">0</span>
@@ -813,7 +1039,6 @@ body{
     <div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div>
 </div>
 
-<!-- كرة المساعد الصوتي الناطق -->
 <div class="floating-ai-orb" onclick="openAiAssistantModal()" title="مستشار عِزوة الصوتي">
     <div class="ai-orb-sphere">
         <div class="ai-online-ring"></div>
@@ -829,14 +1054,13 @@ body{
     <div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div>
 </div>
 
-<!-- نافذة البطاقة الرقمية التفاعلية ونظام الولاء والإحالة -->
+<!-- نافذة البطاقة الرقمية التفاعلية -->
 <div class="holo-modal-overlay" id="vipPassModal" onclick="closeModal('vipPassModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
             <h3>👑 بطاقة عضوية عِزوة الرقمية</h3>
             <button class="close-x" onclick="closeModal('vipPassModal')">×</button>
         </div>
-
         <div class="vip-holo-card">
             <div class="vip-card-header">
                 <div>
@@ -856,7 +1080,6 @@ body{
                 • الرتب: <strong>طليعة عِزوة</strong> ← <strong>رواد عِزوة</strong> ← <strong>سفراء عِزوة</strong> ← <strong>أركان عِزوة</strong>
             </div>
         </div>
-
         <div class="admin-field">
             <label>سجّل اسمك ليظهر على بطاقتك الرقمية:</label>
             <div style="display:flex;gap:6px;">
@@ -864,7 +1087,6 @@ body{
                 <button type="button" class="cyan-holo-btn" style="width:auto;margin-top:0;padding:0 14px;" onclick="saveVipMemberName()">حفظ</button>
             </div>
         </div>
-
         <div style="background:rgba(8,20,42,0.85);border:1px solid rgba(223,177,91,0.4);border-radius:14px;padding:12px;text-align:start;">
             <div style="font-size:12px;font-weight:800;color:var(--gold-light);margin-bottom:4px;">🎁 نظام الإحالة ومكافآت النخبة</div>
             <div style="font-size:11px;color:#cbd5e1;line-height:1.5;">
@@ -880,18 +1102,16 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- شاشة المعاينة المكبّرة النظيفة -->
+<!-- شاشة المعاينة المكبّرة -->
 <div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()">
     <div class="zoom-top-bar" onclick="event.stopPropagation()">
         <div class="zoom-title-pill" id="zoomTitlePill">معاينة التفاصيل</div>
         <button type="button" class="zoom-close-btn" onclick="closeZoomLightbox()">×</button>
     </div>
-
     <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()">
         <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
         <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قطن فاخر ثقيل + شريحة NFC مشفّرة في شريط السدو</div>
     </div>
-
     <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
         <button type="button" class="tool-pill-btn" id="loupeToggleBtn" onclick="toggleZoomScale()">🔬 تكبير / تصغير تفاصيل النسيج</button>
         <div class="modal-variants-bar" id="zoomVariantsBar"></div>
@@ -932,19 +1152,16 @@ body{
             <h3 style="color:var(--cyan-glow);" id="aiModalTitle">🎙️ مستشار عِزوة الصوتي (AI)</h3>
             <button class="close-x" onclick="closeAiModal()">×</button>
         </div>
-
         <div class="voice-wave-bar-wrap" id="voiceWaveBars">
             <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
             <span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span>
         </div>
-
         <div class="ai-chat-feed" id="aiChatFeed">
             <div class="ai-msg-bubble">
                 حياك الله في <strong>عِـزوة (EZWA)</strong> ◈<br>
                 جرّب أن تقول بصوتك: <em>"أضف هودي برايت الأسود مقاس لارج"</em> وسأضيفه لسلتك فوراً، أو اختر من الأزرار بالأسفل:
             </div>
         </div>
-
         <div class="size-calc-box" id="sizeCalcBox">
             <div style="font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:7px;text-align:center;">📏 أدخل طولك ووزنك واختر نوع القَصّة:</div>
             <div class="size-calc-grid">
@@ -967,14 +1184,12 @@ body{
             </div>
             <button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11.5px;" onclick="calculateSmartSize()">احسب مقاسي الآن ◈</button>
         </div>
-
         <div class="ai-quick-chips">
             <button type="button" class="ai-chip-btn" onclick="toggleSizeCalc()">📏 مستشار المقاسات</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('outfit')">👔 نسّق لي طقم كامل</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('nfc')">📡 وش ميزة الـ NFC؟</button>
             <button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ تغليف البرواز والغسيل</button>
         </div>
-
         <div class="voice-controls-row">
             <button type="button" class="mic-speak-btn" id="micSpeakBtn" onclick="startVoiceRecognition()">
                 <span>🎤</span>
@@ -987,7 +1202,7 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- نافذة مواصفات القطعة واختيار المقاس الفردي -->
+<!-- نافذة مواصفات القطعة واختيار المقاس -->
 <div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -996,10 +1211,8 @@ body{
         </div>
         <div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)" title="اضغط لتكبير الصورة"></div>
         <div class="modal-variants-bar" id="pmVariantsBar"></div>
-
         <div style="text-align:center;font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;" id="pmSizeLabel">اختر المقاس:</div>
         <div class="size-selector-row" id="pmSizesRow"></div>
-
         <div class="detail-specs" id="pmSpecs"></div>
         <div class="qty-row">
             <span style="font-size:12px;font-weight:700;color:#fff;" id="pmQtyLabel">الكمية (بالحبة):</span>
@@ -1018,7 +1231,7 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- نافذة السلة وإتمام الطلب المباشر داخل المتجر (Formspree + فاتورة فورية) -->
+<!-- نافذة السلة وإتمام الطلب -->
 <div class="holo-modal-overlay" id="cartModal" onclick="closeModal('cartModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
@@ -1026,7 +1239,6 @@ body{
             <button class="close-x" onclick="closeModal('cartModal')">×</button>
         </div>
         <div id="cartItemsContainer"></div>
-
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
             <div class="admin-field">
                 <label id="cmNameLabel">الاسم الكامل *:</label>
@@ -1037,12 +1249,10 @@ body{
                 <input type="tel" id="clientPhoneInput" required placeholder="05xxxxxxxx" style="direction:ltr;">
             </div>
         </div>
-
         <div class="admin-field">
             <label>المدينة والعنوان للتوصيل *:</label>
             <input type="text" id="clientCityInput" required placeholder="مثال: الرياض - حي العليا">
         </div>
-
         <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:8px;">
             <div class="admin-field">
                 <label>خيار التغليف:</label>
@@ -1056,12 +1266,10 @@ body{
                 <input type="text" id="referralInputCode" placeholder="EZWA-..." style="direction:ltr;text-transform:uppercase;">
             </div>
         </div>
-
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(223,177,91,0.3);margin-top:4px;">
             <span style="font-size:12px;color:#cbd5e1;" id="cmGrandLabel">الإجمالي النهائي:</span>
             <span style="font-size:16px;font-weight:900;color:var(--gold-light);" id="cmGrandTotal">0 ر.س</span>
         </div>
-
         <button type="button" class="primary-holo-btn" id="submitOrderBtn" onclick="submitDirectStoreOrder()">
             <span>🧾</span>
             <span id="cmSendWaBtn">تأكيد الطلب وإصدار الفاتورة ◈</span>
@@ -1071,16 +1279,13 @@ body{
     <div class="holo-stage-pad"></div>
 </div>
 
-<!-- =========================================================================
-     نافذة الفاتورة الرسمية الفورية للعميل (قابلة للطباعة والحفظ PDF)
-     ========================================================================= -->
+<!-- نافذة الفاتورة الرسمية الفورية -->
 <div class="holo-modal-overlay" id="invoiceModal" onclick="closeModal('invoiceModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top no-print">
             <h3>✅ تم استلام طلبك بنجاح</h3>
             <button class="close-x" onclick="closeModal('invoiceModal')">×</button>
         </div>
-
         <div class="invoice-holo-sheet" id="invoicePrintArea">
             <div class="inv-header-row">
                 <div>
@@ -1093,14 +1298,12 @@ body{
                     <div style="font-size:10px;color:#cbd5e1;margin-top:3px;" id="invDateTag">2026-11-16</div>
                 </div>
             </div>
-
             <div class="inv-meta-grid">
                 <div><strong>العميل:</strong> <span id="invClientName">-</span></div>
                 <div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div>
                 <div><strong>العنوان:</strong> <span id="invClientCity">-</span></div>
                 <div><strong>التغليف:</strong> <span id="invPackaging">-</span></div>
             </div>
-
             <table class="inv-items-table">
                 <thead>
                     <tr>
@@ -1111,17 +1314,14 @@ body{
                 </thead>
                 <tbody id="invItemsTbody"></tbody>
             </table>
-
             <div class="inv-total-banner">
                 <span>الإجمالي المستحق:</span>
                 <span id="invGrandTotalVal">0 ر.س</span>
             </div>
-
             <div style="margin-top:10px;font-size:10px;color:#94a3b8;text-align:center;">
                 تم إرسال نسخة من طلبك لإدارة متجر عِزوة وسيتم التواصل معك لتأكيد التوصيل ◈
             </div>
         </div>
-
         <div class="no-print" style="margin-top:10px;">
             <button type="button" class="primary-holo-btn" onclick="window.print()">
                 <span>🖨️</span>
@@ -1155,20 +1355,17 @@ body{
     </div>
 </div>
 
-<!-- لوحة إدارة المنتجات والطلبات المستلمة من الجوال -->
+<!-- لوحة إدارة المنتجات والطلبات -->
 <div class="holo-modal-overlay" id="adminModal" onclick="closeModal('adminModal')">
     <div class="holo-projected-box" onclick="event.stopPropagation()">
         <div class="modal-top">
             <h3>لوحة إدارة متجر عِزوة</h3>
             <button class="close-x" onclick="closeModal('adminModal')">×</button>
         </div>
-
         <div style="display:flex;gap:6px;margin-bottom:12px;">
             <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11.5px;" onclick="switchAdminTab('orders')">📦 الطلبات المستلمة</button>
             <button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11.5px;" onclick="switchAdminTab('products')">👕 إدارة القطع</button>
         </div>
-
-        <!-- تبويب الطلبات المستلمة -->
         <div id="adminOrdersTab">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                 <span style="font-size:11.5px;font-weight:800;color:var(--gold-light);">سجل الطلبات المباشرة:</span>
@@ -1176,8 +1373,6 @@ body{
             </div>
             <div id="adminOrdersList"></div>
         </div>
-
-        <!-- تبويب إدارة المنتجات -->
         <div id="adminProductsTab" style="display:none;">
             <form onsubmit="addNewProduct(event)" style="border-bottom:1px solid rgba(0,243,255,0.25);padding-bottom:12px;margin-bottom:12px;">
                 <div class="admin-field">
@@ -1216,10 +1411,8 @@ body{
                 </div>
                 <button type="submit" class="primary-holo-btn">➕ إضافة القطعة للمتجر</button>
             </form>
-
             <div style="font-size:11.5px;font-weight:800;color:var(--gold-light);margin-bottom:8px;">القطع الحالية في المتجر:</div>
             <div id="adminProductsList"></div>
-
             <button type="button" class="cyan-holo-btn" onclick="exportUpdatedHtmlCode()">📋 نسخ الكود المحدّث لرفعه في GitHub</button>
         </div>
     </div>
@@ -1233,8 +1426,80 @@ const STORE_CONFIG = {
     whatsappNumber: "966510205330",
     adminPin: "7884",
     currencyAr: "ر.س",
-    currencyEn: "SAR"
+    currencyEn: "SAR",
+    featuredProductId: "ezwa-1"
 };
+
+/* =========================================================================
+   قائمة تشغيل البروجكتر الثلاثية بالتتابع التلقائي + التحميل المسبق السريع
+   ========================================================================= */
+const entranceOverlay = document.getElementById('ezwaEntranceOverlay');
+const entranceVideo = document.getElementById('ezwaEntranceVideo');
+const entranceSoundBtn = document.getElementById('entranceSoundBtn');
+const entranceSoundIcon = document.getElementById('entranceSoundIcon');
+
+const HOLO_PLAYLIST = [
+    "logo-reveal.mp4",
+    "video_1.mp4.mp4",
+    "video_2.mp4"
+];
+let currentVideoIndex = 0;
+
+HOLO_PLAYLIST.forEach((videoSrc, index) => {
+    if (index > 0) {
+        const preloader = document.createElement('link');
+        preloader.rel = 'preload';
+        preloader.as = 'video';
+        preloader.href = videoSrc;
+        document.head.appendChild(preloader);
+    }
+});
+
+if (entranceVideo) {
+    entranceVideo.src = HOLO_PLAYLIST[0];
+    entranceVideo.loop = false;
+
+    entranceVideo.addEventListener('ended', () => {
+        currentVideoIndex = (currentVideoIndex + 1) % HOLO_PLAYLIST.length;
+        entranceVideo.style.opacity = '0.25';
+        setTimeout(() => {
+            entranceVideo.src = HOLO_PLAYLIST[currentVideoIndex];
+            entranceVideo.play().catch(() => {});
+            entranceVideo.style.opacity = '1';
+        }, 180);
+    });
+}
+
+if (entranceSoundBtn && entranceVideo) {
+    entranceSoundBtn.addEventListener('click', () => {
+        entranceVideo.muted = !entranceVideo.muted;
+        if (entranceVideo.muted) {
+            entranceSoundIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+        } else {
+            entranceSoundIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>';
+        }
+    });
+}
+
+function enterHoloStore() {
+    if (entranceVideo) entranceVideo.pause();
+    entranceOverlay.classList.add('dismissed');
+    document.body.classList.remove('entrance-locked');
+}
+
+function reopenHoloEntrance() {
+    entranceOverlay.classList.remove('dismissed');
+    document.body.classList.add('entrance-locked');
+    if (entranceVideo) entranceVideo.play().catch(() => {});
+}
+
+function orderFeaturedFromEntrance() {
+    enterHoloStore();
+    setTimeout(() => {
+        const target = PRODUCTS.find(p => p.id === STORE_CONFIG.featuredProductId) || PRODUCTS[0];
+        if (target) openProductModal(target.id);
+    }, 320);
+}
 
 const DEFAULT_PRODUCTS = [
     {
@@ -1353,9 +1618,6 @@ let activeZoomProdId = null;
 let activeZoomVarIdx = 0;
 let isVoiceMuted = false;
 
-/* =========================================================================
-   إدارة البطاقة الرقمية ونظام الولاء والإحالة (VIP Tiers)
-   ========================================================================= */
 let vipData = { name: "عضو نخبة عِزوة", pieces: 0, code: "EZWA-" + Math.floor(1000 + Math.random() * 9000) };
 try {
     const savedVip = localStorage.getItem('ezwa_vip_member_v1');
@@ -1397,9 +1659,6 @@ function copyReferralCode() {
     });
 }
 
-/* =========================================================================
-   محرك الصوت الناطق + التحديث الصوتي السريع للمقاسات (Voice-to-Cart)
-   ========================================================================= */
 function speakAiVoice(plainText) {
     if (isVoiceMuted || !('speechSynthesis' in window)) return;
     try {
@@ -1408,12 +1667,10 @@ function speakAiVoice(plainText) {
         utter.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
         utter.rate = 0.98;
         utter.pitch = 1.02;
-
         const waveEl = document.getElementById('voiceWaveBars');
         utter.onstart = () => { if (waveEl) waveEl.classList.add('speaking'); };
         utter.onend = () => { if (waveEl) waveEl.classList.remove('speaking'); };
         utter.onerror = () => { if (waveEl) waveEl.classList.remove('speaking'); };
-
         window.speechSynthesis.speak(utter);
     } catch (e) {}
 }
@@ -1445,7 +1702,6 @@ function startVoiceRecognition() {
     rec.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
     const btn = document.getElementById('micSpeakBtn');
     const lbl = document.getElementById('micBtnLabel');
-
     rec.onstart = () => {
         btn.classList.add('listening');
         lbl.innerText = currentLang === 'ar' ? 'أستمع إليك الآن...' : 'Listening...';
@@ -1463,7 +1719,6 @@ function startVoiceRecognition() {
 
 function handleSpokenQuery(text) {
     const q = text.toLowerCase();
-
     if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('هودي') || q.includes('تيشيرت') || q.includes('بنطال')) {
         let targetProd = PRODUCTS[0];
         if (q.includes('برايت') || q.includes('bright')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-bright') || targetProd;
@@ -1526,9 +1781,6 @@ function handleSpokenQuery(text) {
     }
 }
 
-/* =========================================================================
-   توليد مجسمات هولوغرامية بألوان القطعة
-   ========================================================================= */
 function getHologramSvg(cat, variant) {
     const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
     const sleeve = (variant && variant.sleeveHex) ? variant.sleeveHex : body;
@@ -1569,9 +1821,6 @@ function renderVariantVisual(prod, varIdx) {
     return getHologramSvg(prod.cat, v);
 }
 
-/* =========================================================================
-   عرض المنتجات في مسرح الهولوغرام
-   ========================================================================= */
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     const filtered = currentCat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentCat);
@@ -1639,9 +1888,6 @@ function openReturnPolicyModal() {
     document.getElementById('returnPolicyModal').classList.add('active');
 }
 
-/* =========================================================================
-   تفاعلات المساعد الهولوغرامي الناطق + حاسبة المقاسات
-   ========================================================================= */
 function openAiAssistantModal() {
     document.getElementById('aiModal').classList.add('active');
     speakAiVoice(
@@ -1678,7 +1924,6 @@ function calculateSmartSize() {
 
     const order = ['S', 'M', 'L', 'XL'];
     let idx = 2;
-
     if (w < 62 && h < 172) idx = 0;
     else if (w < 75 && h < 178) idx = 1;
     else if (w < 90) idx = 2;
@@ -1727,8 +1972,8 @@ function askAiTopic(topic, customUserText) {
         appendAiChat(
             customUserText || 'نسّق لي طقم ستريت وير متكامل',
             `أقترح عليك إطلالة <strong>عِـزوة الملكية</strong>:<br>
-             • <strong>القطعة العلوية:</strong> هودي BRIGHT الأسود الملكي (189 ر.س)<br>
-             • <strong>القطعة السفلية:</strong> بنطال عِزوة أوفرسايز الكارجو الفحمي (149 ر.س)<br>
+            • <strong>القطعة العلوية:</strong> هودي BRIGHT الأسود الملكي (189 ر.س)<br>
+            • <strong>القطعة السفلية:</strong> بنطال عِزوة أوفرسايز الكارجو الفحمي (149 ر.س)<br>
              <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف الطقم الكامل للسلة (338 ر.س)</button>`
         );
         speakAiVoice('أقترح عليك تنسيق هودي برايت الأسود الملكي مع بنطال عِزوة الكارجو الفحمي لإطلالة ستريت وير متكاملة.');
@@ -1736,16 +1981,16 @@ function askAiTopic(topic, customUserText) {
         appendAiChat(
             customUserText || 'كيف تعمل تقنية الـ NFC في الملابس؟',
             `كل قطعة من <strong>عِـزوة</strong> مزوّدة بشريحة <strong>NFC ذكية مشفّرة</strong> مخيّطة بدقة في الحافة:<br>
-             1. قرّب جوالك من الشعار لتفتح صفحتك الرقمية الخاصة.<br>
-             2. توثّق ملكيتك للقطعة سحابياً برقم تسلسلي فريد يثبت أصالتها.<br>
-             3. مقاومة للماء والغسيل والحرارة بالكامل.`
+            1. قرّب جوالك من الشعار لتفتح صفحتك الرقمية الخاصة.<br>
+            2. توثّق ملكيتك للقطعة سحابياً برقم تسلسلي فريد يثبت أصالتها.<br>
+            3. مقاومة للماء والغسيل والحرارة بالكامل.`
         );
         speakAiVoice('كل قطعة من عِزوة مزودة بشريحة إن إف سي ذكية مشفرة؛ بمجرد تقريب جوالك منها تفتح صفحتك الرقمية وتوثق ملكيتك للقطعة سحابياً، وهي مقاومة للماء والغسيل بالكامل.');
     } else if (topic === 'frame') {
         appendAiChat(
             customUserText || 'ما هي فكرة تغليف البرواز وطريقة الغسيل؟',
             `• <strong>تغليف البرواز المبتكر:</strong> يمكنك اختيار تقديم القطعة داخل <strong>برواز صورة فاخر</strong> كطريقة عرض استثنائية عند الإهداء.<br>
-             • <strong>العناية بالغسيل:</strong> يُغسل مقلوباً بماء بارد (30 درجة) للحفاظ على فخامة القطن وشريحة الـ NFC.`
+            • <strong>العناية بالغسيل:</strong> يُغسل مقلوباً بماء بارد (30 درجة) للحفاظ على فخامة القطن وشريحة الـ NFC.`
         );
         speakAiVoice('يمكنك اختيار تقديم القطعة داخل برواز صورة فاخر كفكرة عرض مبتكرة للإهداء، وللعناية بالقطعة يُفضل غسلها مقلوبة بماء بارد.');
     }
@@ -1775,9 +2020,6 @@ function addSuggestedOutfitToCart() {
     showToast('تمت إضافة الطقم الكامل للسلة بنجاح ◈');
 }
 
-/* =========================================================================
-   شاشة المعاينة المكبّرة النظيفة
-   ========================================================================= */
 function openZoomLightbox(prodId, varIdx) {
     const prod = PRODUCTS.find(p => p.id === prodId);
     if (!prod) return;
@@ -1842,9 +2084,6 @@ function openOrderFromZoom() {
     openProductModal(pid);
 }
 
-/* =========================================================================
-   نافذة تفاصيل القطعة واختيار المقاس الفردي
-   ========================================================================= */
 function openProductModal(id) {
     const prod = PRODUCTS.find(p => p.id === id);
     if (!prod) return;
@@ -1939,9 +2178,6 @@ function addCurrentProductToCart() {
     showToast(currentLang === 'ar' ? 'تمت إضافة القطعة إلى السلة ◈' : 'Item added to cart ◈');
 }
 
-/* =========================================================================
-   السلة وإرسال الطلب مباشرة للمتجر (Formspree) + إصدار فاتورة فورية للعميل
-   ========================================================================= */
 function updateCartUI() {
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
     const totalAmount = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
@@ -2048,7 +2284,6 @@ async function submitDirectStoreOrder() {
         });
     } catch (err) {}
 
-    // حفظ الطلب في سجل المتجر وتحديث بطاقة العضوية
     savedOrders.unshift(orderRecord);
     try { localStorage.setItem('ezwa_store_orders_v1', JSON.stringify(savedOrders)); } catch(e) {}
 
@@ -2056,7 +2291,6 @@ async function submitDirectStoreOrder() {
     vipData.name = clientName;
     try { localStorage.setItem('ezwa_vip_member_v1', JSON.stringify(vipData)); } catch(e) {}
 
-    // تفريغ السلة وإعادة زر الطلب لحالته الطبيعية
     cart = [];
     updateCartUI();
     submitBtn.disabled = false;
@@ -2102,9 +2336,6 @@ function showGeneratedInvoice(order) {
     document.getElementById('invoiceModal').classList.add('active');
 }
 
-/* =========================================================================
-   لوحة إدارة المتجر والطلبات المستلمة من الجوال (PIN: 7884)
-   ========================================================================= */
 function openPinModal() {
     document.getElementById('adminPinInput').value = '';
     document.getElementById('pinErr').style.display = 'none';
