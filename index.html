@@ -75,6 +75,10 @@ body.entrance-locked{
     flex-direction:column;
     justify-content:space-between;
     align-items:center;
+    transition:box-shadow 0.25s ease;
+}
+.ezwa-holo-stage.drag-over{
+    box-shadow:inset 0 0 0 2px var(--gold-light), 0 0 60px rgba(223,177,91,0.35);
 }
 @media (min-width: 768px) {
     .ezwa-holo-stage{
@@ -235,6 +239,31 @@ body.entrance-locked{
     justify-content:center;
     cursor:pointer;
     backdrop-filter:blur(6px);
+}
+.local-video-pick-btn{
+    position:absolute;
+    top:18px;
+    right:18px;
+    z-index:20;
+    height:36px;
+    padding:0 13px;
+    border-radius:999px;
+    background:rgba(4,10,22,0.72);
+    border:1px solid rgba(223,177,91,0.45);
+    color:var(--gold-light);
+    font-size:11.5px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    cursor:pointer;
+    backdrop-filter:blur(6px);
+    transition:all 0.2s ease;
+}
+.local-video-pick-btn:hover{
+    border-color:var(--cyan-glow);
+    color:#ffffff;
+    box-shadow:0 0 14px rgba(0,243,255,0.3);
 }
 
 /* =========================================================================
@@ -873,13 +902,19 @@ body.entrance-locked{
      شاشة مدخل البروجكتر الهولوجرامي الفضائي (تظهر أولاً وتنكشف للمتجر)
      ========================================================================= -->
 <section class="ezwa-entrance-overlay" id="ezwaEntranceOverlay">
-    <div class="ezwa-holo-stage">
+    <div class="ezwa-holo-stage" id="ezwaHoloStage">
         <button type="button" class="sound-toggle" id="entranceSoundBtn" aria-label="تشغيل أو كتم الصوت">
             <svg id="entranceSoundIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                 <line x1="23" y1="9" x2="17" y2="15"></line>
                 <line x1="17" y1="9" x2="23" y2="15"></line>
             </svg>
+        </button>
+
+        <input type="file" id="ezwaLocalVideoPicker" accept="video/*" multiple style="display:none" onchange="loadLocalEntranceVideos(event)">
+        <button type="button" class="local-video-pick-btn" onclick="document.getElementById('ezwaLocalVideoPicker').click()" title="اختر فيديو أو أكثر من جهازك">
+            <span>📁</span>
+            <span>فيديو من جهازي</span>
         </button>
 
         <div class="holo-projection-zone">
@@ -1431,19 +1466,52 @@ const STORE_CONFIG = {
 };
 
 /* =========================================================================
-   قائمة تشغيل البروجكتر الثلاثية بالتتابع التلقائي + التحميل المسبق السريع
+   قائمة تشغيل البروجكتر السحابية (Cloudinary) + دعم الاختيار المحلي من الجهاز
    ========================================================================= */
 const entranceOverlay = document.getElementById('ezwaEntranceOverlay');
+const entranceStage = document.getElementById('ezwaHoloStage');
 const entranceVideo = document.getElementById('ezwaEntranceVideo');
 const entranceSoundBtn = document.getElementById('entranceSoundBtn');
 const entranceSoundIcon = document.getElementById('entranceSoundIcon');
 
 const HOLO_PLAYLIST = [
-    "logo-reveal.mp4",
-    "video_1.mp4.mp4",
-    "video_2.mp4"
+    "https://res.cloudinary.com/wdaldoah/video/upload/v1795791436/logo-reveal.mp4",
+    "https://res.cloudinary.com/wdaldoah/video/upload/v1795791409/video_1.mp4.mp4"
 ];
 let currentVideoIndex = 0;
+
+function applyLocalEntranceFiles(fileList) {
+    const videos = Array.from(fileList).filter(f => f.type.startsWith('video/'));
+    if (!videos.length) return;
+    const localUrls = videos.map(file => URL.createObjectURL(file));
+    HOLO_PLAYLIST.length = 0;
+    HOLO_PLAYLIST.push(...localUrls);
+    currentVideoIndex = 0;
+    entranceVideo.src = HOLO_PLAYLIST[0];
+    entranceVideo.play().catch(() => {});
+    showToast(`تم تشغيل ${videos.length} فيديو من جهازك ◈`);
+}
+
+function loadLocalEntranceVideos(event) {
+    applyLocalEntranceFiles(event.target.files);
+}
+
+if (entranceStage) {
+    entranceStage.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        entranceStage.classList.add('drag-over');
+    });
+    entranceStage.addEventListener('dragleave', () => {
+        entranceStage.classList.remove('drag-over');
+    });
+    entranceStage.addEventListener('drop', (e) => {
+        e.preventDefault();
+        entranceStage.classList.remove('drag-over');
+        if (e.dataTransfer && e.dataTransfer.files.length) {
+            applyLocalEntranceFiles(e.dataTransfer.files);
+        }
+    });
+}
 
 HOLO_PLAYLIST.forEach((videoSrc, index) => {
     if (index > 0) {
@@ -1981,9 +2049,9 @@ function askAiTopic(topic, customUserText) {
         appendAiChat(
             customUserText || 'كيف تعمل تقنية الـ NFC في الملابس؟',
             `كل قطعة من <strong>عِـزوة</strong> مزوّدة بشريحة <strong>NFC ذكية مشفّرة</strong> مخيّطة بدقة في الحافة:<br>
-            1. قرّب جوالك من الشعار لتفتح صفحتك الرقمية الخاصة.<br>
-            2. توثّق ملكيتك للقطعة سحابياً برقم تسلسلي فريد يثبت أصالتها.<br>
-            3. مقاومة للماء والغسيل والحرارة بالكامل.`
+1. قرّب جوالك من الشعار لتفتح صفحتك الرقمية الخاصة.<br>
+2. توثّق ملكيتك للقطعة سحابياً برقم تسلسلي فريد يثبت أصالتها.<br>
+3. مقاومة للماء والغسيل والحرارة بالكامل.`
         );
         speakAiVoice('كل قطعة من عِزوة مزودة بشريحة إن إف سي ذكية مشفرة؛ بمجرد تقريب جوالك منها تفتح صفحتك الرقمية وتوثق ملكيتك للقطعة سحابياً، وهي مقاومة للماء والغسيل بالكامل.');
     } else if (topic === 'frame') {
