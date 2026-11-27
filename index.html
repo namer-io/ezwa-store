@@ -755,6 +755,35 @@ body.entrance-locked{
     border-radius:12px;padding:8px 12px;margin-top:8px;
 }
 
+.bank-transfer-box{
+    display:none;
+    background:rgba(8,20,42,0.92);
+    border:1px solid rgba(223,177,91,0.55);
+    border-radius:14px;
+    padding:10px 12px;
+    margin-bottom:9px;
+    text-align:start;
+}
+.bank-transfer-box.active{display:block;}
+.bank-detail-line{font-size:10.5px;color:#e2e8f0;margin-bottom:4px;line-height:1.45;}
+.bank-detail-line strong{color:var(--gold-light);}
+.iban-copy-row{
+    display:flex;align-items:center;justify-content:space-between;gap:6px;
+    background:#040b18;border:1px dashed rgba(0,243,255,0.45);
+    border-radius:9px;padding:6px 8px;margin:6px 0;
+}
+.iban-code-str{
+    font-family:'Orbitron',sans-serif!important;
+    font-size:9.5px;font-weight:800;color:var(--cyan-glow);
+    direction:ltr;overflow-x:auto;white-space:nowrap;
+}
+.copy-iban-btn{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-matte));
+    color:#020611;border:none;border-radius:7px;
+    padding:4px 9px;font-size:10px;font-weight:900;
+    cursor:pointer;white-space:nowrap;flex-shrink:0;
+}
+
 .invoice-holo-sheet{
     background:linear-gradient(165deg,#071329 0%,#030814 100%);
     border:1.5px solid var(--gold-primary);
@@ -1288,7 +1317,14 @@ body.entrance-locked{
             <label>المدينة والعنوان للتوصيل *:</label>
             <input type="text" id="clientCityInput" required placeholder="مثال: الرياض - حي العليا">
         </div>
-        <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div class="admin-field">
+                <label>طريقة الدفع:</label>
+                <select id="paymentMethodSelect" onchange="toggleBankTransferDetails()">
+                    <option value="تحويل بنكي مباشر (الراجحي)">تحويل بنكي مباشر (الراجحي)</option>
+                    <option value="الدفع عند الاستلام / التنسيق">الدفع عند الاستلام / التنسيق</option>
+                </select>
+            </div>
             <div class="admin-field">
                 <label>خيار التغليف:</label>
                 <select id="packagingOption">
@@ -1296,10 +1332,25 @@ body.entrance-locked{
                     <option value="برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر (إهداء)</option>
                 </select>
             </div>
-            <div class="admin-field">
-                <label>كود الإحالة (اختياري):</label>
-                <input type="text" id="referralInputCode" placeholder="EZWA-..." style="direction:ltr;text-transform:uppercase;">
+        </div>
+
+        <div class="bank-transfer-box active" id="bankTransferBox">
+            <div class="bank-detail-line"><strong>البنك:</strong> <span id="uiBankName">مصرف الراجحي</span></div>
+            <div class="bank-detail-line"><strong>المستفيد:</strong> <span id="uiBankBeneficiary">يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات</span></div>
+            <div class="bank-detail-line"><strong>الوثيقة:</strong> <span dir="ltr" id="uiBankDoc">FL-749408046</span></div>
+            <div class="iban-copy-row">
+                <span class="iban-code-str" id="uiBankIban">SA6280000448608016270480</span>
+                <button type="button" class="copy-iban-btn" onclick="copyBankIban()">نسخ الآيبان</button>
             </div>
+            <div class="admin-field" style="margin-bottom:0;margin-top:6px;">
+                <label>رقم مرجع التحويل (اختياري):</label>
+                <input type="text" id="transferRefInput" placeholder="أدخل رقم المرجع إن تم التحويل..." style="direction:ltr;">
+            </div>
+        </div>
+
+        <div class="admin-field">
+            <label>كود الإحالة (اختياري):</label>
+            <input type="text" id="referralInputCode" placeholder="EZWA-..." style="direction:ltr;text-transform:uppercase;">
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(223,177,91,0.3);margin-top:4px;">
             <span style="font-size:12px;color:#cbd5e1;" id="cmGrandLabel">الإجمالي النهائي:</span>
@@ -1338,6 +1389,8 @@ body.entrance-locked{
                 <div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div>
                 <div><strong>العنوان:</strong> <span id="invClientCity">-</span></div>
                 <div><strong>التغليف:</strong> <span id="invPackaging">-</span></div>
+                <div style="grid-column:1 / -1;"><strong>الدفع:</strong> <span id="invPaymentMethod">-</span></div>
+                <div style="grid-column:1 / -1;" id="invBankSummaryRow"><strong>الآيبان:</strong> <span dir="ltr" style="font-family:'Orbitron',sans-serif;font-size:10px;color:var(--cyan-glow);">SA6280000448608016270480</span></div>
             </div>
             <table class="inv-items-table">
                 <thead>
@@ -1462,8 +1515,31 @@ const STORE_CONFIG = {
     adminPin: "7884",
     currencyAr: "ر.س",
     currencyEn: "SAR",
-    featuredProductId: "ezwa-1"
+    featuredProductId: "ezwa-1",
+    bankName: "مصرف الراجحي",
+    bankBeneficiary: "يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات",
+    bankDoc: "FL-749408046",
+    bankIban: "SA6280000448608016270480"
 };
+
+function toggleBankTransferDetails() {
+    const sel = document.getElementById('paymentMethodSelect');
+    const box = document.getElementById('bankTransferBox');
+    if (!sel || !box) return;
+    if (sel.value.includes('تحويل بنكي')) {
+        box.classList.add('active');
+    } else {
+        box.classList.remove('active');
+    }
+}
+
+function copyBankIban() {
+    navigator.clipboard.writeText(STORE_CONFIG.bankIban).then(() => {
+        showToast('تم نسخ رقم الآيبان بنجاح ◈');
+    }).catch(() => {
+        showToast('تعذر النسخ التلقائي');
+    });
+}
 
 /* =========================================================================
    قائمة تشغيل البروجكتر السحابية (Cloudinary) + دعم الاختيار المحلي من الجهاز
@@ -2280,6 +2356,7 @@ function openCartModal() {
             </div>`;
         }).join('');
     }
+    toggleBankTransferDetails();
     updateCartUI();
     document.getElementById('cartModal').classList.add('active');
 }
@@ -2297,6 +2374,8 @@ async function submitDirectStoreOrder() {
     const clientName = document.getElementById('merchantNameInput').value.trim();
     const clientPhone = document.getElementById('clientPhoneInput').value.trim();
     const clientCity = document.getElementById('clientCityInput').value.trim();
+    const paymentMethod = document.getElementById('paymentMethodSelect').value;
+    const transferRef = (document.getElementById('transferRefInput') ? document.getElementById('transferRefInput').value.trim() : '');
     const pkg = document.getElementById('packagingOption').value;
     const refCode = document.getElementById('referralInputCode').value.trim();
 
@@ -2319,12 +2398,16 @@ async function submitDirectStoreOrder() {
         `${idx + 1}) ${item.nameAr} | اللون: ${item.colorAr} | المقاس: ${item.size} | العدد: ${item.qty} × ${item.price} ر.س = ${item.price * item.qty} ر.س`
     ).join('\n');
 
+    const paymentLabelWithRef = transferRef ? `${paymentMethod} (مرجع: ${transferRef})` : paymentMethod;
+
     const orderRecord = {
         invoiceNo,
         date: todayStr,
         clientName,
         clientPhone,
         clientCity,
+        paymentMethod: paymentLabelWithRef,
+        isBankTransfer: paymentMethod.includes('تحويل بنكي'),
         packaging: pkg,
         referral: refCode || 'لا يوجد',
         items: JSON.parse(JSON.stringify(cart)),
@@ -2343,6 +2426,7 @@ async function submitDirectStoreOrder() {
                 اسم_العميل: clientName,
                 رقم_الجوال: clientPhone,
                 المدينة_والعنوان: clientCity,
+                طريقة_الدفع: paymentLabelWithRef,
                 التغليف: pkg,
                 كود_الإحالة: refCode || 'لا يوجد',
                 تفاصيل_الطلب: itemsSummaryText,
@@ -2376,6 +2460,11 @@ function showGeneratedInvoice(order) {
     document.getElementById('invClientPhone').innerText = order.clientPhone;
     document.getElementById('invClientCity').innerText = order.clientCity;
     document.getElementById('invPackaging').innerText = order.packaging;
+    document.getElementById('invPaymentMethod').innerText = order.paymentMethod || 'تحويل بنكي مباشر (الراجحي)';
+    const bankRow = document.getElementById('invBankSummaryRow');
+    if (bankRow) {
+        bankRow.style.display = (order.isBankTransfer !== false) ? 'block' : 'none';
+    }
     document.getElementById('invGrandTotalVal').innerText = order.totalPrice + ' ر.س';
 
     document.getElementById('invItemsTbody').innerHTML = order.items.map(item => `
@@ -2391,6 +2480,7 @@ function showGeneratedInvoice(order) {
         let msg = `*فاتورة طلب — متجر عِزوة (EZWA)* ◈\n`;
         msg += `*رقم الفاتورة:* #${order.invoiceNo}\n`;
         msg += `*العميل:* ${order.clientName} (${order.clientCity})\n`;
+        msg += `*طريقة الدفع:* ${order.paymentMethod || 'تحويل بنكي مباشر (الراجحي)'}\n`;
         msg += `*التغليف:* ${order.packaging}\n`;
         msg += `--------------------------\n`;
         order.items.forEach((it, i) => {
@@ -2442,6 +2532,7 @@ function renderAdminOrdersList() {
                 <span style="color:var(--gold-light);font-weight:800;">${ord.totalPrice} ر.س</span>
             </div>
             <div style="font-size:11px;color:#e2e8f0;">${ord.clientName} — <span dir="ltr">${ord.clientPhone}</span> (${ord.clientCity})</div>
+            <div style="font-size:10px;color:#93c5fd;">الدفع: ${ord.paymentMethod || 'تحويل بنكي'}</div>
             <div style="display:flex;gap:6px;">
                 <button type="button" class="pill-mini-btn vip-gold" onclick="viewSavedOrderInvoice(${idx})">🧾 عرض الفاتورة</button>
             </div>
