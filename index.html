@@ -1184,7 +1184,7 @@ body.entrance-locked{
     </div>
     <div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()">
         <div class="zoom-media-wrap" id="zoomMediaWrap"></div>
-        <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قطن فاخر ثقيل + شريحة NFC مشفّرة في شريط السدو</div>
+        <div class="fabric-hotspot-tag" id="fabricHotspotTag">◈ قطن 100% + شريحة NFC مدمجة</div>
     </div>
     <div class="zoom-bottom-controls" onclick="event.stopPropagation()">
         <button type="button" class="tool-pill-btn" id="loupeToggleBtn" onclick="toggleZoomScale()">🔬 تكبير / تصغير تفاصيل النسيج</button>
@@ -1233,7 +1233,7 @@ body.entrance-locked{
         <div class="ai-chat-feed" id="aiChatFeed">
             <div class="ai-msg-bubble">
                 حياك الله في <strong>عِـزوة (EZWA)</strong> ◈<br>
-                جرّب أن تقول بصوتك: <em>"أضف هودي برايت الأسود مقاس لارج"</em> وسأضيفه لسلتك فوراً، أو اختر من الأزرار بالأسفل:
+                جرّب أن تقول بصوتك: <em>"أضف تيشيرت المصمك العنابي مقاس لارج"</em> وسأضيفه لسلتك فوراً، أو اختر من الأزرار بالأسفل:
             </div>
         </div>
         <div class="size-calc-box" id="sizeCalcBox">
@@ -1512,7 +1512,7 @@ body.entrance-locked{
                     </div>
                     <div class="admin-field">
                         <label>سعر الحبة (ر.س):</label>
-                        <input type="number" id="npPrice" required placeholder="129">
+                        <input type="number" id="npPrice" required placeholder="199">
                     </div>
                 </div>
                 <div class="admin-field">
@@ -1521,15 +1521,15 @@ body.entrance-locked{
                 </div>
                 <div class="admin-field">
                     <label>اسم اللون:</label>
-                    <input type="text" id="npColorName" value="أسود × ذهبي">
+                    <input type="text" id="npColorName" value="عنابي">
                 </div>
                 <div class="admin-field">
                     <label>اسم ملف الصورة المفرّغة (PNG) أو رابطها (اختياري):</label>
-                    <input type="text" id="npImg" placeholder="مثال: hoodie-bright-black.png" style="direction:ltr;">
+                    <input type="text" id="npImg" placeholder="مثال: 197063.png" style="direction:ltr;">
                 </div>
                 <div class="admin-field">
                     <label>وصف الخامة وميزة الـ NFC:</label>
-                    <input type="text" id="npDesc" value="قطن فاخر 280 GSM + شريحة NFC مدمجة في شريط السدو للتوثيق السحابي">
+                    <input type="text" id="npDesc" value="قصة بوكس فيت مدمج بـ NFC • قطن 100 %">
                 </div>
                 <button type="submit" class="primary-holo-btn">➕ إضافة القطعة للمتجر</button>
             </form>
@@ -1549,7 +1549,7 @@ const STORE_CONFIG = {
     adminPin: "7884",
     currencyAr: "ر.س",
     currencyEn: "SAR",
-    featuredProductId: "ezwa-1",
+    featuredProductId: "ezwa-masmak-burgundy-back",
     bankName: "مصرف الراجحي",
     bankBeneficiary: "يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات",
     bankDoc: "FL-749408046",
@@ -1704,6 +1704,58 @@ function orderFeaturedFromEntrance() {
 
 const DEFAULT_PRODUCTS = [
     {
+        id: "ezwa-masmak-burgundy-back",
+        cat: "tshirts",
+        nameAr: "تيشيرت بوكس فيت عنابي — المصمك (خلفي)",
+        nameEn: "EZWA Box Fit Burgundy Tee — Masmak Back",
+        price: 199,
+        sizes: ["S", "M", "L", "XL"],
+        descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼",
+        descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR",
+        variants: [
+            { colorAr: "عنابي", colorEn: "Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "197063.png" }
+        ]
+    },
+    {
+        id: "ezwa-masmak-burgundy-front",
+        cat: "tshirts",
+        nameAr: "تيشيرت بوكس فيت عنابي — EZWA (أمامي)",
+        nameEn: "EZWA Box Fit Burgundy Tee — Front",
+        price: 199,
+        sizes: ["S", "M", "L", "XL"],
+        descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼",
+        descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR",
+        variants: [
+            { colorAr: "عنابي", colorEn: "Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "197057.png" }
+        ]
+    },
+    {
+        id: "ezwa-masmak-black-back",
+        cat: "tshirts",
+        nameAr: "تيشيرت بوكس فيت أسود — المصمك (خلفي)",
+        nameEn: "EZWA Box Fit Black Tee — Masmak Back",
+        price: 199,
+        sizes: ["S", "M", "L", "XL"],
+        descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼",
+        descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR",
+        variants: [
+            { colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197066.png" }
+        ]
+    },
+    {
+        id: "ezwa-masmak-black-front",
+        cat: "tshirts",
+        nameAr: "تيشيرت بوكس فيت أسود — EZWA (أمامي)",
+        nameEn: "EZWA Box Fit Black Tee — Front",
+        price: 199,
+        sizes: ["S", "M", "L", "XL"],
+        descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼",
+        descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR",
+        variants: [
+            { colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197067.png" }
+        ]
+    },
+    {
         id: "ezwa-hoodie-dual",
         cat: "hoodies",
         nameAr: "هودي عِزوة ثنائي اللون — أوفرسايز",
@@ -1752,33 +1804,6 @@ const DEFAULT_PRODUCTS = [
         ]
     },
     {
-        id: "ezwa-1",
-        cat: "tshirts",
-        nameAr: "تيشيرت اكتشف الرياض — المصمك",
-        nameEn: "Discover Riyadh — Masmak Boxy Tee",
-        price: 119,
-        sizes: ["S", "M", "L", "XL"],
-        descAr: "قصة بوكسي فيت فاخرة باللون العنابي، قطن 280 GSM، مطرز بشريط سدو يضم شريحة NFC مشفّرة لتوثيق الملكية سحابياً.",
-        descEn: "Luxury burgundy boxy-fit tee, 280 GSM heavy cotton, Sadu hem with embedded encrypted NFC chip for cloud ownership.",
-        variants: [
-            { colorAr: "عنابي ملكي", colorEn: "Royal Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "" },
-            { colorAr: "أسود مطفي", colorEn: "Matte Black", swatch: "#111827", bodyHex: "#111827", sleeveHex: "#111827", image: "" }
-        ]
-    },
-    {
-        id: "ezwa-2",
-        cat: "tshirts",
-        nameAr: "تيشيرت عِزوة الملكي — ذهبي مطفي",
-        nameEn: "EZWA Royal Matte Gold Boxy Tee",
-        price: 115,
-        sizes: ["S", "M", "L", "XL"],
-        descAr: "تصميم عِزوة باللون الذهبي الفاخر المطفي مع النخلة والسيفين، قماش قطني ثقيل وشريحة NFC مدمجة في الحافة السفلية.",
-        descEn: "Matte luxury gold EZWA emblem with palm & crossed swords, heavyweight cotton & embedded hem NFC chip.",
-        variants: [
-            { colorAr: "أسود × ذهبي", colorEn: "Black × Gold", swatch: "#111827", bodyHex: "#111827", sleeveHex: "#111827", image: "" }
-        ]
-    },
-    {
         id: "ezwa-4",
         cat: "pants",
         nameAr: "بنطال عِزوة أوفرسايز — كارجو",
@@ -1795,7 +1820,7 @@ const DEFAULT_PRODUCTS = [
 
 let PRODUCTS = [];
 try {
-    const savedProds = localStorage.getItem('ezwa_retail_products_v7');
+    const savedProds = localStorage.getItem('ezwa_retail_products_v8');
     PRODUCTS = savedProds ? JSON.parse(savedProds) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
 } catch(e) {
     PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -1924,8 +1949,8 @@ function handleSpokenQuery(text) {
         let targetProd = PRODUCTS[0];
         if (q.includes('برايت') || q.includes('bright')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-bright') || targetProd;
         else if (q.includes('ديفرنت') || q.includes('different')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-hoodie-diff') || targetProd;
-        else if (q.includes('المصمك') || q.includes('الرياض') || q.includes('عنابي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-1') || targetProd;
-        else if (q.includes('ملكي') || q.includes('ذهبي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-2') || targetProd;
+        else if (q.includes('أسود') || q.includes('اسود')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-back') || targetProd;
+        else if (q.includes('المصمك') || q.includes('الرياض') || q.includes('عنابي')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || targetProd;
         else if (q.includes('بنطال') || q.includes('كارجو')) targetProd = PRODUCTS.find(p => p.cat === 'pants') || targetProd;
 
         let chosenSize = targetProd.cat === 'pants' ? '32' : 'L';
@@ -1934,19 +1959,8 @@ function handleSpokenQuery(text) {
         else if (q.includes('اكس لارج') || q.includes('إكس لارج') || q.includes('xl')) chosenSize = 'XL';
         else if (q.includes('لارج') || q.includes('large')) chosenSize = 'L';
 
-        let varIdx = 0;
-        if (targetProd.variants) {
-            const foundIdx = targetProd.variants.findIndex(v =>
-                (q.includes('أسود') || q.includes('اسود')) && v.colorAr.includes('أسود') ||
-                (q.includes('أزرق') || q.includes('ازرق')) && v.colorAr.includes('أزرق') ||
-                (q.includes('بيج') && v.colorAr.includes('بيج')) ||
-                (q.includes('عنابي') && v.colorAr.includes('عنابي'))
-            );
-            if (foundIdx >= 0) varIdx = foundIdx;
-        }
-
-        const activeVar = targetProd.variants[varIdx] || targetProd.variants[0];
-        const cartKey = `${targetProd.id}__${varIdx}__${chosenSize}`;
+        const activeVar = targetProd.variants[0];
+        const cartKey = `${targetProd.id}__0__${chosenSize}`;
         const existing = cart.find(i => i.cartKey === cartKey);
         if (existing) existing.qty += 1;
         else {
@@ -1958,9 +1972,9 @@ function handleSpokenQuery(text) {
         updateCartUI();
 
         const spokenSize = chosenSize === 'S' ? 'سمول' : chosenSize === 'M' ? 'ميديم' : chosenSize === 'L' ? 'لارج' : chosenSize === 'XL' ? 'إكس لارج' : chosenSize;
-        const reply = `تمت إضافة <strong>${targetProd.nameAr}</strong> (${activeVar.colorAr}) مقاس <strong style="color:#00f3ff;">${chosenSize}</strong> إلى سلتك مباشرة!`;
+        const reply = `تمت إضافة <strong>${targetProd.nameAr}</strong> مقاس <strong style="color:#00f3ff;">${chosenSize}</strong> إلى سلتك مباشرة!`;
         appendAiChat(text, reply);
-        speakAiVoice(`تمت إضافة ${targetProd.nameAr} باللون ${activeVar.colorAr} مقاس ${spokenSize} إلى سلتك بنجاح.`);
+        speakAiVoice(`تمت إضافة ${targetProd.nameAr} مقاس ${spokenSize} إلى سلتك بنجاح.`);
         return;
     }
 
@@ -2173,11 +2187,11 @@ function askAiTopic(topic, customUserText) {
         appendAiChat(
             customUserText || 'نسّق لي طقم ستريت وير متكامل',
             `أقترح عليك إطلالة <strong>عِـزوة الملكية</strong>:<br>
-            • <strong>القطعة العلوية:</strong> هودي BRIGHT الأسود الملكي (189 ر.س)<br>
+            • <strong>القطعة العلوية:</strong> تيشيرت بوكس فيت المصمك (199 ر.س)<br>
             • <strong>القطعة السفلية:</strong> بنطال عِزوة أوفرسايز الكارجو الفحمي (149 ر.س)<br>
-             <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف الطقم الكامل للسلة (338 ر.س)</button>`
+             <button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف الطقم الكامل للسلة (348 ر.س)</button>`
         );
-        speakAiVoice('أقترح عليك تنسيق هودي برايت الأسود الملكي مع بنطال عِزوة الكارجو الفحمي لإطلالة ستريت وير متكاملة.');
+        speakAiVoice('أقترح عليك تنسيق تيشيرت بوكس فيت المصمك مع بنطال عِزوة الكارجو الفحمي لإطلالة ستريت وير متكاملة.');
     } else if (topic === 'nfc') {
         appendAiChat(
             customUserText || 'كيف تعمل تقنية الـ NFC في الملابس؟',
@@ -2198,14 +2212,14 @@ function askAiTopic(topic, customUserText) {
 }
 
 function addSuggestedOutfitToCart() {
-    const hoodie = PRODUCTS.find(p => p.id === 'ezwa-hoodie-bright') || PRODUCTS[0];
+    const tee = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || PRODUCTS[0];
     const pants = PRODUCTS.find(p => p.cat === 'pants');
-    if (hoodie) {
+    if (tee) {
         cart.push({
-            cartKey: `${hoodie.id}__0__${activeModalSize}`,
-            id: hoodie.id, nameAr: hoodie.nameAr, nameEn: hoodie.nameEn,
-            colorAr: hoodie.variants[0].colorAr, colorEn: hoodie.variants[0].colorEn,
-            size: activeModalSize, price: hoodie.price, qty: 1
+            cartKey: `${tee.id}__0__${activeModalSize}`,
+            id: tee.id, nameAr: tee.nameAr, nameEn: tee.nameEn,
+            colorAr: tee.variants[0].colorAr, colorEn: tee.variants[0].colorEn,
+            size: activeModalSize, price: tee.price, qty: 1
         });
     }
     if (pants) {
@@ -2672,7 +2686,7 @@ function deleteProduct(idx) {
 }
 
 function saveProductsLocally() {
-    try { localStorage.setItem('ezwa_retail_products_v7', JSON.stringify(PRODUCTS)); } catch(e) {}
+    try { localStorage.setItem('ezwa_retail_products_v8', JSON.stringify(PRODUCTS)); } catch(e) {}
 }
 
 function exportUpdatedHtmlCode() {
@@ -2771,6 +2785,3 @@ window.onload = function() {
 </script>
 </body>
 </html>
-```[cite: 5]
-
-<FollowUp label="هل تريد إضافة رابط الفيديو الثالث (video_2.mp4) من Cloudinary إلى قائمة التشغيل في الكود؟" query="نعم، سأعطيك رابط الفيديو الثالث لإضافته إلى قائمة التشغيل في الكود."/>
