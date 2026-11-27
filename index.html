@@ -6,7 +6,7 @@
 <title>عِزوة EZWA | متجر الأزياء الذكية — NAMER-IO</title>
 <meta name="description" content="متجر عِزوة (EZWA) للأزياء الرجالية الفاخرة المدمجة بتقنية NFC وتوثيق الملكية السحابي">
 <meta name="theme-color" content="#070709">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EZWA Official">
 <link rel="apple-touch-icon" href="ezwa-logo.png">
@@ -58,23 +58,23 @@ body.entrance-locked{
     .ezwa-holo-stage{width:480px;height:95dvh;border-radius:26px;box-shadow:0 0 70px rgba(212,175,55,0.16), inset 0 0 0 1px rgba(212,175,55,0.28);}
 }
 
-.hub-top-header{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:24px;}
+.hub-top-header{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:20px;}
 .hub-crest-ring{
-    width:68px;height:68px;border-radius:50%;
+    width:64px;height:64px;border-radius:50%;
     background:radial-gradient(circle at 35% 30%, rgba(212,175,55,0.22) 0%, #070709 82%);
     border:1.8px solid var(--gold-primary);box-shadow:0 0 24px rgba(212,175,55,0.35);
-    display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden;margin-bottom:6px;
+    display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden;margin-bottom:5px;
 }
 .hub-crest-ring img{width:100%;height:100%;object-fit:contain;mix-blend-mode:lighten;pointer-events:none;}
-.hub-brand-name{font-family:'Readex Pro',sans-serif!important;font-size:20px;font-weight:700;color:var(--gold-light);}
-.hub-brand-sub{font-size:11px;color:#cbd5e1;font-weight:600;margin-top:2px;}
+.hub-brand-name{font-family:'Readex Pro',sans-serif!important;font-size:19px;font-weight:700;color:var(--gold-light);}
+.hub-brand-sub{font-size:10.5px;color:#cbd5e1;font-weight:600;margin-top:2px;}
 
-/* شاشة عرض رأسية */
+/* شاشة عرض رأسية واضحة */
 .holo-projection-zone{
     position:relative;
-    width:min(82%, 310px);
+    width:min(78%, 275px);
     aspect-ratio:9 / 16;
-    max-height:46dvh;
+    max-height:44dvh;
     border-radius:18px;
     border:1.5px solid rgba(212,175,55,0.65);
     box-shadow:0 10px 28px rgba(0,0,0,0.75), 0 0 22px rgba(212,175,55,0.15);
@@ -244,7 +244,6 @@ body.entrance-locked{
     transition:opacity 0.22s ease,transform 0.22s ease;
 }
 .product-floater-visual:active{transform:scale(0.95);}
-.product-floater-visual.holo-flash{opacity:0.25;transform:scale(0.92);}
 .product-holo-stage:nth-child(even) .product-floater-visual{animation-delay:0.7s;}
 .product-floater-visual img{
     width:100%;height:100%;object-fit:contain;
@@ -259,10 +258,6 @@ body.entrance-locked{
 .product-holo-beam{width:146px;height:36px;margin-top:-12px;background:linear-gradient(to top,rgba(212,175,55,0.34) 0%,transparent 100%);clip-path:polygon(8% 0%,92% 0%,72% 100%,28% 100%);pointer-events:none;z-index:2;animation:holoBeamFlicker 2.8s infinite alternate;}
 .product-holo-pad{width:100px;height:12px;border-radius:50%;background:radial-gradient(ellipse at center,#D4AF37 0%,#0e0e12 75%);border:1.3px solid var(--gold-light);box-shadow:0 0 18px rgba(212,175,55,0.72);position:relative;z-index:2;pointer-events:none;}
 .product-holo-pad::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(212,175,55,0.45);animation:emitterPulseRing 2.2s infinite;}
-
-.holo-swatch-row{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:8px;z-index:5;}
-.holo-color-orb{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
-.holo-color-orb.active{transform:scale(1.25);border-color:var(--gold-light);box-shadow:0 0 12px rgba(212,175,55,0.8);}
 
 .product-holo-meta{margin-top:6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 6px;border-radius:14px;transition:background 0.2s;}
 .product-holo-meta:hover{background:rgba(212,175,55,0.08);}
@@ -343,7 +338,6 @@ body.entrance-locked{
 .fabric-hotspot-tag{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(16,16,20,0.92);border:1px solid var(--gold-primary);color:var(--gold-light);padding:5px 12px;border-radius:14px;font-size:10px;font-weight:700;white-space:nowrap;pointer-events:none;}
 .zoom-bottom-controls{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px;z-index:1520;}
 .tool-pill-btn{background:rgba(16,16,20,0.92);border:1px solid rgba(212,175,55,0.5);color:#fff;padding:6px 14px;border-radius:12px;font-size:11px;font-weight:700;cursor:pointer;}
-.tool-pill-btn.active{background:rgba(212,175,55,0.25);border-color:var(--gold-light);color:var(--gold-light);}
 
 .vip-holo-card{background:linear-gradient(135deg,#17171d 0%,#070709 55%,#1b1508 100%);border:1.5px solid var(--gold-primary);border-radius:20px;padding:16px;box-shadow:0 0 32px rgba(212,175,55,0.25);position:relative;overflow:hidden;margin-bottom:12px;text-align:start;}
 .vip-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
@@ -386,11 +380,6 @@ body.entrance-locked{
 .detail-visual{width:190px;height:190px;margin:0 auto 8px auto;display:flex;align-items:center;justify-content:center;cursor:zoom-in;animation:productZeroG 3.8s ease-in-out infinite;}
 .detail-visual img{width:100%;height:100%;object-fit:contain;transform:scale(1.18);mix-blend-mode:lighten;}
 .detail-visual svg{width:100%;height:100%;object-fit:contain;}
-
-.modal-variants-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:10px;}
-.modal-var-chip{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:14px;background:rgba(16,16,20,0.88);border:1px solid rgba(255,255,255,0.22);color:#cbd5e1;font-size:10.5px;font-weight:700;cursor:pointer;transition:all 0.2s;}
-.modal-var-chip.active{border-color:var(--gold-light);background:rgba(212,175,55,0.18);color:#fff;box-shadow:0 0 12px rgba(212,175,55,0.28);}
-.modal-var-dot{width:12px;height:12px;border-radius:50%;border:1px solid #fff;}
 
 .detail-specs{background:rgba(18,18,22,0.86);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:10px 12px;font-size:11.5px;color:#e2e8f0;line-height:1.65;margin-bottom:10px;}
 .qty-row{display:flex;align-items:center;justify-content:space-between;background:rgba(12,12,16,0.92);border:1px solid rgba(212,175,55,0.45);border-radius:14px;padding:8px 12px;margin-bottom:10px;}
@@ -512,7 +501,7 @@ body.entrance-locked{
             <div class="verif-doc-num"><span id="uiDocLbl">رقم الوثيقة:</span> <strong dir="ltr">FL-749408046</strong></div>
             <a href="https://freelance.sa" target="_blank" rel="noopener noreferrer" class="verif-check-btn" id="uiVerifBtn">التحقق من صحة الوثيقة</a>
         </div>
-        <div class="verif-qr-box"><img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&color=D4AF37&bgcolor=0a0608&data=https://freelance.sa/validate/FL-749408046" alt="QR"><span id="uiScanHint">امسح للتحقق</span></div>
+        <div class="verif-qr-box"><img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&color=D4AF37&bgcolor=070709&data=https://freelance.sa/validate/FL-749408046" alt="QR"><span id="uiScanHint">امسح للتحقق</span></div>
     </section>
     <div class="policy-links-bar">
         <button type="button" class="holo-policy-btn" onclick="openReturnPolicyModal()" id="uiReturnPolicyBtn">📜 سياسة الاسترجاع</button>
@@ -521,34 +510,36 @@ body.entrance-locked{
     </div>
     <footer class="store-footer"><span>EZWA © NAMER-IO • الرياض</span><button type="button" class="admin-lock-btn" onclick="openPinModal()">⚙️ إدارة المتجر 🔒</button></footer>
 </div>
+
 <div class="floating-cart-orb" onclick="openCartModal()"><div class="cart-orb-sphere"><span class="cart-badge-count" id="cartCountBadge">0</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f5d69c" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="#D4AF37"/></svg></div><div class="cart-orb-price-pill" id="cartOrbPrice">0 ر.س</div></div>
 <div class="floating-ai-orb" onclick="openAiAssistantModal()"><div class="ai-orb-sphere"><div class="ai-online-ring"></div><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.9"><rect x="4" y="7" width="16" height="12" rx="4" stroke="#f5d69c"/><circle cx="9" cy="13" r="1.3" fill="#D4AF37"/><circle cx="15" cy="13" r="1.3" fill="#D4AF37"/></svg></div><div class="ai-orb-tag-pill" id="aiOrbTag">مستشار عِزوة 🔊</div></div>
 
-<div class="holo-modal-overlay" id="guestbookModal" onclick="closeModal('guestbookModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>✍️ توقيع الزوار والتقييم</h3><button class="close-x" onclick="closeModal('guestbookModal')">×</button></div><div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:8px;"><div class="admin-field"><label>الاسم *:</label><input type="text" id="gbNameInput"></div><div class="admin-field"><label>التقييم:</label><select id="gbRatingSelect"><option value="★★★★★">★★★★★</option><option value="★★★★☆">★★★★☆</option></select></div></div><div class="admin-field"><label>رسالتك:</label><input type="text" id="gbNoteInput"></div><div class="admin-field"><label>توقيعك:</label><div class="sig-canvas-wrap"><canvas id="visitorSigCanvas" width="350" height="105"></canvas><button type="button" class="sig-clear-btn" onclick="clearVisitorSignature()">مسح</button></div></div><button type="button" class="primary-holo-btn" onclick="saveVisitorGuestbook()">حفظ التوقيع ◈</button><div class="guestbook-feed" id="guestbookFeed"></div></div></div>
+<div class="holo-modal-overlay" id="guestbookModal" onclick="closeModal('guestbookModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>✍️ توقيع الزوار والتقييم</h3><button type="button" class="close-x" onclick="closeModal('guestbookModal')">×</button></div><div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:8px;"><div class="admin-field"><label>الاسم *:</label><input type="text" id="gbNameInput"></div><div class="admin-field"><label>التقييم:</label><select id="gbRatingSelect"><option value="★★★★★">★★★★★</option><option value="★★★★☆">★★★★☆</option></select></div></div><div class="admin-field"><label>رسالتك:</label><input type="text" id="gbNoteInput"></div><div class="admin-field"><label>توقيعك:</label><div class="sig-canvas-wrap"><canvas id="visitorSigCanvas" width="350" height="105"></canvas><button type="button" class="sig-clear-btn" onclick="clearVisitorSignature()">مسح</button></div></div><button type="button" class="primary-holo-btn" onclick="saveVisitorGuestbook()">حفظ التوقيع ◈</button><div class="guestbook-feed" id="guestbookFeed"></div></div></div>
 
-<div class="holo-modal-overlay" id="customOrderModal" onclick="closeModal('customOrderModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>🎨 تصميم حسب الطلب (NFC)</h3><button class="close-x" onclick="closeModal('customOrderModal')">×</button></div><form onsubmit="submitCustomApparelOrder(event)"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>القطعة *:</label><select id="coType"><option value="تيشيرت بوكس فيت مخصص">تيشيرت بوكس فيت</option><option value="هودي أوفرسايز مخصص">هودي أوفرسايز</option></select></div><div class="admin-field"><label>المقاس *:</label><select id="coSize"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>اللون *:</label><input type="text" id="coColor" required></div><div class="admin-field"><label>محتوى NFC:</label><select id="coMediaType"><option value="مقطع فيديو لمناسبة">فيديو مناسبة</option><option value="تهنئة صوتية (بدون موسيقى)">تهنئة صوتية</option></select></div></div><div class="admin-field"><label>رابط الفيديو أو التهنئة الصوتية:</label><input type="text" id="coMediaLink"></div><div class="admin-field"><label>تفاصيل التصميم *:</label><textarea id="coNotes" rows="2" required></textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>الاسم *:</label><input type="text" id="coClientName" required></div><div class="admin-field"><label>الجوال *:</label><input type="tel" id="coClientPhone" required style="direction:ltr;"></div></div><button type="submit" class="primary-holo-btn" id="coSubmitBtn">إرسال الطلب ◈</button></form></div></div>
+<div class="holo-modal-overlay" id="customOrderModal" onclick="closeModal('customOrderModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>🎨 تصميم حسب الطلب (NFC)</h3><button type="button" class="close-x" onclick="closeModal('customOrderModal')">×</button></div><form onsubmit="submitCustomApparelOrder(event)"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>القطعة *:</label><select id="coType"><option value="تيشيرت بوكس فيت مخصص">تيشيرت بوكس فيت</option><option value="هودي أوفرسايز مخصص">هودي أوفرسايز</option></select></div><div class="admin-field"><label>المقاس *:</label><select id="coSize"><option value="S">S</option><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>اللون *:</label><input type="text" id="coColor" required></div><div class="admin-field"><label>محتوى NFC:</label><select id="coMediaType"><option value="مقطع فيديو لمناسبة">فيديو مناسبة</option><option value="تهنئة صوتية (بدون موسيقى)">تهنئة صوتية</option></select></div></div><div class="admin-field"><label>رابط الفيديو أو التهنئة الصوتية:</label><input type="text" id="coMediaLink"></div><div class="admin-field"><label>تفاصيل التصميم *:</label><textarea id="coNotes" rows="2" required></textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>الاسم *:</label><input type="text" id="coClientName" required></div><div class="admin-field"><label>الجوال *:</label><input type="tel" id="coClientPhone" required style="direction:ltr;"></div></div><button type="submit" class="primary-holo-btn" id="coSubmitBtn">إرسال الطلب ◈</button></form></div></div>
 
-<div class="holo-modal-overlay" id="collectorVaultModal" onclick="closeModal('collectorVaultModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>🏛️ خزانة المقتنين وتوثيق الملكية</h3><button class="close-x" onclick="closeModal('collectorVaultModal')">×</button></div><div class="admin-field"><label>الرقم التسلسلي (مثال: EZWA-001):</label><div style="display:flex;gap:6px;"><input type="text" id="vaultSerialInput" style="direction:ltr;text-transform:uppercase;"><button type="button" class="primary-holo-btn" style="width:auto;padding:0 16px;" onclick="verifyCollectorSerial()">تحقق</button></div></div><div class="vault-result-card" id="vaultResultCard"><div style="font-size:12px;font-weight:900;color:var(--gold-light);" id="vaultEditionTitle"></div><div style="font-size:11px;color:#e2e8f0;margin-top:4px;line-height:1.6;" id="vaultEditionDetails"></div></div></div></div>
+<div class="holo-modal-overlay" id="collectorVaultModal" onclick="closeModal('collectorVaultModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>🏛️ خزانة المقتنين وتوثيق الملكية</h3><button type="button" class="close-x" onclick="closeModal('collectorVaultModal')">×</button></div><div class="admin-field"><label>الرقم التسلسلي (مثال: EZWA-001):</label><div style="display:flex;gap:6px;"><input type="text" id="vaultSerialInput" style="direction:ltr;text-transform:uppercase;"><button type="button" class="primary-holo-btn" style="width:auto;padding:0 16px;" onclick="verifyCollectorSerial()">تحقق</button></div></div><div class="vault-result-card" id="vaultResultCard"><div style="font-size:12px;font-weight:900;color:var(--gold-light);" id="vaultEditionTitle"></div><div style="font-size:11px;color:#e2e8f0;margin-top:4px;line-height:1.6;" id="vaultEditionDetails"></div></div></div></div>
 
-<div class="holo-modal-overlay" id="vipPassModal" onclick="closeModal('vipPassModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>👑 بطاقة عضوية عِزوة</h3><button class="close-x" onclick="closeModal('vipPassModal')">×</button></div><div class="vip-holo-card"><div class="vip-card-header"><div><div style="font-size:15px;font-weight:900;" id="vipHolderName">عضو نخبة عِزوة</div><span class="vip-tier-badge" id="vipTierName">طليعة عِزوة</span></div><div style="font-size:11px;display:flex;justify-content:space-between;"><span>القطع: <strong id="vipPiecesCount">0</strong></span><span>الرتبة التالية: <strong id="vipNextTier">رواد عِزوة (3 قطع)</strong></span></div><div class="vip-progress-track"><div class="vip-progress-fill" id="vipProgressFill" style="width:15%;"></div></div></div><div class="admin-field"><label>الاسم على البطاقة:</label><div style="display:flex;gap:6px;"><input type="text" id="vipNameInput"><button type="button" class="cyan-holo-btn" style="width:auto;margin-top:0;padding:0 14px;" onclick="saveVipMemberName()">حفظ</button></div></div><div class="referral-code-box"><span style="font-family:'Orbitron',sans-serif;font-weight:900;color:var(--gold-light);" id="myReferralCode">EZWA-VIP77</span><button type="button" class="pill-mini-btn vip-gold" onclick="copyReferralCode()">نسخ 📤</button></div></div></div>
+<div class="holo-modal-overlay" id="vipPassModal" onclick="closeModal('vipPassModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>👑 بطاقة عضوية عِزوة</h3><button type="button" class="close-x" onclick="closeModal('vipPassModal')">×</button></div><div class="vip-holo-card"><div class="vip-card-header"><div><div style="font-size:15px;font-weight:900;" id="vipHolderName">عضو نخبة عِزوة</div></div><span class="vip-tier-badge" id="vipTierName">طليعة عِزوة</span></div><div style="font-size:11px;display:flex;justify-content:space-between;"><span>القطع: <strong id="vipPiecesCount">0</strong></span><span>الرتبة التالية: <strong id="vipNextTier">رواد عِزوة (3 قطع)</strong></span></div><div class="vip-progress-track"><div class="vip-progress-fill" id="vipProgressFill" style="width:15%;"></div></div></div><div class="admin-field"><label>الاسم على البطاقة:</label><div style="display:flex;gap:6px;"><input type="text" id="vipNameInput"><button type="button" class="cyan-holo-btn" style="width:auto;margin-top:0;padding:0 14px;" onclick="saveVipMemberName()">حفظ</button></div></div><div class="referral-code-box"><span style="font-family:'Orbitron',sans-serif;font-weight:900;color:var(--gold-light);" id="myReferralCode">EZWA-VIP77</span><button type="button" class="pill-mini-btn vip-gold" onclick="copyReferralCode()">نسخ 📤</button></div></div></div>
 
 <div class="zoom-lightbox-overlay" id="zoomLightbox" onclick="closeZoomLightbox()"><div class="zoom-top-bar" onclick="event.stopPropagation()"><div class="zoom-title-pill" id="zoomTitlePill">معاينة</div><button type="button" class="zoom-close-btn" onclick="closeZoomLightbox()">×</button></div><div class="zoom-stage-area" id="zoomStageArea" onclick="event.stopPropagation();toggleZoomScale()"><div class="zoom-media-wrap" id="zoomMediaWrap"></div><div class="fabric-hotspot-tag">◈ قصة بوكس فيت مدمج بـ NFC • قطن 100 %</div></div><div class="zoom-bottom-controls" onclick="event.stopPropagation()"><button type="button" class="tool-pill-btn" id="loupeToggleBtn" onclick="toggleZoomScale()">🔬 تكبير / تصغير</button><button type="button" class="primary-holo-btn" style="padding:10px 24px;" onclick="openOrderFromZoom()"><span>🛍️</span><span>اختر المقاس واطلب هذه القطعة</span></button></div></div>
 
-<div class="holo-modal-overlay" id="returnPolicyModal" onclick="closeModal('returnPolicyModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>📜 سياسة الاستبدال والاسترجاع</h3><button class="close-x" onclick="closeModal('returnPolicyModal')">×</button></div><ul class="policy-list"><li><strong>المدة:</strong> الاسترجاع <strong>3 أيام</strong> والاستبدال <strong>7 أيام</strong> من الاستلام.</li><li><strong>الحالة:</strong> القطعة غير ملبوسة مع سلامة NFC والتغليف الأصلي.</li><li><strong>الطلبات الخاصة:</strong> لا يشملها الاستبدال أو الاسترجاع إلا لعيب مصنعي.</li></ul><button type="button" class="primary-holo-btn" style="margin-top:10px;" onclick="closeModal('returnPolicyModal')">فهمت ذلك ◈</button></div></div>
+<div class="holo-modal-overlay" id="returnPolicyModal" onclick="closeModal('returnPolicyModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>📜 سياسة الاستبدال والاسترجاع</h3><button type="button" class="close-x" onclick="closeModal('returnPolicyModal')">×</button></div><ul class="policy-list"><li><strong>المدة:</strong> الاسترجاع <strong>3 أيام</strong> والاستبدال <strong>7 أيام</strong> من الاستلام.</li><li><strong>الحالة:</strong> القطعة غير ملبوسة مع سلامة NFC والتغليف الأصلي.</li><li><strong>الطلبات الخاصة:</strong> لا يشملها الاستبدال أو الاسترجاع إلا لعيب مصنعي.</li></ul><button type="button" class="primary-holo-btn" style="margin-top:10px;" onclick="closeModal('returnPolicyModal')">فهمت ذلك ◈</button></div></div>
 
-<div class="holo-modal-overlay" id="aiModal" onclick="closeAiModal()"><div class="holo-projected-box ai-theme" onclick="event.stopPropagation()"><div class="modal-top"><h3>🎙️ مستشار عِزوة الصوتي</h3><button class="close-x" onclick="closeAiModal()">×</button></div><div class="voice-wave-bar-wrap" id="voiceWaveBars"><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span></div><div class="ai-chat-feed" id="aiChatFeed"><div class="ai-msg-bubble">حياك الله في <strong>عِزوة</strong> ◈ جرّب: <em>"أضف تيشيرت المصمك البرغندي مقاس لارج"</em>.</div></div><div class="size-calc-box" id="sizeCalcBox"><div class="size-calc-grid"><div class="calc-field-unit"><span class="calc-field-lbl">الطول</span><input type="number" id="userHeightInput" value="175"></div><div class="calc-field-unit"><span class="calc-field-lbl">الوزن</span><input type="number" id="userWeightInput" value="74"></div><div class="calc-field-unit"><span class="calc-field-lbl">القَصّة</span><select id="userFitPref"><option value="boxy">بوكسي فيت</option><option value="oversized">أوفرسايز</option></select></div></div><button type="button" class="cyan-holo-btn" style="margin-top:0;padding:7px;" onclick="calculateSmartSize()">احسب مقاسي ◈</button></div><div class="ai-quick-chips"><button type="button" class="ai-chip-btn" onclick="toggleSizeCalc()">📏 المقاسات</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('outfit')">👔 ترشيح تيشيرت</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('nfc')">📡 ميزة NFC</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ البرواز والغسيل</button></div><div class="voice-controls-row"><button type="button" class="mic-speak-btn" id="micSpeakBtn" onclick="startVoiceRecognition()"><span>🎤</span><span id="micBtnLabel">تحدّث بصوتك</span></button><button type="button" class="mute-toggle-btn" id="muteToggleBtn" onclick="toggleVoiceMute()">🔊</button></div></div></div>
+<div class="holo-modal-overlay" id="aiModal" onclick="closeAiModal()"><div class="holo-projected-box ai-theme" onclick="event.stopPropagation()"><div class="modal-top"><h3>🎙️ مستشار عِزوة الصوتي</h3><button type="button" class="close-x" onclick="closeAiModal()">×</button></div><div class="voice-wave-bar-wrap" id="voiceWaveBars"><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span><span class="v-bar"></span></div><div class="ai-chat-feed" id="aiChatFeed"><div class="ai-msg-bubble">حياك الله في <strong>عِزوة</strong> ◈ جرّب: <em>"أضف تيشيرت المصمك البرغندي مقاس لارج"</em>.</div></div><div class="size-calc-box" id="sizeCalcBox"><div class="size-calc-grid"><div class="calc-field-unit"><span class="calc-field-lbl">الطول</span><input type="number" id="userHeightInput" value="175"></div><div class="calc-field-unit"><span class="calc-field-lbl">الوزن</span><input type="number" id="userWeightInput" value="74"></div><div class="calc-field-unit"><span class="calc-field-lbl">القَصّة</span><select id="userFitPref"><option value="boxy">بوكسي فيت</option><option value="oversized">أوفرسايز</option></select></div></div><button type="button" class="cyan-holo-btn" style="margin-top:0;padding:7px;" onclick="calculateSmartSize()">احسب مقاسي ◈</button></div><div class="ai-quick-chips"><button type="button" class="ai-chip-btn" onclick="toggleSizeCalc()">📏 المقاسات</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('outfit')">👔 ترشيح تيشيرت</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('nfc')">📡 ميزة NFC</button><button type="button" class="ai-chip-btn" onclick="askAiTopic('frame')">🖼️ البرواز والغسيل</button></div><div class="voice-controls-row"><button type="button" class="mic-speak-btn" id="micSpeakBtn" onclick="startVoiceRecognition()"><span>🎤</span><span id="micBtnLabel">تحدّث بصوتك</span></button><button type="button" class="mute-toggle-btn" id="muteToggleBtn" onclick="toggleVoiceMute()">🔊</button></div></div></div>
 
-<div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3 id="pmTitle">القطعة</h3><button class="close-x" onclick="closeModal('productModal')">×</button></div><div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)"></div><div class="modal-variants-bar" id="pmVariantsBar"></div><div style="text-align:center;font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;" id="pmSizeLabel">اختر المقاس:</div><div class="size-selector-row" id="pmSizesRow"></div><div class="detail-specs" id="pmSpecs"></div><div class="qty-row"><span style="font-size:12px;" id="pmQtyLabel">الكمية:</span><div class="qty-controls"><button type="button" class="qty-btn" onclick="changeModalQty(-1)">−</button><span id="pmQtyVal" style="font-family:'Orbitron',sans-serif;font-weight:900;color:var(--gold-light);">1</span><button type="button" class="qty-btn" onclick="changeModalQty(1)">+</button></div></div><button type="button" class="primary-holo-btn" onclick="addCurrentProductToCart()"><span>➕</span><span id="pmAddBtnText">إضافة للسلة</span></button></div></div>
+<div class="holo-modal-overlay" id="productModal" onclick="closeModal('productModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3 id="pmTitle">القطعة</h3><button type="button" class="close-x" onclick="closeModal('productModal')">×</button></div><div class="detail-visual" id="pmVisual" onclick="openZoomLightbox(activeModalProduct.id, activeModalVarIdx)"></div><div style="text-align:center;font-size:11px;font-weight:800;color:var(--gold-light);margin-bottom:6px;" id="pmSizeLabel">اختر المقاس:</div><div class="size-selector-row" id="pmSizesRow"></div><div class="detail-specs" id="pmSpecs"></div><div class="qty-row"><span style="font-size:12px;" id="pmQtyLabel">الكمية:</span><div class="qty-controls"><button type="button" class="qty-btn" onclick="changeModalQty(-1)">−</button><span id="pmQtyVal" style="font-family:'Orbitron',sans-serif;font-weight:900;color:var(--gold-light);">1</span><button type="button" class="qty-btn" onclick="changeModalQty(1)">+</button></div></div><button type="button" class="primary-holo-btn" onclick="addCurrentProductToCart()"><span>➕</span><span id="pmAddBtnText">إضافة للسلة</span></button></div></div>
 
-<div class="holo-modal-overlay" id="cartModal" onclick="closeModal('cartModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3 id="cmTitle">سلة مشتريات عِزوة</h3><button class="close-x" onclick="closeModal('cartModal')">×</button></div><div id="cartItemsContainer"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;"><div class="admin-field"><label>الاسم الكامل *:</label><input type="text" id="merchantNameInput" required></div><div class="admin-field"><label>رقم الجوال *:</label><input type="tel" id="clientPhoneInput" required style="direction:ltr;"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>المدينة والحي *:</label><input type="text" id="clientCityInput" required></div><div class="admin-field"><label>الرمز البريدي:</label><input type="text" id="nationalPostalInput" maxlength="5" inputmode="numeric" style="direction:ltr;text-align:center;"></div></div><div class="admin-field"><label>الشارع ورقم المبنى (العنوان الوطني):</label><input type="text" id="nationalStreetInput"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>طريقة الدفع:</label><select id="paymentMethodSelect" onchange="toggleBankTransferDetails()"><option value="تحويل بنكي مباشر (الراجحي)">تحويل بنكي (الراجحي)</option><option value="الدفع عند الاستلام / التنسيق">الدفع عند الاستلام</option></select></div><div class="admin-field"><label>التغليف:</label><select id="packagingOption"><option value="تغليف عِزوة الفاخر">تغليف عِزوة الفاخر</option><option value="برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر</option></select></div></div><div class="bank-transfer-box active" id="bankTransferBox"><div class="bank-layout-flex"><div class="bank-info-col"><div class="bank-detail-line"><strong>البنك:</strong> مصرف الراجحي</div><div class="bank-detail-line"><strong>المستفيد:</strong> يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات</div><div class="bank-detail-line"><strong>الوثيقة:</strong> <span dir="ltr">FL-749408046</span></div></div><div class="bank-qr-panel"><img id="cartBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=D4AF37&bgcolor=070709&data=SA6280000448608016270480" alt="QR"><span>QR الآيبان</span></div></div><div class="iban-copy-row"><span class="iban-code-str" id="uiBankIban">SA6280000448608016270480</span><button type="button" class="copy-iban-btn" onclick="copyBankIban()">نسخ الآيبان</button></div><div class="admin-field" style="margin-bottom:0;margin-top:6px;"><label>رقم مرجع التحويل (اختياري):</label><input type="text" id="transferRefInput" style="direction:ltr;"></div></div><div class="admin-field"><label>كود الإحالة (اختياري):</label><input type="text" id="referralInputCode" style="direction:ltr;text-transform:uppercase;"></div><div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(212,175,55,0.3);"><span style="font-size:12px;">الإجمالي النهائي:</span><span style="font-size:16px;font-weight:900;color:var(--gold-light);" id="cmGrandTotal">0 ر.س</span></div><button type="button" class="primary-holo-btn" id="submitOrderBtn" onclick="submitDirectStoreOrder()"><span>🧾</span><span id="cmSendWaBtn">تأكيد الطلب وإصدار الفاتورة ◈</span></button></div></div>
+<div class="holo-modal-overlay" id="cartModal" onclick="closeModal('cartModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3 id="cmTitle">سلة مشتريات عِزوة</h3><button type="button" class="close-x" onclick="closeModal('cartModal')">×</button></div><div id="cartItemsContainer"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;"><div class="admin-field"><label>الاسم الكامل *:</label><input type="text" id="merchantNameInput" required></div><div class="admin-field"><label>رقم الجوال *:</label><input type="tel" id="clientPhoneInput" required style="direction:ltr;"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>المدينة والحي *:</label><input type="text" id="clientCityInput" required></div><div class="admin-field"><label>الرمز البريدي:</label><input type="text" id="nationalPostalInput" maxlength="5" inputmode="numeric" style="direction:ltr;text-align:center;"></div></div><div class="admin-field"><label>الشارع ورقم المبنى (العنوان الوطني):</label><input type="text" id="nationalStreetInput"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>طريقة الدفع:</label><select id="paymentMethodSelect" onchange="toggleBankTransferDetails()"><option value="تحويل بنكي مباشر (الراجحي)">تحويل بنكي (الراجحي)</option><option value="الدفع عند الاستلام / التنسيق">الدفع عند الاستلام</option></select></div><div class="admin-field"><label>التغليف:</label><select id="packagingOption"><option value="تغليف عِزوة الفاخر">تغليف عِزوة الفاخر</option><option value="برواز الصورة المبتكر (إهداء)">برواز الصورة المبتكر</option></select></div></div><div class="bank-transfer-box active" id="bankTransferBox"><div class="bank-layout-flex"><div class="bank-info-col"><div class="bank-detail-line"><strong>البنك:</strong> مصرف الراجحي</div><div class="bank-detail-line"><strong>المستفيد:</strong> يوسف محمد سعد بن رشود إدارة وتنشيط المبيعات</div><div class="bank-detail-line"><strong>الوثيقة:</strong> <span dir="ltr">FL-749408046</span></div></div><div class="bank-qr-panel"><img id="cartBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=D4AF37&bgcolor=070709&data=SA6280000448608016270480" alt="QR"><span>QR الآيبان</span></div></div><div class="iban-copy-row"><span class="iban-code-str" id="uiBankIban">SA6280000448608016270480</span><button type="button" class="copy-iban-btn" onclick="copyBankIban()">نسخ الآيبان</button></div><div class="admin-field" style="margin-bottom:0;margin-top:6px;"><label>رقم مرجع التحويل (اختياري):</label><input type="text" id="transferRefInput" style="direction:ltr;"></div></div><div class="admin-field"><label>كود الإحالة (اختياري):</label><input type="text" id="referralInputCode" style="direction:ltr;text-transform:uppercase;"></div><div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid rgba(212,175,55,0.3);"><span style="font-size:12px;">الإجمالي النهائي:</span><span style="font-size:16px;font-weight:900;color:var(--gold-light);" id="cmGrandTotal">0 ر.س</span></div><button type="button" class="primary-holo-btn" id="submitOrderBtn" onclick="submitDirectStoreOrder()"><span>🧾</span><span id="cmSendWaBtn">تأكيد الطلب وإصدار الفاتورة ◈</span></button></div></div>
 
-<div class="holo-modal-overlay" id="invoiceModal" onclick="closeModal('invoiceModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top no-print"><h3>✅ فاتورة الطلب</h3><button class="close-x" onclick="closeModal('invoiceModal')">×</button></div><div class="invoice-holo-sheet" id="invoicePrintArea"><div class="inv-header-row"><div><div style="font-size:16px;font-weight:900;color:var(--gold-light);">عِـزوة — EZWA</div><div style="font-size:9.5px;color:#cbd5e1;">وثيقة العمل الحر: <strong dir="ltr">FL-749408046</strong></div></div><div style="text-align:end;"><div style="font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;color:var(--gold-primary);" id="invNumberTag">#EZ-1001</div><div style="font-size:10px;" id="invDateTag">2026-11-27</div></div></div><div class="inv-meta-grid"><div><strong>العميل:</strong> <span id="invClientName">-</span></div><div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div><div style="grid-column:1 / -1;"><strong>العنوان الوطني:</strong> <span id="invClientAddressFull">-</span></div><div><strong>التغليف:</strong> <span id="invPackaging">-</span></div><div><strong>الدفع:</strong> <span id="invPaymentMethod">-</span></div><div id="invBankSummaryRow" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:4px;border-top:1px dashed rgba(212,175,55,0.25);"><div><div style="font-size:10px;color:var(--gold-light);font-weight:800;">مصرف الراجحي — IBAN</div><div dir="ltr" style="font-family:'Orbitron',sans-serif;font-size:9.5px;color:var(--gold-light);">SA6280000448608016270480</div></div><img id="invBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&color=D4AF37&bgcolor=070709&data=SA6280000448608016270480" alt="QR" style="width:54px;height:54px;border-radius:6px;border:1px solid rgba(212,175,55,0.45);"></div></div><table class="inv-items-table"><thead><tr><th>القطعة والمقاس</th><th>العدد</th><th>المبلغ</th></tr></thead><tbody id="invItemsTbody"></tbody></table><div class="inv-total-banner"><span>الإجمالي المستحق:</span><span id="invGrandTotalVal">0 ر.س</span></div></div><div class="no-print" style="margin-top:10px;"><button type="button" class="primary-holo-btn" onclick="window.print()"><span>🖨️</span><span>طباعة / حفظ الفاتورة (PDF)</span></button><button type="button" class="cyan-holo-btn" id="invWaShareBtn"><span>💬</span><span>إرسال الفاتورة عبر واتساب</span></button></div></div></div>
+<div class="holo-modal-overlay" id="invoiceModal" onclick="closeModal('invoiceModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top no-print"><h3>✅ فاتورة الطلب</h3><button type="button" class="close-x" onclick="closeModal('invoiceModal')">×</button></div><div class="invoice-holo-sheet" id="invoicePrintArea"><div class="inv-header-row"><div><div style="font-size:16px;font-weight:900;color:var(--gold-light);">عِـزوة — EZWA</div><div style="font-size:9.5px;color:#cbd5e1;">وثيقة العمل الحر: <strong dir="ltr">FL-749408046</strong></div></div><div style="text-align:end;"><div style="font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;color:var(--gold-primary);" id="invNumberTag">#EZ-1001</div><div style="font-size:10px;" id="invDateTag">2026-11-27</div></div></div><div class="inv-meta-grid"><div><strong>العميل:</strong> <span id="invClientName">-</span></div><div><strong>الجوال:</strong> <span dir="ltr" id="invClientPhone">-</span></div><div style="grid-column:1 / -1;"><strong>العنوان الوطني:</strong> <span id="invClientAddressFull">-</span></div><div><strong>التغليف:</strong> <span id="invPackaging">-</span></div><div><strong>الدفع:</strong> <span id="invPaymentMethod">-</span></div><div id="invBankSummaryRow" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:4px;border-top:1px dashed rgba(212,175,55,0.25);"><div><div style="font-size:10px;color:var(--gold-light);font-weight:800;">مصرف الراجحي — IBAN</div><div dir="ltr" style="font-family:'Orbitron',sans-serif;font-size:9.5px;color:var(--gold-light);">SA6280000448608016270480</div></div><img id="invBankQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&color=D4AF37&bgcolor=070709&data=SA6280000448608016270480" alt="QR" style="width:54px;height:54px;border-radius:6px;border:1px solid rgba(212,175,55,0.45);"></div></div><table class="inv-items-table"><thead><tr><th>القطعة والمقاس</th><th>العدد</th><th>المبلغ</th></tr></thead><tbody id="invItemsTbody"></tbody></table><div class="inv-total-banner"><span>الإجمالي المستحق:</span><span id="invGrandTotalVal">0 ر.س</span></div></div><div class="no-print" style="margin-top:10px;"><button type="button" class="primary-holo-btn" onclick="window.print()"><span>🖨️</span><span>طباعة / حفظ الفاتورة (PDF)</span></button><button type="button" class="cyan-holo-btn" id="invWaShareBtn"><span>💬</span><span>إرسال الفاتورة عبر واتساب</span></button></div></div></div>
 
-<div class="holo-modal-overlay" id="pinModal" onclick="closeModal('pinModal')"><div class="holo-projected-box" style="max-width:340px;text-align:center;" onclick="event.stopPropagation()"><div class="modal-top"><h3>قفل الإدارة</h3><button class="close-x" onclick="closeModal('pinModal')">×</button></div><form onsubmit="verifyAdminPin(event)"><div class="admin-field"><input type="password" id="adminPinInput" maxlength="8" inputmode="numeric" style="text-align:center;font-family:'Orbitron',sans-serif;font-size:20px;letter-spacing:8px;"></div><div id="pinErr" style="color:#f87171;font-size:11px;display:none;margin-bottom:8px;">الرقم السري غير صحيح</div><button type="submit" class="primary-holo-btn">فتح لوحة الإدارة</button></form></div></div>
+<div class="holo-modal-overlay" id="pinModal" onclick="closeModal('pinModal')"><div class="holo-projected-box" style="max-width:340px;text-align:center;" onclick="event.stopPropagation()"><div class="modal-top"><h3>قفل الإدارة</h3><button type="button" class="close-x" onclick="closeModal('pinModal')">×</button></div><form onsubmit="verifyAdminPin(event)"><div class="admin-field"><input type="password" id="adminPinInput" maxlength="8" inputmode="numeric" style="text-align:center;font-family:'Orbitron',sans-serif;font-size:20px;letter-spacing:8px;"></div><div id="pinErr" style="color:#f87171;font-size:11px;display:none;margin-bottom:8px;">الرقم السري غير صحيح</div><button type="submit" class="primary-holo-btn">فتح لوحة الإدارة</button></form></div></div>
 
-<div class="holo-modal-overlay" id="adminModal" onclick="closeModal('adminModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>إدارة متجر عِزوة</h3><button class="close-x" onclick="closeModal('adminModal')">×</button></div><div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;" onclick="switchAdminTab('orders')">📦 الطلبات</button><button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11px;" onclick="switchAdminTab('products')">👕 القطع</button></div><div id="adminOrdersTab"><div id="adminOrdersList"></div></div><div id="adminProductsTab" style="display:none;"><form onsubmit="addNewProduct(event)" style="border-bottom:1px solid rgba(212,175,55,0.25);padding-bottom:10px;margin-bottom:10px;"><div class="admin-field"><label>اسم القطعة:</label><input type="text" id="npName" required></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>القسم:</label><select id="npCat"><option value="tshirts">تيشيرت بوكسي</option></select></div><div class="admin-field"><label>السعر:</label><input type="number" id="npPrice" required value="199"></div></div><div class="admin-field"><label>المقاسات:</label><input type="text" id="npSizes" required value="S, M, L, XL" style="direction:ltr;"></div><div class="admin-field"><label>اللون:</label><input type="text" id="npColorName" value="برغندي"></div><div class="admin-field"><label>اسم الصورة:</label><input type="text" id="npImg" style="direction:ltr;"></div><button type="submit" class="primary-holo-btn">➕ إضافة</button></form><div id="adminProductsList"></div><button type="button" class="cyan-holo-btn" onclick="exportUpdatedHtmlCode()">📋 نسخ الكود المحدّث</button></div></div></div>
+<div class="holo-modal-overlay" id="adminModal" onclick="closeModal('adminModal')"><div class="holo-projected-box" onclick="event.stopPropagation()"><div class="modal-top"><h3>إدارة متجر عِزوة</h3><button type="button" class="close-x" onclick="closeModal('adminModal')">×</button></div><div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" class="primary-holo-btn" style="padding:8px;font-size:11px;" onclick="switchAdminTab('orders')">📦 الطلبات</button><button type="button" class="cyan-holo-btn" style="margin-top:0;padding:8px;font-size:11px;" onclick="switchAdminTab('products')">👕 القطع</button></div><div id="adminOrdersTab"><div id="adminOrdersList"></div></div><div id="adminProductsTab" style="display:none;"><form onsubmit="addNewProduct(event)" style="border-bottom:1px solid rgba(212,175,55,0.25);padding-bottom:10px;margin-bottom:10px;"><div class="admin-field"><label>اسم القطعة:</label><input type="text" id="npName" required></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div class="admin-field"><label>القسم:</label><select id="npCat"><option value="tshirts">تيشيرت بوكسي</option></select></div><div class="admin-field"><label>السعر:</label><input type="number" id="npPrice" required value="199"></div></div><div class="admin-field"><label>المقاسات:</label><input type="text" id="npSizes" required value="S, M, L, XL" style="direction:ltr;"></div><div class="admin-field"><label>اللون:</label><input type="text" id="npColorName" value="برغندي"></div><div class="admin-field"><label>اسم الصورة:</label><input type="text" id="npImg" style="direction:ltr;"></div><button type="submit" class="primary-holo-btn">➕ إضافة</button></form><div id="adminProductsList"></div><button type="button" class="cyan-holo-btn" onclick="exportUpdatedHtmlCode()">📋 نسخ الكود المحدّث</button></div></div></div>
 
 <div class="toast-notification" id="toastBox">تم التنفيذ بنجاح</div>
+
 <script>
 const STORE_CONFIG = {
     formspreeEndpoint: "https://formspree.io/f/xaqaazbz",
@@ -598,9 +589,6 @@ function formatNationalAddress(city, postal, street) {
     return parts.length ? parts.join(' — ') : '-';
 }
 
-/* =========================================================================
-   قائمة تشغيل الشاشة الرئيسية (Cloudinary) + دعم العرض المحلي من الجهاز
-   ========================================================================= */
 const entranceOverlay = document.getElementById('ezwaEntranceOverlay');
 const entranceStage = document.getElementById('ezwaHoloStage');
 const entranceVideo = document.getElementById('ezwaEntranceVideo');
@@ -651,14 +639,6 @@ if (entranceStage) {
     });
 }
 
-HOLO_PLAYLIST.forEach((item, index) => {
-    if (index > 0) {
-        const preloader = document.createElement('link');
-        preloader.rel = 'preload'; preloader.as = 'video'; preloader.href = item.src;
-        document.head.appendChild(preloader);
-    }
-});
-
 if (entranceVideo) {
     entranceVideo.src = HOLO_PLAYLIST[0].src;
     entranceVideo.loop = false;
@@ -678,21 +658,18 @@ if (entranceSoundBtn && entranceVideo) {
 
 function enterHoloStore() {
     if (entranceVideo) entranceVideo.pause();
-    entranceOverlay.classList.add('dismissed');
+    if (entranceOverlay) entranceOverlay.classList.add('dismissed');
     document.body.classList.remove('entrance-locked');
 }
 
 function reopenHoloEntrance() {
-    entranceOverlay.classList.remove('dismissed');
+    if (entranceOverlay) entranceOverlay.classList.remove('dismissed');
     document.body.classList.add('entrance-locked');
     if (entranceVideo) entranceVideo.play().catch(() => {});
 }
 
-/* =========================================================================
-   الزر الثاني: توقيع الزوار وسجل التقييمات
-   ========================================================================= */
 let guestbookEntries = [
-    { name: "عبدالرحمن السبيعي", rating: "★★★★★", note: "خامة البوكس فيت البرغندي فخمة جداً، وفكرة الـ NFC في السدو السفلي مميزة.", date: "2026-11-20", sig: "" },
+    { name: "عبدالرحمن السبيعي", rating: "★★★★★", note: "خامة البوكس فيت فخمة جداً، وفكرة الـ NFC في السدو السفلي مميزة.", date: "2026-11-20", sig: "" },
     { name: "فيصل القحطاني", rating: "★★★★★", note: "تغليف البرواز كهدية كان مبهر، والتعامل راقي وسريع.", date: "2026-11-24", sig: "" }
 ];
 try { const rawGb = localStorage.getItem('ezwa_guestbook_v1'); if (rawGb) guestbookEntries = JSON.parse(rawGb); } catch(e) {}
@@ -740,7 +717,12 @@ function renderGuestbookList() {
     `).join('');
 }
 
-function openGuestbookModal() { document.getElementById('guestbookModal').classList.add('active'); initVisitorSigCanvas(); renderGuestbookList(); }
+function openGuestbookModal() {
+    const m = document.getElementById('guestbookModal');
+    if (m) m.classList.add('active');
+    initVisitorSigCanvas();
+    renderGuestbookList();
+}
 
 function saveVisitorGuestbook() {
     const name = document.getElementById('gbNameInput').value.trim();
@@ -756,10 +738,10 @@ function saveVisitorGuestbook() {
     showToast('تم حفظ توقيعك وتقييمك في سجل الزوار ◈');
 }
 
-/* =========================================================================
-   الزر الثالث: تصميم حسب الطلب + فيديو/تهنئة صوتية في NFC
-   ========================================================================= */
-function openCustomOrderModal() { document.getElementById('customOrderModal').classList.add('active'); }
+function openCustomOrderModal() {
+    const m = document.getElementById('customOrderModal');
+    if (m) m.classList.add('active');
+}
 
 async function submitCustomApparelOrder(e) {
     e.preventDefault();
@@ -789,18 +771,18 @@ async function submitCustomApparelOrder(e) {
     showToast('تم استلام طلب التصميم الخاص وسنتواصل معك فوراً ◈');
 }
 
-/* =========================================================================
-   الزر الرابع: خزانة المقتنين (توثيق الملكية)
-   ========================================================================= */
 const COLLECTOR_REGISTRY = {
-    "EZWA-001": { title: "إصدار المصمك المحدود — Drop 01", details: "• القطعة: تيشيرت بوكس فيت برغندي (قصر المصمك)<br>• حالة التوثيق: قطعة أصلية مسجّلة سحابياً بشريحة NFC في شريط السدو السفلي<br>• الخامة: قطن 100% فاخر" },
-    "EZWA-199": { title: "إصدار عِزوة الملكي — Drop 01", details: "• القطعة: تيشيرت بوكس فيت أسود (المصمك / EZWA)<br>• حالة التوثيق: قطعة أصلية مسجّلة سحابياً بشريحة NFC في شريط السدو السفلي<br>• التغليف المعتمد: برواز الصورة المبتكر" }
+    "EZWA-001": { title: "إصدار المصمك المحدود — Drop 01", details: "• القطعة: تيشيرت بوكس فيت (قصر المصمك)<br>• حالة التوثيق: قطعة أصلية مسجّلة سحابياً بشريحة NFC في شريط السدو السفلي<br>• الخامة: قطن 100% فاخر" },
+    "EZWA-199": { title: "إصدار عِزوة الملكي — Drop 01", details: "• القطعة: تيشيرت بوكس فيت (المصمك / EZWA)<br>• حالة التوثيق: قطعة أصلية مسجّلة سحابياً بشريحة NFC في شريط السدو السفلي<br>• التغليف المعتمد: برواز الصورة المبتكر" }
 };
 
 function openCollectorVaultModal() {
-    document.getElementById('vaultSerialInput').value = '';
-    document.getElementById('vaultResultCard').classList.remove('active');
-    document.getElementById('collectorVaultModal').classList.add('active');
+    const inp = document.getElementById('vaultSerialInput');
+    const card = document.getElementById('vaultResultCard');
+    const m = document.getElementById('collectorVaultModal');
+    if (inp) inp.value = '';
+    if (card) card.classList.remove('active');
+    if (m) m.classList.add('active');
 }
 
 function verifyCollectorSerial() {
@@ -815,14 +797,11 @@ function verifyCollectorSerial() {
     else { titleEl.innerText = `الرقم (${raw}) غير مسجل`; detEl.innerHTML = "تأكد من كتابة الرقم التسلسلي بشكل صحيح كما يظهر عند مسح شريحة الـ NFC."; card.classList.add('active'); }
 }
 
-/* =========================================================================
-   قائمة المنتجات (التيشيرتات الأربعة المستقلة)
-   ========================================================================= */
 const DEFAULT_PRODUCTS = [
-    { id: "ezwa-masmak-burgundy-back", cat: "tshirts", nameAr: "تيشيرت بوكس فيت برغندي — المصمك (خلفي)", nameEn: "EZWA Box Fit Burgundy Tee — Masmak Back", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "برغندي", colorEn: "Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "197063.png" }] },
-    { id: "ezwa-masmak-burgundy-front", cat: "tshirts", nameAr: "تيشيرت بوكس فيت برغندي — EZWA (أمامي)", nameEn: "EZWA Box Fit Burgundy Tee — Front", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "برغندي", colorEn: "Burgundy", swatch: "#581c2c", bodyHex: "#581c2c", sleeveHex: "#581c2c", image: "197057.png" }] },
-    { id: "ezwa-masmak-black-back", cat: "tshirts", nameAr: "تيشيرت بوكس فيت أسود — المصمك (خلفي)", nameEn: "EZWA Box Fit Black Tee — Masmak Back", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197066.png" }] },
-    { id: "ezwa-masmak-black-front", cat: "tshirts", nameAr: "تيشيرت بوكس فيت أسود — EZWA (أمامي)", nameEn: "EZWA Box Fit Black Tee — Front", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197067.png" }] }
+    { id: "ezwa-masmak-197063", cat: "tshirts", nameAr: "تيشيرت بوكس فيت — المصمك (خلفي)", nameEn: "EZWA Box Fit Tee — Masmak Back", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197063.png" }] },
+    { id: "ezwa-masmak-197057", cat: "tshirts", nameAr: "تيشيرت بوكس فيت — EZWA (أمامي)", nameEn: "EZWA Box Fit Tee — Front", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "أسود", colorEn: "Black", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197057.png" }] },
+    { id: "ezwa-masmak-197066", cat: "tshirts", nameAr: "تيشيرت بوكس فيت — المصمك (إصدار 2)", nameEn: "EZWA Box Fit Tee — Masmak Edition", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "داكن", colorEn: "Dark", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197066.png" }] },
+    { id: "ezwa-masmak-197067", cat: "tshirts", nameAr: "تيشيرت بوكس فيت — EZWA (إصدار 2)", nameEn: "EZWA Box Fit Tee — EZWA Edition", price: 199, sizes: ["S", "M", "L", "XL"], descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 % • السعر 199 ﷼", descEn: "Box Fit integrated with NFC • 100% Cotton • 199 SAR", variants: [{ colorAr: "داكن", colorEn: "Dark", swatch: "#151518", bodyHex: "#151518", sleeveHex: "#151518", image: "197067.png" }] }
 ];
 
 let PRODUCTS = [];
@@ -907,18 +886,12 @@ function startVoiceRecognition() {
 
 function handleSpokenQuery(text) {
     const q = text.toLowerCase();
-    if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('تيشيرت') || q.includes('المصمك') || q.includes('برغندي') || q.includes('أسود') || q.includes('اسود')) {
-        let targetProd = PRODUCTS[0];
-        if ((q.includes('أسود') || q.includes('اسود')) && (q.includes('أمامي') || q.includes('امامي') || q.includes('ezwa'))) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-front') || targetProd;
-        else if (q.includes('أسود') || q.includes('اسود')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-black-back') || targetProd;
-        else if (q.includes('أمامي') || q.includes('امامي') || q.includes('ezwa')) targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-front') || targetProd;
-        else targetProd = PRODUCTS.find(p => p.id === 'ezwa-masmak-burgundy-back') || targetProd;
-
+    if (q.includes('أضف') || q.includes('اضف') || q.includes('ابي') || q.includes('أبي') || q.includes('اطلب') || q.includes('تيشيرت') || q.includes('المصمك')) {
+        const targetProd = PRODUCTS[0];
         let chosenSize = 'L';
         if (q.includes('سمول') || q.includes('small')) chosenSize = 'S';
         else if (q.includes('ميديم') || q.includes('وسط')) chosenSize = 'M';
         else if (q.includes('اكس لارج') || q.includes('إكس لارج') || q.includes('xl')) chosenSize = 'XL';
-
         const activeVar = targetProd.variants[0], cartKey = `${targetProd.id}__0__${chosenSize}`;
         const existing = cart.find(i => i.cartKey === cartKey);
         if (existing) existing.qty += 1;
@@ -938,12 +911,12 @@ function handleSpokenQuery(text) {
 }
 
 function getHologramSvg(cat, variant) {
-    const body = (variant && variant.bodyHex) ? variant.bodyHex : '#111827';
+    const body = (variant && variant.bodyHex) ? variant.bodyHex : '#151518';
     return `<svg viewBox="0 0 140 140" fill="none"><path d="M45 26L58 20C62 26 78 26 82 20L95 26L118 44L106 64L92 55V116H48V55L34 64L22 44L45 26Z" fill="${body}" stroke="#D4AF37" stroke-width="2.2"/><text x="70" y="63" fill="#f5d69c" font-size="8" font-weight="bold" text-anchor="middle">عزوة</text></svg>`;
 }
 
 function renderVariantVisual(prod, varIdx) {
-    const v = (prod.variants || [])[varIdx] || (prod.variants || [])[0] || { bodyHex: '#111827', image: '' };
+    const v = (prod.variants || [])[varIdx] || (prod.variants || [])[0] || { bodyHex: '#151518', image: '' };
     const fallbackSvg = getHologramSvg(prod.cat, v).replace(/"/g, "'");
     if (v.image && v.image.trim() !== '') return `<img src="${v.image}" alt="${prod.nameAr}" onerror="this.outerHTML=\`${fallbackSvg}\`">`;
     return getHologramSvg(prod.cat, v);
@@ -951,6 +924,7 @@ function renderVariantVisual(prod, varIdx) {
 
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
+    if (!grid) return;
     const filtered = currentCat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentCat);
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
     grid.innerHTML = filtered.map(p => {
@@ -1007,7 +981,7 @@ function askAiTopic(topic, customUserText) {
         const r = 'تغليف البرواز المبتكر بديل فاخر للإهداء، ويُغسل التيشيرت مقلوباً بماء بارد.';
         appendAiChat(customUserText || 'البرواز والغسيل', r); speakAiVoice(r);
     } else {
-        appendAiChat(customUserText || 'ترشيح تيشيرت', `أقترح عليك <strong>تيشيرت بوكس فيت برغندي — المصمك</strong> (199 ر.س) • قطن 100 %<br><button type="button" class="primary-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف للسلة (199 ر.س)</button>`);
+        appendAiChat(customUserText || 'ترشيح تيشيرت', `أقترح عليك <strong>تيشيرت بوكس فيت — المصمك</strong> (199 ر.س) • قطن 100 %<br><button type="button" class="primary-holo-btn" style="padding:7px;font-size:11px;margin-top:6px;" onclick="addSuggestedOutfitToCart()">➕ أضف للسلة (199 ر.س)</button>`);
     }
 }
 
@@ -1060,14 +1034,16 @@ function addCurrentProductToCart() {
 function updateCartUI() {
     const totalItems = cart.reduce((s, i) => s + i.qty, 0), totalAmount = cart.reduce((s, i) => s + (i.price * i.qty), 0);
     const curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
-    document.getElementById('cartCountBadge').innerText = totalItems;
-    document.getElementById('cartOrbPrice').innerText = `${totalAmount} ${curr}`;
-    document.getElementById('cmGrandTotal').innerText = `${totalAmount} ${curr}`;
+    const badge = document.getElementById('cartCountBadge'), orbPrice = document.getElementById('cartOrbPrice'), grandTotal = document.getElementById('cmGrandTotal');
+    if (badge) badge.innerText = totalItems;
+    if (orbPrice) orbPrice.innerText = `${totalAmount} ${curr}`;
+    if (grandTotal) grandTotal.innerText = `${totalAmount} ${curr}`;
     refreshBankQrCodes(totalAmount);
 }
 
 function openCartModal() {
     const c = document.getElementById('cartItemsContainer'), curr = currentLang === 'ar' ? STORE_CONFIG.currencyAr : STORE_CONFIG.currencyEn;
+    if (!c) return;
     c.innerHTML = cart.length === 0
         ? `<p style="text-align:center;color:#94a3b8;font-size:12px;padding:16px 0;">السلة فارغة حالياً</p>`
         : cart.map((it, idx) => `<div class="cart-item-row"><div class="cart-item-info"><span class="cart-item-name">${it.nameAr} (${it.colorAr} • ${it.size})</span><span class="cart-item-sub">${it.qty} × ${it.price} ${curr} = ${it.qty * it.price} ${curr}</span></div><button type="button" class="del-item-btn" onclick="removeCartItem(${idx})">✕</button></div>`).join('');
@@ -1146,7 +1122,7 @@ function renderAdminProductsList() {
 }
 function addNewProduct(e) {
     e.preventDefault();
-    PRODUCTS.unshift({ id: 'ezwa-' + Date.now(), cat: 'tshirts', nameAr: document.getElementById('npName').value.trim(), nameEn: document.getElementById('npName').value.trim(), price: Number(document.getElementById('npPrice').value), sizes: document.getElementById('npSizes').value.split(',').map(s => s.trim()).filter(Boolean), descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 %", descEn: "Box Fit • NFC • 100% Cotton", variants: [{ colorAr: document.getElementById('npColorName').value.trim() || 'برغندي', colorEn: 'Burgundy', swatch: '#D4AF37', bodyHex: '#111827', image: document.getElementById('npImg').value.trim() }] });
+    PRODUCTS.unshift({ id: 'ezwa-' + Date.now(), cat: 'tshirts', nameAr: document.getElementById('npName').value.trim(), nameEn: document.getElementById('npName').value.trim(), price: Number(document.getElementById('npPrice').value), sizes: document.getElementById('npSizes').value.split(',').map(s => s.trim()).filter(Boolean), descAr: "قصة بوكس فيت مدمج بـ NFC • قطن 100 %", descEn: "Box Fit • NFC • 100% Cotton", variants: [{ colorAr: document.getElementById('npColorName').value.trim() || 'أسود', colorEn: 'Black', swatch: '#D4AF37', bodyHex: '#151518', image: document.getElementById('npImg').value.trim() }] });
     try { localStorage.setItem('ezwa_retail_products_v11', JSON.stringify(PRODUCTS)); } catch(e) {}
     renderProducts(); renderAdminProductsList(); e.target.reset(); showToast('تمت إضافة القطعة ◈');
 }
@@ -1159,20 +1135,26 @@ function toggleLang() {
     document.getElementById('langBtn').innerText = currentLang === 'ar' ? 'EN' : 'عربي';
     renderProducts(); updateCartUI();
 }
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-function showToast(msg) { const t = document.getElementById('toastBox'); t.innerText = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
+function closeModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+}
+function showToast(msg) { const t = document.getElementById('toastBox'); if (!t) return; t.innerText = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
 document.addEventListener('pointerdown', e => {
     const r = document.createElement('div'); r.className = 'water-ripple-ring'; r.style.left = e.clientX + 'px'; r.style.top = e.clientY + 'px';
     document.body.appendChild(r); setTimeout(() => r.remove(), 1050);
 });
 
-const canvas = document.getElementById('quantum-canvas'), ctx = canvas.getContext('2d');
+const canvas = document.getElementById('quantum-canvas'), ctx = canvas ? canvas.getContext('2d') : null;
 let particles = [];
-function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+function resizeCanvas() { if (!canvas) return; canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 window.addEventListener('resize', resizeCanvas); resizeCanvas();
-for (let i = 0; i < 24; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.3 + 0.4, vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22, gold: Math.random() > 0.35 });
+if (canvas) {
+    for (let i = 0; i < 24; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.3 + 0.4, vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22, gold: Math.random() > 0.35 });
+}
 function animateParticles() {
+    if (!ctx || !canvas) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
         p.x += p.vx; p.y += p.vy;
